@@ -55,7 +55,6 @@
                         return;
                     }
                 }
-
                 $(this).parent("li").toggleClass("active").children("ul").collapse("toggle");
 
                 if ($toggle) {

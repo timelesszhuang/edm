@@ -6,10 +6,11 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'defaultRoute'=>'login/index',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '',
+            'cookieValidationKey' => 'qaz123wsx852edc745!@we',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -38,6 +39,7 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+        'db2'=> require(__DIR__.'/db2.php')
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,

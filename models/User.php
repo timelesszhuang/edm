@@ -1,104 +1,133 @@
 <?php
-
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/11/17
+ * Time: 11:37
+ */
 namespace app\models;
 
-class User extends \yii\base\Object implements \yii\web\IdentityInterface
+use yii\db\ActiveRecord;
+use yii\helpers\VarDumper;
+
+class User extends ActiveRecord
 {
-    public $id;
-    public $username;
-    public $password;
-    public $authKey;
-    public $accessToken;
-
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
-
-
+    //管理员id =1
+    const ADMIN_ID=1;
     /**
-     * @inheritdoc
+     * 表名
+     * @return string
      */
-    public static function findIdentity($id)
+    public static function tableName()
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        return "{{%user}}";
     }
 
     /**
-     * @inheritdoc
+     * 规则
+     * @return array
      */
-    public static function findIdentityByAccessToken($token, $type = null)
+    public function rules()
     {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
+        return [
+            ["user_name", "unique", "message" => "用户名重复"],
+            ["user_name", "required", "message" => "请输入用户名"],
+            ["password", "string", "min" => 6, "tooShort" => "密码长度不能小于6位", "skipOnEmpty" => false, "when" => function ($model) {
+                return ($model->isNewRecord) || ($model->password != "");
+            }],
+        ];
+    }
+
+    /**
+     * 前置修改
+     * @param bool $insert
+     * @return bool
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if ($this->isNewRecord) {
+                $this->addtime = time();
             }
-        }
-
-        return null;
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
-    {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
+            if (empty($this->password)) {
+                unset($this->password);
+            } else {
+                $this->password = md5($this->password);
             }
+            $this->updatetime = time();
+            return true;
         }
-
-        return null;
+        return false;
     }
 
     /**
-     * @inheritdoc
+     * 查询所有数据
+     * @return array|\yii\db\ActiveRecord[]
      */
-    public function getId()
+    public function get_all($page, $rows)
     {
-        return $this->id;
+        $offset = ($page - 1) * $rows;
+        $data = self::find()->asArray()->offset($offset)->limit($rows)->all();
+        $count = self::find()->count("*");
+        $allpagenum = ceil($count / $page);
+        $insert_data = $this->formatter_data($data);
+        return [
+            "status" => 10,
+            "table" => $insert_data,
+            "allrows" => $allpagenum,
+            "allpagenum" => ceil($count / $rows),
+        ];
+
     }
 
     /**
-     * @inheritdoc
+     * 格式化为表格数据
+     * @param $data
+     * @return string
      */
-    public function getAuthKey()
+    public function formatter_data(&$data)
     {
-        return $this->authKey;
+        $i = 0;
+        $table = '';
+        foreach ($data as $k => $v) {
+            $i++;
+            $v["addtime"] = date("Y-m-d H:i:s", $v["addtime"]);
+            $table .= <<<FLAG
+                <tr>
+                <td class="select_checkbox">{$i}</td>
+                    <td>{$v["user_name"]}</td>
+                    <td>{$v["addtime"]}</td>
+                    <td><a href="javascript:void(0)" _id={$v["id"]} class="user_edit"  onclick="base_action.edit_action({$v["id"]})"  >编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)"  _id={$v["id"]} class="user_del" onclick="base_action.del_action({$v["id"]})">删除</a></td>
+                </tr>
+FLAG;
+        }
+        return $table;
     }
 
     /**
-     * @inheritdoc
+     * 返回要修改数据
+     * @param $id
+     * @return array|null|ActiveRecord
      */
-    public function validateAuthKey($authKey)
+    public function get_edit($id)
     {
-        return $this->authKey === $authKey;
+        return self::find()->where(["id" => $id])->asArray()->one();
     }
 
     /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return boolean if password provided is valid for current user
+     * 删除操作
+     * @param $selected
+     * @return int
      */
-    public function validatePassword($password)
+    public function deleteIn($selected)
     {
-        return $this->password === $password;
+        $all_arr=[];
+        foreach($selected as $k=>$v){
+            if($v==self::ADMIN_ID){
+                return false;
+            }
+            $all_arr[]=$v;
+        }
+        return self::deleteAll(["id"=>$all_arr]);
     }
 }
