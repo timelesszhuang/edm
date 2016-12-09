@@ -108,4 +108,13 @@ FLAG;
     {
         return self::deleteAll(["id"=>$id]);
     }
+
+    /**
+     * 获取总的账号数
+     * @return int|string
+     */
+    public function get_count()
+    {
+        return $this->find()->count();
+    }
 }

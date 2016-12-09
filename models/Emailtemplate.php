@@ -80,7 +80,6 @@ class Emailtemplate extends ActiveRecord
         <tr>
             <td class="select_checkbox">{$i}</td>
               <td>{$v["title"]}</td>
-              <td>{$v["content"]}</td>
               <td>{$v["detail"]}</td>
               <td>{$v["addtime"]}</td>
               <td><a href="javascript:void(0)" _id={$v["id"]} class="user_edit"  onclick="base_action.edit_action({$v["id"]})"  >编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)"  _id={$v["id"]} class="user_del" onclick="base_action.del_action({$v["id"]})">删除</a></td>

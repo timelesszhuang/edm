@@ -56,13 +56,6 @@ use yii\helpers\ArrayHelper;
                 </div>
             </div>
             <div class="form-group">
-                <label for="" class="col-xs-2 control-label">(每)停止数量:</label>
-                <div class="col-xs-10">
-                    <input type="number"  name="Emailsendconfig[stop_number]" class="form-control control-sm" style="margin-bottom:10px;" value="<?=$data['stop_number']?>">
-                    <span class="help-block m-b-none error" name="stop_number"></span>
-                </div>
-            </div>
-            <div class="form-group">
                 <div class="col-xs-12 control-label">
                     <button class="btn btn-sm btn-primary" id="template_edit_post" type="button">修改</button>
                     <button class="btn btn-sm btn-info" id="template_back" type="button">取消</button>

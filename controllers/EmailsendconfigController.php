@@ -9,6 +9,7 @@ namespace app\controllers;
 use yii;
 use app\models\Emailsendconfig;
 use app\models\Emailtemplate;
+use app\models\EmailSendRecord;
 class EmailsendconfigController extends BaseController
 {
     /**
@@ -35,7 +36,9 @@ class EmailsendconfigController extends BaseController
             exit(json_encode($model->getErrors()));
         }
         $template=(new Emailtemplate)->get_all();
-        return $this->renderPartial("add",["model"=>$model,"provinces"=>Emailsendconfig::provinces(),"brands"=>$model->brands(),"template"=>$template]);
+        $brands=$model->brands();
+        array_push($brands,["id"=>0,"name"=>"全部"]);
+        return $this->renderPartial("add",["model"=>$model,"provinces"=>Emailsendconfig::provinces(),"brands"=>$brands,"template"=>$template]);
     }
 
     /**
@@ -60,7 +63,9 @@ class EmailsendconfigController extends BaseController
         $model->brand_id=$data["brand_id"];
         $model->template_id=$data["template_id"];
         $template=(new Emailtemplate)->get_all();
-        return $this->renderPartial("edit",["data"=>$data,"model"=>$model,"provinces"=>Emailsendconfig::provinces(),"brands"=>$model->brands(),"template"=>$template]);
+        $brands=$model->brands();
+        array_push($brands,["id"=>0,"name"=>"全部"]);
+        return $this->renderPartial("edit",["data"=>$data,"model"=>$model,"provinces"=>Emailsendconfig::provinces(),"brands"=>$brands,"template"=>$template]);
     }
 
     /**

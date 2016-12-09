@@ -84,7 +84,6 @@ class Emailsendconfig extends ActiveRecord
             ["brand_id", "required", "message" => "请选择品牌"],
             ["template_id", "required", "message" => "请选择模板"],
             ["detail", "required", "message" => "请输入描述"],
-            ["stop_number", "required", "message" => "请输入发送邮件的数量"]
         ];
     }
 
@@ -104,7 +103,7 @@ class Emailsendconfig extends ActiveRecord
      */
     public function get_brand_one($id)
     {
-        return (new Query())->select(["name"])->where(["id" => intval($id)])->from("mx_brand")->scalar(Yii::$app->db2);
+        return (new Query())->select(["name"])->where(["id" => intval($id)])->from("mx_brand")->one(Yii::$app->db2);
     }
 
     /**
@@ -120,7 +119,7 @@ class Emailsendconfig extends ActiveRecord
             $provinces = array_flip($this->provinces());
             $this->province_name = $provinces[$this->province_id];
             $this->updatetime = time();
-            $this->brand_name = $this->get_brand_one($this->brand_id);
+            $this->brand_name = $this->get_brand_one($this->brand_id)["name"];
             $this->template_name = (new Emailtemplate())->get_byid($this->template_id)["title"];
             $this->updatetime = time();
             return true;
@@ -140,6 +139,11 @@ class Emailsendconfig extends ActiveRecord
         }
     }
 
+    /**
+     * 获取所有数据
+     * @param $arr
+     * @return array
+     */
     public function get_all($arr)
     {
         list($page,$rows,$offset)=$arr;
@@ -155,6 +159,11 @@ class Emailsendconfig extends ActiveRecord
         ];
     }
 
+    /**
+     * 格式化数据
+     * @param $data
+     * @return string
+     */
     public function formatter_data(&$data)
     {
         $i=0;
@@ -169,7 +178,7 @@ class Emailsendconfig extends ActiveRecord
                 <td>{$v["brand_name"]}</td>
                 <td>{$v["province_name"]}</td>
                 <td>{$v["send_record_page"]}</td>
-                <td>{$v["stop_number"]}</td>
+                <td>{$v["count_number"]}</td>
                 <td>{$v["start_id"]}</td>
                 <td>{$v["template_name"]}</td>
                 <td>{$v["send_account_name"]}</td>

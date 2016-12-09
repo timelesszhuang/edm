@@ -33,7 +33,7 @@ echo $this->render("_public");
                 <th>品牌名称</th>
                 <th>省份</th>
                 <th>已发送数量</th>
-                <th>每次停止数量</th>
+                <th>要发送数量</th>
                 <th>启动id</th>
                 <th>模板主题</th>
                 <th>当前发送账号</th>
@@ -162,7 +162,7 @@ echo $this->render("_public");
         //修改用户
         var edit_info={
             url:"<?=Url::to(["emailsendconfig/edit"])?>",
-            title: '<span class="glyphicon glyphicon-user"></span>&nbsp;修改不发送邮件配置',
+            title: '<span class="glyphicon glyphicon-user"></span>&nbsp;修改发送邮件配置',
             callback:load_data,
             current_num:current_num,
             allrows:allrows,
@@ -186,7 +186,7 @@ echo $this->render("_public");
                 title: '<span class="glyphicon glyphicon-user"></span>&nbsp;添加发送邮件配置',
                 content: "<?=Url::to(["emailsendconfig/add"]);?>",
                 width:"700px",
-                height:"325px",
+                height:"285px",
                 callback:load_data,
                 current_num:current_num,
                 allrows:allrows,

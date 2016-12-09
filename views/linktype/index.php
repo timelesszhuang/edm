@@ -156,7 +156,7 @@ echo $this->render("_public");
         //修改用户
         var edit_info={
             url:"<?=Url::to(["linktype/edit"])?>",
-            title: '<span class="glyphicon glyphicon-user"></span>&nbsp;修改用户',
+            title: '<span class="glyphicon glyphicon-user"></span>&nbsp;修改类型',
             callback:load_data,
             current_num:current_num,
             allrows:allrows,

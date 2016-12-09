@@ -24,10 +24,18 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport', //使用的类
+                'host' => 'smtp.qq.com', //邮箱服务一地址
+                'username' => '3423929165@qq.com',//邮箱地址，发送的邮箱
+                'password' => 'xkctwhwaquredbgb',  //自己填写邮箱密码
+                'port' => '25',  //服务器端口
+                'encryption' => 'tls', //加密方式
+            ],
+            'messageConfig'=>[
+            'charset'=>'UTF-8', //编码
+            'from'=>['3423929165@qq.com'=>'admin']  //邮件里面显示的邮件地址和名称
+           ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -36,7 +44,14 @@ $config = [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
+                [
+                    'class'=>'yii\log\FileTarget',
+                    'levels'=>["warning","error"],
+                    'categories'=>['edm'],
+                    'logFile'=>'@app/runtime/logs/edm.log',
+                ],
             ],
+
         ],
         'db' => require(__DIR__ . '/db.php'),
         'db2'=> require(__DIR__.'/db2.php')

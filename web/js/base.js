@@ -122,6 +122,17 @@ var base_action = (function () {
                 info[$(item).attr("name")]=item;
             });
             return info;
+        },//发送ajax操作
+        send_ajax_and_back:function(obj){
+            $.ajax({
+                url:obj.url,
+                type:obj.type,
+                data:obj.data,
+                dataType:"json",
+                success:function(data){
+                    obj.func(data);
+                }
+            });
         }
     }
 })();

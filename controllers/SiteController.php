@@ -122,4 +122,8 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+    public function actionShow()
+    {
+        return $this->renderPartial("show");
+    }
 }

@@ -156,7 +156,7 @@ echo $this->render("_public");
         //修改用户
         var edit_info={
             url:"<?=Url::to(["emailtype/edit"])?>",
-            title: '<span class="glyphicon glyphicon-user"></span>&nbsp;修改账号',
+            title: '<span class="glyphicon glyphicon-user"></span>&nbsp;修改邮箱类型',
             callback:load_data,
             current_num:current_num,
             allrows:allrows,
@@ -177,7 +177,7 @@ echo $this->render("_public");
         //弹出一个iframe层
         $('#emailtype_add').on('click', function () {
             var add = {
-                title: '<span class="glyphicon glyphicon-user"></span>&nbsp;添加账号',
+                title: '<span class="glyphicon glyphicon-user"></span>&nbsp;添加邮箱类型',
                 content: "<?=Url::to(["emailtype/add"]);?>",
                 width:"550px",
                 height:"215px",

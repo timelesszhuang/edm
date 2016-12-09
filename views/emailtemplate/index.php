@@ -30,7 +30,6 @@ echo $this->render("_public");
             <tr class="success">
                 <th class="select_checkbox"></th>
                 <th>标题</th>
-                <th>内容</th>
                 <th>描述</th>
                 <th>添加时间</th>
                 <th>操作</th>
@@ -157,12 +156,12 @@ echo $this->render("_public");
         //修改用户
         var edit_info={
             url:"<?=Url::to(["emailtemplate/edit"])?>",
-            title: '<span class="glyphicon glyphicon-user"></span>&nbsp;修改用户',
+            title: '<span class="glyphicon glyphicon-user"></span>&nbsp;修改模板',
             callback:load_data,
             current_num:current_num,
             allrows:allrows,
             width:"700px",
-            height:"470px",
+            height:"640px",
             flag:flag
         };
         base_action.set_params(edit_info);
@@ -181,7 +180,7 @@ echo $this->render("_public");
                 title: '<span class="glyphicon glyphicon-user"></span>&nbsp;添加模板',
                 content: "<?=Url::to(["emailtemplate/add"]);?>",
                 width:"700px",
-                height:"470px",
+                height:"640px",
                 callback:load_data,
                 current_num:current_num,
                 allrows:allrows,

@@ -8,6 +8,8 @@
 namespace app\controllers;
 use yii;
 use app\models\Emailtemplate;
+use app\models\Linktype;
+use app\models\Linkurl;
 class EmailtemplateController extends BaseController
 {
     /**
@@ -23,15 +25,15 @@ class EmailtemplateController extends BaseController
      */
     public function actionAdd()
     {
+        $model=new Emailtemplate();
         if(Yii::$app->request->isPost){
-            $model=new Emailtemplate();
             if(Yii::$app->request->isPost && $model->load(Yii::$app->request->post()) && $model->save()){
                 exit(json_encode(["status"=>10]));
             }
             $model->addError("status",20);
             exit(json_encode($model->getErrors()));
         }
-        return $this->renderPartial("add");
+        return $this->renderPartial("add",["linktype"=>(new Linktype)->get_all(),"model"=>$model]);
     }
 
     /**
@@ -52,7 +54,7 @@ class EmailtemplateController extends BaseController
     {
         $id=Yii::$app->request->get("id");
         $model=Emailtemplate::findOne($id);
-        return $this->renderPartial("edit",["data"=>$model->get_one($id)]);
+        return $this->renderPartial("edit",["data"=>$model->get_one($id),"linktype"=>(new Linktype)->get_all()]);
     }
 
     /**
@@ -81,5 +83,14 @@ class EmailtemplateController extends BaseController
             $status=10;
         }
         exit(json_encode(["status"=>$status]));
+    }
+
+    /**
+     * 根据typeid来获取链接类型
+     * @param $id
+     */
+    public function actionGet_link_bytypeid($id)
+    {
+        exit(json_encode((new Linkurl())->get_by_typeid($id)));
     }
 }

@@ -83,7 +83,7 @@ class Linkurl extends ActiveRecord
         list($page,$rows,$offset)=$arr;
         $count=self::find()->count();
         $allpagenum=ceil($count/$page);
-        $data=self::find()->offset($offset)->limit($rows)->asArray()->all();
+        $data=self::find()->offset($offset)->limit($rows)->orderBy("id desc")->asArray()->all();
         $insert_data=$this->formatter_data($data);
         return [
             "status" => 10,
@@ -143,5 +143,14 @@ FLAG;
             return self::deleteAll(["id"=>$id]);
         }
         return false;
+    }
+
+    /**
+     * 根据type_id来获取数据
+     * @param $typeid
+     * @return array|yii\db\ActiveRecord[]
+     */
+    public function get_by_typeid($typeid){
+        return self::find()->where(["type_id"=>$typeid])->asArray()->all();
     }
 }
