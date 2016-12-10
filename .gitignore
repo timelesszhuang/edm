@@ -12,8 +12,9 @@ nbproject
 # windows thumbnail cache
 Thumbs.db
 
-# composer vendor dir
-/vendor
+# composer vendor dir 数据库信息不提交
+/config/db.php
+/config/db2.php
 
 # composer itself is not needed
 composer.phar

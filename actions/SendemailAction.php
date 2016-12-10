@@ -19,8 +19,6 @@ use app\models\Emailtemplate;
 use app\models\EmailSendRecord;
 class SendemailAction extends Action
 {
-    //句柄
-    private $handle;
     const MX = "mx_domain_mx_";
     const WHOIS = "mx_domain_whois_";
 
@@ -29,14 +27,19 @@ class SendemailAction extends Action
      */
     public function run()
     {
-        //实则句柄
-        $this->handle = new Query();
-        $start_id = Yii::$app->request->get("start_id");
-        if (empty($start_id)) {
-            Yii::error("请传递参数", "edm");
-            return;
+        switch(Yii::$app->request->get("flag")){
+            //这个是读取配置开始发送邮件
+            case "send_email":
+                $start_id = Yii::$app->request->get("start_id");
+                if (empty($start_id)) {
+                    Yii::error("请传递参数", "edm");
+                    return;
+                }
+                $this->index($start_id);
+                break;
+            
         }
-        $this->index($start_id);
+
     }
 
     /**
@@ -45,8 +48,8 @@ class SendemailAction extends Action
      */
     public function index($start_id)
     {
-//        session_write_close();
-        header("Content-type:text/html;charset=utf-8");
+        session_write_close();
+        $this->open_ob_start();
         //读取配置项
         $config_arr = Emailsendconfig::find()->where(["id" => $start_id])->asArray()->one();
         if (empty($config_arr)) {
@@ -99,7 +102,8 @@ class SendemailAction extends Action
         $data_offset = $config_arr["send_record_page"];
         while (1) {
             //如果账号发送到最后一个 开始轮回
-            if ($start_account > $account_count) {
+            if ($start_account >= $account_count) {
+                break;
                 $start_account = 1;
             }
             //判断数据是否发送完毕
@@ -147,20 +151,101 @@ class SendemailAction extends Action
                 $data["contact_email"],//发送地址
                 $account_send_info["account_name"], //谁发的账号
                 $account_send_info["account_password"],     //谁发的密码
+                $account_send_info["host"],
                 $send_info[0],                                             //标题
                 $send_info[1],                                           //内容
-                "liurui@qiangbi.net",//随机获取一个用户接收回复邮件 姓名
-                "liurui@qiangbi.net",//随机获取一个用户接收回复邮件 邮件
-                $path,
-                $template_info["description"]
+                "强比科技",//随机获取一个用户接收回复邮件 邮件
             ];
-            //发邮件
-            $domain_tool->send_qiyu_email($email_send_arr);
+            file_put_contents("email.log",print_r($email_send_arr,true),FILE_APPEND);
+            //发邮件失败 记录错误信息
+            if(!$this->send($email_send_arr)){
+                $this->error_log([$account_send_info["account_name"],$account_send_info["account_password"],$account_send_info["email_type"],$data["contact_email"]]);
+            }
+            //将账号、数据查询后移
+            $start_account++;
+            $data_offset++;
+            $this->save_for_send_num($config_arr["id"],$start_account,$data_offset,$account_send_info["account_name"]);
         }
-
-
     }
-
+    /**
+     * 开启缓冲区并刷新数据到前台
+     */
+    public function open_ob_start()
+    {
+        $size = ob_get_length();
+        // send headers to tell the browser to close the connection
+        header("Content-Length: $size");
+        header('Connection: close');
+        ob_end_flush();
+        ob_flush();
+        flush();
+        /******** background process starts here ********/
+        ignore_user_abort(true);//在关闭连接后，继续运行php脚本
+        /******** background process ********/
+        set_time_limit(0); //no time limit，不设置超时时间（根据实际情况使用）
+    }
+    /**
+     * 邮件发生错误日志
+     * @param $arr
+     */
+    public function error_log($arr)
+    {
+        list($account,$account_pwd,$email_type,$email)=$arr;
+        $model=SendErrorLog::find();
+        $model->account_name=$account;
+        $model->account_password=$account_pwd;
+        $model->email_type=$email_type;
+        $model->email=$email;
+        $model->error_msg="邮件发送失败";
+        $model->addtime=time();
+        $model->updatetime=time();
+        $model->save();
+    }
+    /**
+     *同步发送信息
+     * @param $id
+     * @param $start_account
+     * @param $data_offset
+     */
+    public function save_for_send_num($id,$start_account,$data_offset,$account_pwd)
+    {
+        $model=Emailsendconfig::findOne($id);
+        $model->send_account_id=$start_account;
+        $model->send_record_page=$data_offset;
+        $model->send_account_name=$account_pwd;
+        return $model->save();
+    }
+    /**
+     * 发送邮件 兼容多个邮箱类型
+     * @param $send_info
+     * @return bool
+     * @throws yii\base\InvalidConfigException
+     */
+    public function send($send_info)
+    {
+        list($email,$account,$account_pwd,$host,$title,$content,$from_name)=$send_info;
+        Yii::$app->set('mailer',[
+            'class' => 'yii\swiftmailer\Mailer',
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => $host,
+                'username' => $account,
+                'password' => $account_pwd,
+                'port' => '25',
+                'encryption' => 'tls',
+            ],
+            'messageConfig'=>[
+                'charset'=>'UTF-8',
+                'from'=>[$account]
+            ],
+        ]);
+        $mail=Yii::$app->mailer->compose();
+        $mail->setTo("15863549041@126.com");
+        $mail->setSubject($title);
+        $mail->setHtmlBody($content);
+        return $mail->send();
+    }
     /**
      * 替换内容
      * @param $data
@@ -171,8 +256,10 @@ class SendemailAction extends Action
     public function replace_content($arr)
     {
         list($registrant_name,$title,$content,$record_add_id)=$arr;
+        //随机字符串
+        $rand_abc=chr(rand(97,122)).chr(rand(65,90)).chr(rand(97,122)).chr(rand(65,90));
         //标题
-        $title = str_replace("{{name}}", $registrant_name,$title);
+        $title = str_replace("{{name}}", $registrant_name,$title).$rand_abc;
         //内容
         $content = str_replace("{{name}}",$registrant_name,$content);
         //替换链接id
