@@ -134,7 +134,7 @@ class SendemailAction extends Action
             }
             //插入发送记录
             $record=[
-                $data["id"],$config_arr["province_id"],$config_arr["detail"],$config_arr["id"],$data["contact_email"]
+                $config_arr["template_id"],$data["id"],$config_arr["province_id"],$config_arr["detail"],$config_arr["id"],$data["contact_email"]
             ];
             $record_add_id=$this->save_to_record($record);
             //整理要发送的内容
@@ -288,6 +288,7 @@ class SendemailAction extends Action
         list($mx_id,$province_id,$detail,$config_id,$email)=$record;
         $ip="http://salesman.cc/index.php/Home/Sendemailimg/get_remote_addr";
         $model=new EmailSendRecord();
+        $model->template_id=$template_id;
         $model->send_id=$mx_id;
         $model->table_name=$province_id;
         $model->send_config_detail=$detail;
