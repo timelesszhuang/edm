@@ -141,7 +141,7 @@ class SendemailtoolController extends Controller
     public function actionModifly_record($arr)
     {
         list($ip, $data, $model) = $arr;
-        $ip_info = $this->get_ip_info($ip);
+        $ip_info = $this->actionGet_ip_info($ip);
         $save_data = [];
         $save_data["read_num"] = $data["read_num"] + 1;
         $save_data["lasttime"] = time();
