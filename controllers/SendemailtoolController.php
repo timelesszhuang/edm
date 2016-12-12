@@ -11,7 +11,7 @@ use yii\web\Controller;
 use yii;
 use app\models\EmailSendRecord;
 use app\models\Linkurl;
-class PublictoolController extends Controller
+class SendemailtoolController extends Controller
 {
 
     /**
