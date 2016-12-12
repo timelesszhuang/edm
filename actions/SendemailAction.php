@@ -48,8 +48,8 @@ class SendemailAction extends Action
      */
     public function index($start_id)
     {
-        session_write_close();
-        $this->open_ob_start();
+//        session_write_close();     //--------------
+//        $this->open_ob_start();
         //读取配置项
         $config_arr = Emailsendconfig::find()->where(["id" => $start_id])->asArray()->one();
         if (empty($config_arr)) {
@@ -103,7 +103,6 @@ class SendemailAction extends Action
         while (1) {
             //如果账号发送到最后一个 开始轮回
             if ($start_account >= $account_count) {
-                break;
                 $start_account = 1;
             }
             //判断数据是否发送完毕
@@ -158,9 +157,9 @@ class SendemailAction extends Action
             ];
             file_put_contents("email.log",print_r($email_send_arr,true),FILE_APPEND);
             //发邮件失败 记录错误信息
-            if(!$this->send($email_send_arr)){
-                $this->error_log([$account_send_info["account_name"],$account_send_info["account_password"],$account_send_info["email_type"],$data["contact_email"]]);
-            }
+//            if(!$this->send($email_send_arr)){
+//                $this->error_log([$account_send_info["account_name"],$account_send_info["account_password"],$account_send_info["email_type"],$data["contact_email"]]);
+//            }
             //将账号、数据查询后移
             $start_account++;
             $data_offset++;
@@ -214,14 +213,12 @@ class SendemailAction extends Action
     public function save_for_send_num($id,$start_account,$data_offset,$account_pwd)
     {
         $model=Emailsendconfig::findOne($id);
-        $ip="http://salesman.cc/index.php/Home/Sendemailimg/get_remote_addr";
         $data=[
             "send_account_id"=>$start_account,
             "send_record_page"=>$data_offset,
-            "send_account_name"=>$account_pwd,
-            "sender_ip"=>$this->exec_postresponse($ip)
+            "send_account_name"=>$account_pwd
         ];
-        return $model->setAttributes($data,false);
+        $model->updateAll($data);
     }
     /**
      * 发送邮件 兼容多个邮箱类型
@@ -291,6 +288,7 @@ class SendemailAction extends Action
     public function save_to_record($record)
     {
         list($template_id,$mx_id,$province_id,$detail,$config_id,$email)=$record;
+        $ip="http://salesman.cc/index.php/Home/Sendemailimg/get_remote_addr";
         $model=new EmailSendRecord();
         $model->template_id=$template_id;
         $model->send_id=$mx_id;
@@ -298,6 +296,7 @@ class SendemailAction extends Action
         $model->send_config_detail=$detail;
         $model->send_config_id=$config_id;
         $model->send_email=$email;
+        $model->sender_ip=$this->send_curl_request($ip);
         $model->addtime=time();
         $model->updatetime=time();
         if(!$model->save()){
@@ -396,26 +395,36 @@ class SendemailAction extends Action
         }
     }
     /**
-     * 发送post请求 获取返回信息
-     * @access public
+     * 发送curl请求
+     * @access protected
+     * @param $url
+     * @param array $data 文件修改 $data 文件修改
+     * @param string $flag 标志是 get post
      */
-    public function exec_postresponse($url, $data)
+    protected function send_curl_request($url, $data = array(), $flag = 'post')
     {
-        $curl = curl_init(); //这是curl的handle
-        //下面是设置curl参数
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 2);
-        curl_setopt($curl, CURLOPT_HEADER, 0); //don't show header
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); //相当关键，这句话是让curl_exec($ch)返回的结果可以进行赋值给其他的变量进行，json的数据操作，如果没有这句话，则curl返回的数据不可以进行人为的去操作（如json_decode等格式操作）
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); //这个是重点。
-        //这个就是超时时间了
-        curl_setopt($curl, CURLOPT_TIMEOUT, 2);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-        $info = curl_exec($curl);
-        curl_close($curl);
-        return $info;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        if ($flag == 'get') {
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+        } else {
+            curl_setopt($ch, CURLOPT_POST, 1);           // 发送一个常规的Post请求
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data); // Post提交的数据包
+        }
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_AUTOREFERER, 1);
+        curl_setopt($ch, CURLOPT_HEADER, 0);            // 显示返回的Header区域内容
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30); // 设置超时限制防止死循
+        $temp = curl_exec($ch);
+        if (curl_errno($ch)) {
+            file_put_contents('error.log', '微信推送消息错误：' . curl_error($ch) . "\r\n", FILE_APPEND);
+        }
+        curl_close($ch);
+        return $temp;
     }
 
 }
