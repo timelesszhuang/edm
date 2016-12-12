@@ -48,6 +48,13 @@ use yii\helpers\ArrayHelper;
                 </div>
             </div>
             <div class="form-group">
+                <label for="" class="control-label col-xs-2">使用者</label>
+                <div class="col-xs-10">
+                    <input type="text" name="Account[name]" class="form-control">
+                    <span class="help-block m-b-none error" name="name"></span>
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-xs-12 control-label">
                     <button class="btn btn-sm btn-primary" id="linkurl_add_post" type="button">添加</button>
                     <button class="btn btn-sm btn-info" id="linkurl_back" type="button">取消</button>

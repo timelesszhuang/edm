@@ -49,6 +49,13 @@ use yii\helpers\ArrayHelper;
                 </div>
             </div>
             <div class="form-group">
+                <label for="" class="control-label col-xs-2">使用者:</label>
+                <div class="col-xs-10">
+                    <input type="text" name="Account[name]" class="form-control" value="<?=$data['name']?>">
+                    <span class="help-block error" name="name"></span>
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-xs-12 control-label">
                     <button class="btn btn-sm btn-primary" id="template_edit_post" type="button">修改</button>
                     <button class="btn btn-sm btn-info" id="template_back" type="button">取消</button>

@@ -32,6 +32,7 @@ echo $this->render("_public");
                 <th>账号名称</th>
                 <th>账号密码</th>
                 <th>邮箱类型</th>
+                <th>使用者</th>
                 <th>host</th>
                 <th>添加时间</th>
                 <th>操作</th>
@@ -163,7 +164,7 @@ echo $this->render("_public");
             current_num:current_num,
             allrows:allrows,
             width:"550px",
-            height:"240px",
+            height:"300px",
             flag:flag
         };
         base_action.set_params(edit_info);
@@ -182,7 +183,7 @@ echo $this->render("_public");
                 title: '<span class="glyphicon glyphicon-user"></span>&nbsp;添加账号',
                 content: "<?=Url::to(["account/add"]);?>",
                 width:"550px",
-                height:"240px",
+                height:"300px",
                 callback:load_data,
                 current_num:current_num,
                 allrows:allrows,

@@ -30,7 +30,8 @@ class Account extends ActiveRecord
             ["account_name", "required", "message" => "请输入账号"],
             ["account_name", "unique", "message" => "账号重复"],
             ["account_password", "required", "message" => "请输入密码"],
-            ["email_type", "required", "message" => "请选择邮箱类型"]
+            ["email_type", "required", "message" => "请选择邮箱类型"],
+            ["name","required","message"=>"填写使用者"]
         ];
     }
 
@@ -90,6 +91,7 @@ class Account extends ActiveRecord
                 <td>{$v["account_name"]}</td>
                 <td>{$v["account_password"]}</td>
                 <td>{$v["email_type_name"]}</td>
+                <td>{$v["name"]}</td>
                 <td>{$v["host"]}</td>
                 <td>{$v["addtime"]}</td>
                 <td><a href="javascript:void(0)" _id={$v["id"]} class="user_edit"  onclick="base_action.edit_action({$v["id"]})"  >编辑</a>&nbsp;&nbsp;<a href="javascript:void(0)"  _id={$v["id"]} class="user_del" onclick="base_action.del_action({$v["id"]})">删除</a></td>

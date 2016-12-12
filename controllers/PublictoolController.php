@@ -93,13 +93,9 @@ class PublictoolController extends Controller
      */
     public function save_record($arr)
     {
-        list($ip, $id, $data,$model_record) = $arr;
+        list($ip, $id, $data,$model) = $arr;
         $ip_info = $this->get_ip_info($ip);
         $save_data = [];
-        $model_record->read_num=$data["read_num"] + 1;
-        $model_record->lasttime=$data["read_num"] + 1;
-        $model_record->updatetime=$data["read_num"] + 1;
-
         $save_data["read_num"]=$data["read_num"] + 1;
         $save_data["lasttime"]=time();
         $save_data["updatetime"]=time();
@@ -112,7 +108,8 @@ class PublictoolController extends Controller
             $time_history[]=["time"=>time(),"ip_info"=>$ip_info,"ip"=>$ip,"user-agent"=>$_SERVER["HTTP_USER_AGENT"]];
             $save_data["read_num_serialize"] = serialize($time_history);
         }
-        $model_record->save();
+        $model->setAttributes($save_data,false);
+        $model->save();
     }
     /**
      * 获取ip 接口
