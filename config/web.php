@@ -32,10 +32,6 @@ $config = [
                 'port' => '25',  //服务器端口
                 'encryption' => 'tls', //加密方式
             ],
-            'messageConfig'=>[
-            'charset'=>'UTF-8', //编码
-            'from'=>['3423929165@qq.com'=>'admin']  //邮件里面显示的邮件地址和名称
-           ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
