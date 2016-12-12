@@ -17,8 +17,10 @@ use app\models\SendErrorLog;
 use app\models\UnsendEmail;
 use app\models\Emailtemplate;
 use app\models\EmailSendRecord;
+use yii\helpers\Url;
 class SendemailAction extends Action
 {
+    //定义表前缀
     const MX = "mx_domain_mx_";
     const WHOIS = "mx_domain_whois_";
 
@@ -37,9 +39,7 @@ class SendemailAction extends Action
                 }
                 $this->index($start_id);
                 break;
-            
         }
-
     }
 
     /**
@@ -144,7 +144,8 @@ class SendemailAction extends Action
             $md5_str=md5($data['registrant_name']."registrant_name");
             $customer_id=$data["id"];
             $table_name=$config_arr["province_id"];
-            //在最后添加图片
+            //在最后添加图片和退订
+            $this->exit_send_email([$customer_id,$table_name,$md5_str]);
             $send_info[1]=$send_info[1]."\n <img width='1' height='1' src='".$send_info[2]."'>\n <a href='http://email.salesmen.cn/index.php/Home/Sendemailimg/Unsubscribe_email/customer_id/$customer_id/customer_table/$table_name/registrant_name/$md5_str' target='_blank'>退订邮件</a>";
             //发送邮件数组信息
             $email_send_arr=[
@@ -166,6 +167,17 @@ class SendemailAction extends Action
             $data_offset++;
             $this->save_for_send_num($config_arr["id"],$start_account,$data_offset,$account_send_info["account_name"]);
         }
+    }
+
+    /**
+     * 生成退订链接
+     * @param $arr
+     * @return string
+     */
+    public function exit_send_email($arr)
+    {
+        list($customer_id,$table_name,$md5_str)=$arr;
+        return "\n <a href='http://email.salesmen.cn/index.php/Home/Sendemailimg/Unsubscribe_email/customer_id/$customer_id/customer_table/$table_name/registrant_name/$md5_str' target='_blank'>退订邮件</a>";
     }
     /**
      * 开启缓冲区并刷新数据到前台
@@ -210,10 +222,14 @@ class SendemailAction extends Action
     public function save_for_send_num($id,$start_account,$data_offset,$account_pwd)
     {
         $model=Emailsendconfig::findOne($id);
-        $model->send_account_id=$start_account;
-        $model->send_record_page=$data_offset;
-        $model->send_account_name=$account_pwd;
-        return $model->save();
+        $ip="http://salesman.cc/index.php/Home/Sendemailimg/get_remote_addr";
+        $data=[
+            "send_account_id"=>$start_account,
+            "send_record_page"=>$data_offset,
+            "send_account_name"=>$account_pwd,
+            "sender_ip"=>$this->exec_postresponse($ip)
+        ];
+        return $model->setAttributes($data,false);
     }
     /**
      * 发送邮件 兼容多个邮箱类型
@@ -224,6 +240,11 @@ class SendemailAction extends Action
     public function send($send_info)
     {
         list($email,$account,$account_pwd,$host,$title,$content,$from_name)=$send_info;
+        //如果发送邮箱或发生账号为空退出
+        if(empty($email) || empty($account)){
+            Yii::error("send email empty or sender account empty","edm");
+            return false;
+        }
         Yii::$app->set('mailer',[
             'class' => 'yii\swiftmailer\Mailer',
             'useFileTransport' => false,
@@ -241,7 +262,7 @@ class SendemailAction extends Action
             ],
         ]);
         $mail=Yii::$app->mailer->compose();
-        $mail->setTo("15863549041@126.com");
+        $mail->setTo("15863549041@126.com");//----------------------------
         $mail->setSubject($title);
         $mail->setHtmlBody($content);
         return $mail->send();
@@ -265,7 +286,7 @@ class SendemailAction extends Action
         //替换链接id
         $content=str_replace("{{id}}",$record_add_id,$content);
         //图片链接地址
-        $url="http://email.salesmen.cn/index.php/Home/Sendemailimg/Index/id/".$record_add_id;
+        $url=Url::toRoute("Sendemailtool/make_detect_img",["id/$record_add_id"]);
         return [
             $title,$content,$url
         ];
@@ -382,6 +403,27 @@ class SendemailAction extends Action
                 exit;
         }
     }
-
+    /**
+     * 发送post请求 获取返回信息
+     * @access public
+     */
+    public function exec_postresponse($url, $data)
+    {
+        $curl = curl_init(); //这是curl的handle
+        //下面是设置curl参数
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 2);
+        curl_setopt($curl, CURLOPT_HEADER, 0); //don't show header
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); //相当关键，这句话是让curl_exec($ch)返回的结果可以进行赋值给其他的变量进行，json的数据操作，如果没有这句话，则curl返回的数据不可以进行人为的去操作（如json_decode等格式操作）
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); //这个是重点。
+        //这个就是超时时间了
+        curl_setopt($curl, CURLOPT_TIMEOUT, 2);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        $info = curl_exec($curl);
+        curl_close($curl);
+        return $info;
+    }
 
 }

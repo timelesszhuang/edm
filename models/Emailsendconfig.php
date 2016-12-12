@@ -121,22 +121,11 @@ class Emailsendconfig extends ActiveRecord
             $this->updatetime = time();
             $this->brand_name = $this->get_brand_one($this->brand_id)["name"];
             $this->template_name = (new Emailtemplate())->get_byid($this->template_id)["title"];
+            $this->template_detail = (new Emailtemplate())->get_byid($this->template_id)["detail"];
             $this->updatetime = time();
             return true;
         }
         return false;
-    }
-
-    /**
-     * 后置操作
-     * @param bool $insert
-     * @param array $changedAttributes
-     */
-    public function afterSave($insert, $changedAttributes)
-    {
-        if ($this->attributes["id"]) {
-            $this->updateAll(["start_id" => $this->attributes["id"]], ["id" => $this->attributes["id"]]);
-        }
     }
 
     /**
@@ -179,7 +168,7 @@ class Emailsendconfig extends ActiveRecord
                 <td>{$v["province_name"]}</td>
                 <td>{$v["send_record_page"]}</td>
                 <td>{$v["count_number"]}</td>
-                <td>{$v["start_id"]}</td>
+                <td>{$v["id"]}</td>
                 <td>{$v["template_name"]}</td>
                 <td>{$v["send_account_name"]}</td>
                 <td>{$v["addtime"]}</td>
