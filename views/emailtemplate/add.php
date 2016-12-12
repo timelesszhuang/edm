@@ -77,7 +77,6 @@ use yii\helpers\ArrayHelper;
                 <div class="col-xs-12 control-label">
                     <button class="btn btn-sm btn-primary" id="template_add_post" type="button">添加</button>
                     <button class="btn btn-sm btn-info" id="template_back" type="button">取消</button>
-
                 </div>
             </div>
         </form>

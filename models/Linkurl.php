@@ -68,7 +68,7 @@ class Linkurl extends ActiveRecord
     public function afterSave($insert, $changedAttributes)
     {
         if ($this->attributes["id"] && $this->change_click_url) {
-            $url=Url::to(["Publictool/index","url_id"=>$this->attributes["id"],"record_id"=>"{{id}}"],true);
+            $url="http://email.salesmen.cn/index.php?r=publictool%2Findex&url_id=".$this->attributes["id"]."&record_id={{id}}";
             self::updateAll(["click_url" => $url], ["id" => $this->attributes["id"]]);
         }
     }

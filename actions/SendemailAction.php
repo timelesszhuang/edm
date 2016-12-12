@@ -103,7 +103,7 @@ class SendemailAction extends Action
         while (1) {
             //如果账号发送到最后一个 开始轮回
             if ($start_account >= $account_count) {
-                $start_account = 1;
+                $start_account = 0;
             }
             //判断数据是否发送完毕
             if ($data_offset > $count) {
@@ -157,9 +157,9 @@ class SendemailAction extends Action
             ];
             file_put_contents("email.log",print_r($email_send_arr,true),FILE_APPEND);
             //发邮件失败 记录错误信息
-//            if(!$this->send($email_send_arr)){
-//                $this->error_log([$account_send_info["account_name"],$account_send_info["account_password"],$account_send_info["email_type"],$data["contact_email"]]);
-//            }
+            if(!$this->send($email_send_arr)){
+                $this->error_log([$account_send_info["account_name"],$account_send_info["account_password"],$account_send_info["email_type"],$data["contact_email"]]);
+            }
             //将账号、数据查询后移
             $start_account++;
             $data_offset++;
@@ -213,12 +213,10 @@ class SendemailAction extends Action
     public function save_for_send_num($id,$start_account,$data_offset,$account_pwd)
     {
         $model=Emailsendconfig::findOne($id);
-        $data=[
-            "send_account_id"=>$start_account,
-            "send_record_page"=>$data_offset,
-            "send_account_name"=>$account_pwd
-        ];
-        $model->updateAll($data);
+        $model->send_account_id=$start_account;
+        $model->send_record_page=$data_offset;
+        $model->send_account_name=$account_pwd;
+        $model->save();
     }
     /**
      * 发送邮件 兼容多个邮箱类型
