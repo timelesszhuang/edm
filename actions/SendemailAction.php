@@ -48,6 +48,7 @@ class SendemailAction extends Action
      */
     public function index($start_id)
     {
+        echo   1111;die;
         session_write_close();
         $this->open_ob_start();
         //读取配置项
