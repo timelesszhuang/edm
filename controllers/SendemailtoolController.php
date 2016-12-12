@@ -129,7 +129,7 @@ class SendemailtoolController extends Controller
         $model_record = EmailSendRecord::findOne($email_id);
         $email_one_data = $model_record->getAttributes();
         if (!!$email_one_data) {
-            $this->modifly_email_record([$_SERVER['REMOTE_ADDR'], $email_one_data, $model_record]);
+            $this->modifly_record([$_SERVER['REMOTE_ADDR'], $email_one_data, $model_record]);
         }
         $this->make_img();
     }
@@ -138,7 +138,7 @@ class SendemailtoolController extends Controller
      * 查看邮件时修改数据
      * @param $arr
      */
-    public function actionModifly_email_record($arr)
+    public function actionModifly_record($arr)
     {
         list($ip, $data, $model) = $arr;
         $ip_info = $this->get_ip_info($ip);
