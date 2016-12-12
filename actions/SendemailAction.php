@@ -324,7 +324,7 @@ class SendemailAction extends Action
     {
         $model_config = Emailsendconfig::findOne($id);
         $model_config->count_number = intval($count);
-        $model_config->save();
+//        $model_config->save();
     }
 
     /**
