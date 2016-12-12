@@ -120,8 +120,10 @@ class Emailsendconfig extends ActiveRecord
             $this->province_name = $provinces[$this->province_id];
             $this->updatetime = time();
             $this->brand_name = $this->get_brand_one($this->brand_id)["name"];
-            $this->template_name = (new Emailtemplate())->get_byid($this->template_id)["title"];
-            $this->template_detail = (new Emailtemplate())->get_byid($this->template_id)["detail"];
+            $model_temp=Emailtemplate::findOne($this->template_id);
+            $temp_data=$model_temp->getAttributes();
+            $this->template_name = $temp_data["title"];
+            $this->template_detail = $temp_data["detail"];
             $this->updatetime = time();
             return true;
         }
