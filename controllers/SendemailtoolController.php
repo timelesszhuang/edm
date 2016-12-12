@@ -50,7 +50,7 @@ class SendemailtoolController extends Controller
      * 查看邮件时修改link链接查看记录
      * @param $arr
      */
-    public function save_link_record($arr)
+    public function actionSave_link_record($arr)
     {
         list($email_id,$link_id)=$arr;
         $model_erecord=EmailSendRecord::findOne(["id"=>$email_id]);
@@ -72,21 +72,6 @@ class SendemailtoolController extends Controller
         $model_erecord->save();
     }
 
-    /**
-     * 根据客户ip记录信息 并生成图片
-     */
-    public function actionCheck_email_user()
-    {
-        $ip = Yii::$app->request->userIP;
-        //获取邮箱记录id
-        $email_id =Yii::$app->request->get("id");
-        $model_record=EmailSendRecord::findOne($email_id);
-        $email_one_data = $model_record->getAttributes();
-        if (!empty($email_one_data)) {
-            $this->save_record([$ip,$email_one_data,$model_record]);
-        }
-        $this->send_email_img();
-    }
     /**
      * 查看邮件时修改数据
      * @param $arr
@@ -132,7 +117,7 @@ class SendemailtoolController extends Controller
     /**
      * 发送邮件时生成探针图片 并修改访问记录
      */
-    public function make_detect_img()
+    public function actionMake_detect_img()
     {
         //获取邮箱记录id
         $email_id=Yii::$app->request->get("id");
