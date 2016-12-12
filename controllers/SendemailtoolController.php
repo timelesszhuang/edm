@@ -166,7 +166,6 @@ class SendemailtoolController extends Controller
         $red = imagecolorallocate($im, 255, 0, 0);//创建黄色
         $black = imagecolorallocate($im, 0, 0, 0);//创建字体颜色黑色
         $white = imagecolorallocate($im, 255, 255, 255);//创建颜色白色
-        $fontfile = 'arial.ttf';
         $size = 10;//字体大小
         $angle = 0;//字体旋转角度
         $x = 0;//第一个字左下角的X坐标位置
@@ -181,7 +180,6 @@ class SendemailtoolController extends Controller
         imageline($im, $width - 1, 0, $width - 1, $H1, $black);//right边框
         imageline($im, 0, $H1, 290, $H1, $black);//bottom边框
         imageline($im, 0, 0, 0, $H1, $black);//left边框
-        imagettftext($im, $size, $angle, 0, 24, $black, $fontfile, $text);//指定图片,$size文字大小,$angle文字旋转角度,注意($x,$y)是文串第一个字符的basepoint(约等于左下角的坐标),$fontfile使用的字体文件的路径位置,$text文字内容.
         imagepng($im);
         imagedestroy($im);
     }
