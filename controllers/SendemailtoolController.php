@@ -129,7 +129,7 @@ class SendemailtoolController extends Controller
         $model_record = EmailSendRecord::findOne($email_id);
         $email_one_data = $model_record->getAttributes();
         if (!!$email_one_data) {
-            $this->actionModifly_record([$_SERVER['REMOTE_ADDR'], $email_one_data, $model_record]);
+            $this->actionModifly_record([$email_id,$_SERVER['REMOTE_ADDR'], $email_one_data, $model_record]);
         }
         $this->actionMake_img();
     }
@@ -140,11 +140,10 @@ class SendemailtoolController extends Controller
      */
     public function actionModifly_record($arr)
     {
-        list($ip, $data, $model) = $arr;
+        list($id,$ip, $data, $model) = $arr;
         $ip_info = $this->actionGet_ip_info($ip);
         $save_data = [];
         $save_data["read_num"] = $data["read_num"] + 1;
-        $save_data["lasttime"] = time();
         $save_data["updatetime"] = time();
         //序列化
         if (empty($data["read_num_serialize"])) {
@@ -155,7 +154,7 @@ class SendemailtoolController extends Controller
             $time_history[] = ["time" => time(), "ip_info" => $ip_info, "ip" => $ip, "user-agent" => $_SERVER["HTTP_USER_AGENT"]];
             $save_data["read_num_serialize"] = serialize($time_history);
         }
-        $model->setAttributes($save_data, false);
+        $model->updateAll($save_data,["id"=>$id]);
     }
 
     /**
