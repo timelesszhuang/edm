@@ -273,7 +273,7 @@ class SendemailAction extends Action
         //替换链接id
         $content=str_replace("{{id}}",$record_add_id,$content);
         //图片链接地址
-        $url=Url::toRoute("Sendemailtool/make_detect_img",["id/$record_add_id"]);
+        $url="http://email.salesmen.cn/index.php?r=sendemailtool%2Fmake_detect_img&id=$record_add_id";
         return [
             $title,$content,$url
         ];
