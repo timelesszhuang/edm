@@ -285,7 +285,7 @@ class SendemailAction extends Action
      */
     public function save_to_record($record)
     {
-        list($mx_id,$province_id,$detail,$config_id,$email)=$record;
+        list($template_id,$mx_id,$province_id,$detail,$config_id,$email)=$record;
         $ip="http://salesman.cc/index.php/Home/Sendemailimg/get_remote_addr";
         $model=new EmailSendRecord();
         $model->template_id=$template_id;
