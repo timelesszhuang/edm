@@ -79,7 +79,7 @@ class SendemailtoolController extends Controller
      * 查看邮件时修改数据
      * @param $arr
      */
-    public function save_record($arr)
+    public function actionSave_record($arr)
     {
         list($ip, $data, $model) = $arr;
         $ip_info = $this->get_ip_info($ip);
@@ -103,7 +103,7 @@ class SendemailtoolController extends Controller
     /**
      * 获取ip 接口
      */
-    public function get_ip_info($ip)
+    public function actionGet_ip_info($ip)
     {
         $curl = curl_init(); //这是curl的handle
         //下面是设置curl参数
