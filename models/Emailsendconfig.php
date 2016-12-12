@@ -169,7 +169,7 @@ class Emailsendconfig extends ActiveRecord
                 <td>{$v["send_record_page"]}</td>
                 <td>{$v["count_number"]}</td>
                 <td>{$v["id"]}</td>
-                <td>{$v["template_name"]}</td>
+                <td>{$v["template_detail"]}</td>
                 <td>{$v["send_account_name"]}</td>
                 <td>{$v["addtime"]}</td>
                 <td><a href="javascript:void(0)" _id={$v["id"]} class="user_edit"  onclick="base_action.edit_action({$v["id"]})"  >编辑</a>&nbsp;&nbsp;</td>

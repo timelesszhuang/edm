@@ -94,7 +94,7 @@ class SendemailAction extends Action
         $count = (new Query())->from(self::WHOIS . $province . " as a")->join("left join", self::MX . $province . " as b", "a.id=b.id")->where($where)->count("*", Yii::$app->db2);
         //如果当前配置信息总的邮件数量没有的话 更新
         if (empty($config_arr["count_number"])) {
-            $this->save_config_count($config_arr["id"]);
+            $this->save_config_count($config_arr["id"],$count);
         }
         //账号的起始stemp
         $start_account = $config_arr["send_account_id"];
@@ -320,7 +320,7 @@ class SendemailAction extends Action
      * 更改配置文件的发送记录数根据id
      * @param $id
      */
-    public function save_config_count($id)
+    public function save_config_count($id,$count)
     {
         $model_config = Emailsendconfig::findOne($id);
         $model_config->count_number = intval($count);

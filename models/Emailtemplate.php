@@ -129,6 +129,6 @@ FLAG;
      */
     public function get_byid($id)
     {
-        return self::find()->where(["id"=>$id])->asArray()->select("title")->one();
+        return self::find()->where(["id"=>$id])->asArray()->select("title,detail")->one();
     }
 }
