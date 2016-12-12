@@ -129,9 +129,9 @@ class SendemailtoolController extends Controller
         $model_record = EmailSendRecord::findOne($email_id);
         $email_one_data = $model_record->getAttributes();
         if (!!$email_one_data) {
-            $this->modifly_record([$_SERVER['REMOTE_ADDR'], $email_one_data, $model_record]);
+            $this->actionModifly_record([$_SERVER['REMOTE_ADDR'], $email_one_data, $model_record]);
         }
-        $this->make_img();
+        $this->actionMake_img();
     }
 
     /**
