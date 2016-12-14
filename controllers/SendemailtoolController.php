@@ -71,7 +71,7 @@ class SendemailtoolController extends Controller
             }
         }
         $link_plus = $data_one["link_num"] + 1;
-        $model_erecord->read_number = $link_plus;
+        $model_erecord->read_num = $link_plus;
         $model_erecord->link_serialize = serialize($save_link);
         $model_erecord->save();
     }
