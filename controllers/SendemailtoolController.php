@@ -45,7 +45,7 @@ class SendemailtoolController extends Controller
         //link_info表中添加数据
         $model_linkurl = Linkurl::findOne($link_id);
         $link_url_one = $model_linkurl->getAttributes();
-        Linkurl::updateAll(["read_num"=>intval($link_url_one["read_number"]) + 1],["id"=>$link_id]);
+        Linkurl::updateAll(["read_number"=>intval($link_url_one["read_number"]) + 1],["id"=>$link_id]);
         header("Location:" . $link_url_one["link_url"]);
     }
 
