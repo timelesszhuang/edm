@@ -56,7 +56,6 @@ class SendemailtoolController extends Controller
     public function save_link_record($arr)
     {
         list($email_id, $link_id,$data_one) = $arr;
-        var_dump($arr);die;
         //如果是第一次
         if (empty($data_one["link_serialize"])) {
             $save_link = [$link_id => 1];
@@ -68,6 +67,7 @@ class SendemailtoolController extends Controller
                 $save_link = [$link_id => 1];
             }
         }
+        var_dump($save_link);die;
         $link_plus = $data_one["link_num"] + 1;
         $save_data["read_num"]=$link_plus;
         $save_data["link_serialize"]=serialize($save_link);
