@@ -40,7 +40,7 @@ class SendemailtoolController extends Controller
         $email_id = Yii::$app->request->get("record_id");
         $model_erecord = EmailSendRecord::findOne(["id" => $email_id]);
         if (!empty($model_erecord->getAttributes())) {
-            $this->save_link_record([$email_id, $link_id]);
+            $this->save_link_record([$email_id, $link_id,$model_erecord->getAttributes()]);
         }
         //link_info表中添加数据
         $model_linkurl = Linkurl::findOne($link_id);
@@ -56,9 +56,7 @@ class SendemailtoolController extends Controller
      */
     public function save_link_record($arr)
     {
-        list($email_id, $link_id) = $arr;
-        $model_erecord = EmailSendRecord::findOne(["id" => $email_id]);
-        $data_one = $model_erecord->getAttributes();
+        list($email_id, $link_id,$data_one) = $arr;
         //如果是第一次
         if (empty($data_one["link_serialize"])) {
             $save_link = [$link_id => 1];
@@ -71,9 +69,9 @@ class SendemailtoolController extends Controller
             }
         }
         $link_plus = $data_one["link_num"] + 1;
-        $model_erecord->read_num = $link_plus;
-        $model_erecord->link_serialize = serialize($save_link);
-        $model_erecord->save();
+        $save_data["read_num"]=$link_plus;
+        $save_data["link_serialize"]=serialize($save_link);
+        EmailSendRecord::updateAll($save_data,["id"=>$email_id]);
     }
 
     /**
