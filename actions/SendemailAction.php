@@ -23,21 +23,25 @@ class SendemailAction extends Action
     //定义表前缀
     const MX = "mx_domain_mx_";
     const WHOIS = "mx_domain_whois_";
-
+    //通过属性来调用吧
+    public $property;
     /**
      * 执行入口
      */
-    public function run()
+    public function run($param)
     {
-        switch(Yii::$app->request->get("flag")){
+        switch($this->property){
             //这个是读取配置开始发送邮件
             case "send_email":
-                $start_id = Yii::$app->request->get("start_id");
+                $start_id = Yii::$app->request->get("param");
                 if (empty($start_id)) {
                     Yii::error("请传递参数", "edm");
                     return;
                 }
                 $this->index($start_id);
+                break;
+            case "get_db_config":
+                return $this->get_db_config($param);
                 break;
         }
     }
@@ -91,7 +95,7 @@ class SendemailAction extends Action
         //获取账号总数
         $account_count = (new Account())->get_count();
         //获取所有的数据总数
-        $count = (new Query())->from(self::WHOIS . $province . " as a")->join("left join", self::MX . $province . " as b", "a.id=b.id")->where($where)->count("*", Yii::$app->db2);
+        $count = (new Query())->from(self::WHOIS . $province . " as a")->join("left join", self::MX . $province . " as b", "a.id=b.id")->where($where)->count("*", Yii::$app->$db);
         //如果当前配置信息总的邮件数量没有的话 更新
         if (empty($config_arr["count_number"])) {
             $this->save_config_count($config_arr["id"],$count);
@@ -113,7 +117,7 @@ class SendemailAction extends Action
             //取出要发送数据的账号
             $account_send_info = Account::find()->asArray()->offset($start_account)->limit(1)->one();
             //取出要发送的数据
-            $data = (new Query())->from(self::WHOIS . $province . " as a")->select(["a.id","a.contact_email","a.registrant_name"])->leftJoin(self::MX . $province . " as b", "a.id=b.id")->offset($data_offset)->limit(1)->where($where)->one(Yii::$app->db2);
+            $data = (new Query())->from(self::WHOIS . $province . " as a")->select(["a.id","a.contact_email","a.registrant_name"])->leftJoin(self::MX . $province . " as b", "a.id=b.id")->offset($data_offset)->limit(1)->where($where)->one(Yii::$app->$db);
             //如果在不发送名单中 不发送
             if (in_array($data["contact_email"], $nosend_arr)) {
                 //记录下来
@@ -383,7 +387,7 @@ class SendemailAction extends Action
         $province = substr($province, 0, strlen($province) - 2);
         switch ($suffix) {
             case '1':
-                return [$province, 'db'];
+                return [$province, 'db3'];
                 break;
             case '2':
                 return [$province, 'db2'];
