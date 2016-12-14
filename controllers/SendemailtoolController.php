@@ -54,7 +54,7 @@ class SendemailtoolController extends Controller
      * 查看邮件时修改link链接查看记录
      * @param $arr
      */
-    public function actionSave_link_record($arr)
+    public function save_link_record($arr)
     {
         list($email_id, $link_id) = $arr;
         $model_erecord = EmailSendRecord::findOne(["id" => $email_id]);
