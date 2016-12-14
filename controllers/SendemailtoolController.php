@@ -36,7 +36,7 @@ class SendemailtoolController extends Controller
         //链接id
         $link_id = Yii::$app->request->get("link_id");
         //获取邮箱记录id
-        $email_id = Yii::$app->request->get("e_id");
+        $email_id = Yii::$app->request->get("record_id");
         $model_erecord = EmailSendRecord::findOne(["id" => $email_id]);
         if (!empty($model_erecord->getAttributes())) {
             $this->save_link_record([$email_id, $link_id]);
