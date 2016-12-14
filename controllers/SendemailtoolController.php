@@ -24,6 +24,10 @@ class SendemailtoolController extends Controller
             "sendemail" => [
                 "class" => "app\actions\SendemailAction",
                 "property"=>"send_email"
+            ],
+            "get_db_config"=>[
+                "class"=>"app\actions\SendemailAction",
+                "property"=>"get_db_config"
             ]
         ];
     }
@@ -48,10 +52,7 @@ class SendemailtoolController extends Controller
             "read_number"=>intval($link_url_one["read_number"]) + 1
         ];
         Linkurl::updateAll($save_data,["id"=>$link_id]);
-//        var_dump($link_url_one);
-//        $this->redirect($link_url_one["link_url"]);
-        header("Location:" . $link_url_one["link_url"]);
-        exit(0);
+        $this->redirect($link_url_one["link_url"]);
     }
 
     /**
@@ -154,10 +155,9 @@ class SendemailtoolController extends Controller
         $customer_id=Yii::$app->request->get("customer_id");
         $md5_str=Yii::$app->request->get("registrant_name");
         $customer_table=Yii::$app->request->get("customer_table");
-        $table_info_arr=Yii::$app->runAction("emailsendrecord/get_db_config",['param'=>$customer_table]);
+        $table_info_arr=Yii::$app->runAction("sendemailtool/get_db_config",['param'=>$customer_table]);
         list($table,$db)=$table_info_arr;
         //验证MD5
-
 
 //        $customer_find=M("Domain_".$customer_table)->where(["id"=>$customer_id])->getField("registrant_name");
 //        if($md5_str==md5($customer_find."registrant_name")){
