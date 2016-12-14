@@ -180,7 +180,7 @@ class SendemailAction extends Action
     public function exit_send_email($arr)
     {
         list($customer_id,$email,$md5_str)=$arr;
-        $url=Yii::$app->params["domain"]."index.php?r=sendemailtool%2Funsubscribe_email&customer_id=$customer_id&email=$table_name&registrant_name=$md5_str";
+        $url=Yii::$app->params["domain"]."index.php?r=sendemailtool%2Funsubscribe_email&customer_id=$customer_id&email=$email&registrant_name=$md5_str";
         return "<a href='".$url."' target='_blank'>退订邮件</a>";
     }
     /**
