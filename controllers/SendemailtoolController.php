@@ -48,8 +48,9 @@ class SendemailtoolController extends Controller
             "read_number"=>intval($link_url_one["read_number"]) + 1
         ];
         Linkurl::updateAll($save_data,["id"=>$link_id]);
-        var_dump($link_url_one);
-        header("Location:" . $link_url_one["link_url"]);
+//        var_dump($link_url_one);
+        $this->redirect($link_url_one["link_url"]);
+//        header("Location:" . $link_url_one["link_url"]);
     }
 
     /**
