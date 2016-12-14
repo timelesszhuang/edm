@@ -148,7 +148,7 @@ class SendemailAction extends Action
             $customer_id=$data["id"];
             $table_name=$config_arr["province_id"];
             //在最后添加图片和退订
-            $send_info[1]=$send_info[1]."\n <img width='1' height='1' src='".$send_info[2]."'>\n".$this->exit_send_email([$customer_id,$table_name,$md5_str]);;
+            $send_info[1]=$send_info[1]."\n <img width='1' height='1' src='".$send_info[2]."'>\n".$this->exit_send_email([$customer_id,$data["contact_email"],$md5_str]);;
             //发送邮件数组信息
             $email_send_arr=[
                 $data["contact_email"],//发送地址
@@ -179,8 +179,8 @@ class SendemailAction extends Action
      */
     public function exit_send_email($arr)
     {
-        list($customer_id,$table_name,$md5_str)=$arr;
-        $url=Yii::$app->params["domain"]."index.php?r=sendemailtool%2Funsubscribe_email&customer_id=$customer_id&customer_table=$table_name&registrant_name=$md5_str";
+        list($customer_id,$email,$md5_str)=$arr;
+        $url=Yii::$app->params["domain"]."index.php?r=sendemailtool%2Funsubscribe_email&customer_id=$customer_id&email=$table_name&registrant_name=$md5_str";
         return "<a href='".$url."' target='_blank'>退订邮件</a>";
     }
     /**

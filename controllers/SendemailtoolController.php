@@ -154,18 +154,15 @@ class SendemailtoolController extends Controller
     {
         $customer_id=Yii::$app->request->get("customer_id");
         $md5_str=Yii::$app->request->get("registrant_name");
-        $customer_table=Yii::$app->request->get("customer_table");
-        $table_info_arr=Yii::$app->runAction("sendemailtool/get_db_config",['param'=>$customer_table]);
+        $email=Yii::$app->request->get("email");
         list($table,$db)=$table_info_arr;
         //验证MD5
-
-//        $customer_find=M("Domain_".$customer_table)->where(["id"=>$customer_id])->getField("registrant_name");
-//        if($md5_str==md5($customer_find."registrant_name")){
-//            $this->assign([
-//                "id"=>$customer_id,
-//                "customer_table"=>I("get.customer_table")
-//            ]);
-//            $this->display();
-//        }
+        if($md5_str==md5($customer_find."registrant_name")){
+            $this->assign([
+                "customer_id"=>$customer_id,
+                "customer_email"=>$email
+            ]);
+            $this->display();
+        }
     }
 }
