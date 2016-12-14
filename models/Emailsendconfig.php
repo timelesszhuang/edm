@@ -93,7 +93,7 @@ class Emailsendconfig extends ActiveRecord
      */
     public function brands()
     {
-        return (new Query())->select(["id", "name"])->from("mx_brand")->all(Yii::$app->db2);
+        return (new Query())->select(["id", "name"])->from("mx_brand")->all(Yii::$app->db3);
     }
 
     /**

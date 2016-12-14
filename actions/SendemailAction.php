@@ -180,7 +180,7 @@ class SendemailAction extends Action
     public function exit_send_email($arr)
     {
         list($customer_id,$table_name,$md5_str)=$arr;
-        $url="http://email.salesmen.cn/index.php?r=sendemailtool%2Funsubscribe_email&customer_id=$customer_id.&customer_table=$table_name&registrant_name=$md5_str";
+        $url=Yii::$app->params["domain"]."index.php?r=sendemailtool%2Funsubscribe_email&customer_id=$customer_id.&customer_table=$table_name&registrant_name=$md5_str";
         return "<a href='".$url."' target='_blank'>退订邮件</a>";
     }
     /**
@@ -278,7 +278,7 @@ class SendemailAction extends Action
         //替换链接id
         $content=str_replace("{{id}}",$record_add_id,$content);
         //图片链接地址
-        $url="http://email.salesmen.cn/index.php?r=sendemailtool%2Fmake_detect_img&id=$record_add_id";
+        $url=Yii::$app->params["domain"]."index.php?r=sendemailtool%2Fmake_detect_img&id=$record_add_id";
         return [
             $title,$content,$url
         ];
