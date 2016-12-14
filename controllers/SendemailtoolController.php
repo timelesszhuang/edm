@@ -23,7 +23,8 @@ class SendemailtoolController extends Controller
     {
         return [
             "sendemail" => [
-                "class" => "app\actions\SendemailAction"
+                "class" => "app\actions\SendemailAction",
+                "property"=>"send_email"
             ]
         ];
     }
@@ -36,7 +37,7 @@ class SendemailtoolController extends Controller
         //链接id
         $link_id = Yii::$app->request->get("link_id");
         //获取邮箱记录id
-        $email_id = Yii::$app->request->get("e_id");
+        $email_id = Yii::$app->request->get("record_id");
         $model_erecord = EmailSendRecord::findOne(["id" => $email_id]);
         if (!empty($model_erecord->getAttributes())) {
             $this->save_link_record([$email_id, $link_id]);
@@ -73,31 +74,6 @@ class SendemailtoolController extends Controller
         $model_erecord->read_num = $link_plus;
         $model_erecord->link_serialize = serialize($save_link);
         $model_erecord->save();
-    }
-
-    /**
-     * 查看邮件时修改数据
-     * @param $arr
-     */
-    public function actionSave_record($arr)
-    {
-        list($ip, $data, $model) = $arr;
-        $ip_info = $this->get_ip_info($ip);
-        $save_data = [];
-        $save_data["read_num"] = $data["read_num"] + 1;
-        $save_data["lasttime"] = time();
-        $save_data["updatetime"] = time();
-        $ip_info = $ip_info["data"]["area"] . "-" . $ip_info["data"]["region"] . "-" . $ip_info["data"]["city"] . "-" . $ip_info["data"]["isp"];
-        //如果阅读次数数组是空的话
-        if (empty($data["read_num_serialize"])) {
-            $save_data["read_num_serialize"] = serialize([0 => ["time" => time(), "ip_info" => $ip_info, "ip" => $ip, "user-agent" => $_SERVER["HTTP_USER_AGENT"]]]);
-        } else {
-            $time_history = unserialize($data["read_num_serialize"]);
-            $time_history[] = ["time" => time(), "ip_info" => $ip_info, "ip" => $ip, "user-agent" => $_SERVER["HTTP_USER_AGENT"]];
-            $save_data["read_num_serialize"] = serialize($time_history);
-        }
-        $model->setAttributes($save_data, false);
-        $model->save();
     }
 
     /**

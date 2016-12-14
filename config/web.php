@@ -50,7 +50,8 @@ $config = [
 
         ],
         'db' => require(__DIR__ . '/db.php'),
-        'db2'=> require(__DIR__.'/db2.php')
+        'db2'=> require(__DIR__ . '/db2.php'),
+        'db3'=> require(__DIR__ . '/db3.php')
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,

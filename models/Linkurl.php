@@ -68,7 +68,7 @@ class Linkurl extends ActiveRecord
     public function afterSave($insert, $changedAttributes)
     {
         if ($this->attributes["id"] && $this->change_click_url) {
-            $url="http://email.salesmen.cn/index.php?r=publictool%2Findex&url_id=".$this->attributes["id"]."&record_id={{id}}";
+            $url="http://email.salesmen.cn/index.php?r=sendemailtool%2Fjump_web&link_id=".$this->attributes["id"]."&record_id={{id}}";
             self::updateAll(["click_url" => $url], ["id" => $this->attributes["id"]]);
         }
     }
