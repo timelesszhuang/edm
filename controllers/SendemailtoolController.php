@@ -46,8 +46,7 @@ class SendemailtoolController extends Controller
         $model_linkurl = Linkurl::findOne($link_id);
         $link_url_one = $model_linkurl->getAttributes();
         $save_data=[
-            "read_number"=>intval($link_url_one["read_number"]) + 1,
-            "link_num"=>intval($link_url_one["link_num"])+1
+            "read_number"=>intval($link_url_one["read_number"]) + 1
         ];
         Linkurl::updateAll($save_data,["id"=>$link_id]);
         header("Location:" . $link_url_one["link_url"]);
