@@ -147,7 +147,7 @@ class SendemailtoolController extends Controller
     /**
      * 退订
      */
-    public function unsubscribe_email()
+    public function actionUnsubscribe_email()
     {
         $customer_id=Yii::$app->request->get("customer_id");
         $md5_str=Yii::$app->request->get("registrant_name");
