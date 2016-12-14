@@ -143,4 +143,26 @@ class SendemailtoolController extends Controller
         @header("Content-Type:image/png");
         imagepng($img);
     }
+
+    /**
+     * 退订
+     */
+    public function unsubscribe_email()
+    {
+        $customer_id=Yii::$app->request->get("customer_id");
+        $md5_str=Yii::$app->request->get("registrant_name");
+        $customer_table=Yii::$app->request->get("customer_table");
+
+        $table_info_arr=Yii::$app->runAction("emailsendrecord/get_db_config",['param'=>$record_one["table_name"]]);
+        var_dump($table_info_arr);die;
+        //验证MD5
+        $customer_find=M("Domain_".$customer_table)->where(["id"=>$customer_id])->getField("registrant_name");
+        if($md5_str==md5($customer_find."registrant_name")){
+            $this->assign([
+                "id"=>$customer_id,
+                "customer_table"=>I("get.customer_table")
+            ]);
+            $this->display();
+        }
+    }
 }

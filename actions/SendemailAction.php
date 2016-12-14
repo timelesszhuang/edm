@@ -180,7 +180,8 @@ class SendemailAction extends Action
     public function exit_send_email($arr)
     {
         list($customer_id,$table_name,$md5_str)=$arr;
-        return "<a href='http://email.salesmen.cn/index.php/Home/Sendemailimg/Unsubscribe_email/customer_id/$customer_id/customer_table/$table_name/registrant_name/$md5_str' target='_blank'>退订邮件</a>";
+        $url="http://email.salesmen.cn/index.php?r=sendemailtool%2Funsubscribe_email&customer_id=$customer_id.&customer_table=$table_name&registrant_name=$md5_str";
+        return "<a href='".$url."' target='_blank'>退订邮件</a>";
     }
     /**
      * 开启缓冲区并刷新数据到前台
