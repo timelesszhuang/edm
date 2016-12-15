@@ -240,6 +240,7 @@ class SendemailAction extends Action
     public function send($send_info)
     {
         list($email,$account,$account_pwd,$host,$title,$content,$from_name)=$send_info;
+        file_put_contents("email-send.log",print_r($send_info,true),FILE_APPEND);
         //如果发送邮箱或发生账号为空退出
         if(empty($email) || empty($account)){
             Yii::error("send email empty or sender account empty","edm");
