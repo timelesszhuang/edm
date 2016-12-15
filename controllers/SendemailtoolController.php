@@ -82,7 +82,7 @@ class SendemailtoolController extends Controller
     /**
      * 获取ip 接口
      */
-    public function actionGet_ip_info($ip)
+    public function get_ip_info($ip)
     {
         $curl = curl_init(); //这是curl的handle
         //下面是设置curl参数
@@ -120,7 +120,7 @@ class SendemailtoolController extends Controller
     public function modifly_record($arr)
     {
         list($id,$ip, $data, $model) = $arr;
-        $ip_info = $this->actionGet_ip_info($ip);
+        $ip_info = $this->get_ip_info($ip);
         $save_data = [];
         $save_data["read_num"] = $data["read_num"] + 1;
         $save_data["updatetime"] = time();
@@ -155,14 +155,13 @@ class SendemailtoolController extends Controller
         $customer_id=Yii::$app->request->get("customer_id");
         $md5_str=Yii::$app->request->get("registrant_name");
         $email=Yii::$app->request->get("email");
-        list($table,$db)=$table_info_arr;
         //验证MD5
-        if($md5_str==md5($customer_find."registrant_name")){
+        if($md5_str==md5($md5_str."registrant_name")){
             $this->assign([
                 "customer_id"=>$customer_id,
                 "customer_email"=>$email
             ]);
-            $this->display();
+           return $this->render("unsubscribe_email");
         }
     }
 }
