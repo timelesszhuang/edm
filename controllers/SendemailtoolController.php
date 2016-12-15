@@ -157,11 +157,8 @@ class SendemailtoolController extends Controller
         $email=Yii::$app->request->get("email");
         //验证MD5
         if($md5_str==md5($md5_str."registrant_name")){
-            $this->assign([
-                "customer_id"=>$customer_id,
-                "customer_email"=>$email
-            ]);
-           return $this->render("unsubscribe_email");
+            echo 111;
+           return $this->render("unsubscribe_email",["customer_id"=>$customer_id,"customer_email"=>$email]);
         }
     }
 }
