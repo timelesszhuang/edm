@@ -33,6 +33,18 @@ class SendemailtoolController extends Controller
             ]
         ];
     }
+    public function behaviors()
+    {
+        return ArrayHelper::merge([
+            [
+                'class' => Cors::className(),
+                'cors' => [
+                    'Origin' => ["* cors['Access-Control-Request-Method']"],
+                    'Access-Control-Request-Method' => ['GET', 'HEAD', 'OPTIONS'],
+                ],
+            ],
+        ], parent::behaviors());
+    }
 
     /**
      * 发送邮件时,点击链接时的二次跳转
@@ -167,12 +179,5 @@ class SendemailtoolController extends Controller
         header('Access-Control-Allow-Origin:*');
         var_dump($_POST);
     }
-    public function behaviors()
-    {
-        return ArrayHelper::merge([
-            [
-                'class' => Cors::className(),
-            ],
-        ], parent::behaviors());
-    }
+
 }
