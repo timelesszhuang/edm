@@ -10,7 +10,7 @@ use yii\base\Action;
 use yii\db\Query;
 use yii;
 use app\models\Emailsendconfig;
-use app\models\NosubscribersEmail;
+use app\models\Nosubscribersemail;
 use yii\helpers\ArrayHelper;
 use app\models\Account;
 use app\models\SendErrorLog;
@@ -52,8 +52,8 @@ class SendemailAction extends Action
      */
     public function index($start_id)
     {
-//        session_write_close();     //--------------
-//        $this->open_ob_start();
+        session_write_close();
+        $this->open_ob_start();
         //读取配置项
         $config_arr = Emailsendconfig::find()->where(["id" => $start_id])->asArray()->one();
         if (empty($config_arr)) {
@@ -111,13 +111,13 @@ class SendemailAction extends Action
             }
             //判断数据是否发送完毕
             if ($data_offset > $count) {
-                Yii::error("数据发送完毕", "edm");
+                Yii::error("数据已经发送完毕,无法再次发送,请重新修改配置", "edm");
                 return;
             }
             //取出要发送数据的账号
             $account_send_info = Account::find()->asArray()->offset($start_account)->limit(1)->one();
             //取出要发送的数据
-            $data = (new Query())->from(self::WHOIS . $province . " as a")->select(["a.id","a.contact_email","a.registrant_name"])->leftJoin(self::MX . $province . " as b", "a.id=b.id")->offset($data_offset)->limit(1)->where($where)->one(Yii::$app->$db);
+            $data = (new Query())->from(self::WHOIS . $province . " as a")->select(["a.id","a.domain_name","a.contact_email","a.registrant_name","b.mx"])->leftJoin(self::MX . $province . " as b", "a.id=b.id")->offset($data_offset)->limit(1)->where($where)->one(Yii::$app->$db);
             //如果在不发送名单中 不发送
             if (in_array($data["contact_email"], $nosend_arr)) {
                 //记录下来
@@ -136,7 +136,6 @@ class SendemailAction extends Action
                 Yii::error("模板对应数据无法获得", "edm");
                 break;
             }
-            var_dump($data);die;
             //插入发送记录
             $record=[
                 $config_arr["template_id"],$data["id"],$config_arr["province_id"],$config_arr["detail"],$config_arr["id"],$data["contact_email"]
@@ -164,6 +163,15 @@ class SendemailAction extends Action
             //发邮件失败 记录错误信息
             if(!$this->send($email_send_arr)){
                 $this->error_log([$account_send_info["account_name"],$account_send_info["account_password"],$account_send_info["email_type"],$data["contact_email"]]);
+            }
+            //如果mx不为空的话 需要发送给企业admin用户
+            if(!empty($data["mx"])){
+                $email_send_arr[0]="admin@".$data["domain_name"];
+                //发送成功记录下
+                if($this->send($email_send_arr)){
+                    $record[5]=$email_send_arr[0];
+                    $this->save_to_record($record);
+                }
             }
             //将账号、数据查询后移
             $start_account++;
@@ -199,7 +207,7 @@ class SendemailAction extends Action
     public function error_log($arr)
     {
         list($account,$account_pwd,$email_type,$email)=$arr;
-        $model=SendErrorLog::find();
+        $model=new SendErrorLog();
         $model->account_name=$account;
         $model->account_password=$account_pwd;
         $model->email_type=$email_type;
@@ -254,7 +262,7 @@ class SendemailAction extends Action
             ],
         ]);
         $mail=Yii::$app->mailer->compose();
-        $mail->setTo("15863549041@126.com");//----------------------------
+        $mail->setTo($email);
         $mail->setSubject($title);
         $mail->setHtmlBody($content);
         return $mail->send();
@@ -349,7 +357,7 @@ class SendemailAction extends Action
      */
     public function nosend_email_action()
     {
-        $nosend_arr=NosubscribersEmail::find()->asArray()->all();
+        $nosend_arr=Nosubscribersemail::find()->asArray()->all();
         if(!empty($nosend_arr)){
             //格式化数组
             $nosend_arr=array_column($nosend_arr,"email");

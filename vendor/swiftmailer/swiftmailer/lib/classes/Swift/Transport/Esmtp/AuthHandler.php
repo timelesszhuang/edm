@@ -178,11 +178,12 @@ class Swift_Transport_Esmtp_AuthHandler implements Swift_Transport_EsmtpHandler
                     }
                 }
             }
-            return false;
-            throw new Swift_TransportException(
-                'Failed to authenticate on SMTP server with username "'.
-                $this->_username.'" using '.$count.' possible authenticators'
-                );
+            Yii::error('Failed to authenticate on SMTP server with username "'.
+                $this->_username.'" using '.$count.' possible authenticators',"edm");
+//            throw new Swift_TransportException(
+//                'Failed to authenticate on SMTP server with username "'.
+//                $this->_username.'" using '.$count.' possible authenticators'
+//                );
         }
     }
 

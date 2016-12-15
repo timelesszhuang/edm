@@ -159,11 +159,11 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
         }
 
         if (!$reversePath = $this->_getReversePath($message)) {
-            return false;
-            $this->_throwException(new Swift_TransportException(
-                'Cannot send message without a sender address'
-                )
-            );
+            Yii::error('Cannot send message without a sender address',"edm");
+//            $this->_throwException(new Swift_TransportException(
+//                'Cannot send message without a sender address'
+//                )
+//            );
         }
 
         $to = (array) $message->getTo();

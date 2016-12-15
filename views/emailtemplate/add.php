@@ -28,7 +28,7 @@ use yii\helpers\ArrayHelper;
         <form action="" id="template_add_form">
             <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken() ?>">
             <div class="form-group">
-                <label for="user_name" class="col-xs-2 control-label">标题:</label>
+                <label for="user_name" class="col-xs-2 control-label">邮件标题:</label>
                 <div class="col-xs-10">
                     <input type="text" class="form-control" name="Emailtemplate[title]">
                     <span class="help-block m-b-none error"  name="title"></span>
