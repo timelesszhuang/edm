@@ -52,7 +52,6 @@ class SendemailAction extends Action
      */
     public function index($start_id)
     {
-        session_write_close();
         $this->open_ob_start();
         //读取配置项
         $config_arr = Emailsendconfig::find()->where(["id" => $start_id])->asArray()->one();
@@ -110,7 +109,7 @@ class SendemailAction extends Action
                 $start_account = 0;
             }
             //判断数据是否发送完毕
-            if ($data_offset > $count) {
+            if ($data_offset >= $count) {
                 Yii::error("数据已经发送完毕,无法再次发送,请重新修改配置", "edm");
                 return;
             }
@@ -118,6 +117,7 @@ class SendemailAction extends Action
             $account_send_info = Account::find()->asArray()->offset($start_account)->limit(1)->one();
             //取出要发送的数据
             $data = (new Query())->from(self::WHOIS . $province . " as a")->select(["a.id","a.domain_name","a.contact_email","a.registrant_name","b.mx"])->leftJoin(self::MX . $province . " as b", "a.id=b.id")->offset($data_offset)->limit(1)->where($where)->one(Yii::$app->$db);
+            $data["contact_email"]="15863549041@126.com";
             //如果在不发送名单中 不发送
             if (in_array($data["contact_email"], $nosend_arr)) {
                 //记录下来
