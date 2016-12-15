@@ -69,7 +69,7 @@ echo $this->render("_public");
 <script type="text/javascript">
     $(function () {
         //下面是关于表格方面的
-        var pagesize = 10;
+        var pagesize = 6;
         //初始化之后加载数据
         var current_num = 1;
         var flag = 'init';
