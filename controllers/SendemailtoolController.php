@@ -171,10 +171,18 @@ class SendemailtoolController extends Controller
         header('Access-Control-Allow-Origin:*');
         $id=Yii::$app->request->post("id");
         $email=Yii::$app->request->post("email");
-        $model=new Nosubscribersemail();
-        $model->email=$email;
-        $model->email_record_id=$id;
-        $model->save(false);
+        $customer_subscribe=Yii::$app->request->post("customer_subscribe");
+        if(!empty($customer_subscribe)){
+            $model=new Nosubscribersemail();
+            $model->email=$email;
+            $model->email_record_id=$id;
+            $model->addtime=time();
+            $model->updatetime=time();
+            $model->save(false);
+        }else{
+            Nosubscribersemail::deleteAll(["email"=>$email]);
+        }
+        exit(json_encode(["msg"=>"修改成功"]));
     }
 
 }
