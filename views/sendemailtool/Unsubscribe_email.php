@@ -1,3 +1,6 @@
+<?php
+use yii\helpers\Url;
+?>
 <html>
 <head>
     <title>邮件退订</title>
@@ -11,8 +14,8 @@
     <div class="g-hd f-bg1 m-yktNav " id="j-topnav">
         <div class="g-flow" style="position:relative;">
             <form>
-                <input type="hidden" name="id" value="<?=$id?>">
-                <input type="hidden" name="customer_table" value="<?=$customer_table?>">
+                <input type="hidden" name="id" value="<?=$customer_id?>">
+                <input type="hidden" name="customer_table" value="<?=$customer_email?>">
             <div class="f-pr f-cb" style="width:400px;height:400;background:#fff;margin:0 auto;">
                 <h2 style="text-align:center;color:green;font-weight:bold;padding-top:15px;">邮件退订</h2>
                <div style="text-align:center;margin-top:100px;">
@@ -31,11 +34,11 @@
 
 <script>
     $(function () {
-        var modal_id = 'index_menulist';
+        var url='<?=Yii::$app->params["domain"]."index.php?r=sendemailtool/check_unsubscribe_email";?>';
         //表单的初始化
         $('#submit_customer_subscribe').click(function(){
                 $.ajax({
-                    url:"__MODULE__/Sendemailimg/check_unsubscribe_email",
+                    url:url,
                     type:"post",
                     data:$("form").serialize(),
                     dataType:"json",

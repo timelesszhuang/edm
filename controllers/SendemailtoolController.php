@@ -156,9 +156,13 @@ class SendemailtoolController extends Controller
         $md5_str=Yii::$app->request->get("registrant_name");
         $email=Yii::$app->request->get("email");
         //验证MD5
-        if($md5_str==md5($md5_str."registrant_name")){
-            echo 111;
-           return $this->render("unsubscribe_email",["customer_id"=>$customer_id,"customer_email"=>$email]);
+        if($md5_str==md5($email."registrant_name")){
+           return $this->renderPartial("unsubscribe_email",["customer_id"=>$customer_id,"customer_email"=>$email]);
         }
+    }
+    public function actionCheck_unsubscribe_email()
+    {
+        header("Access-Control-Allow-Origin");
+        var_dump($_POST);
     }
 }

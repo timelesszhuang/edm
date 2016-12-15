@@ -144,7 +144,7 @@ class SendemailAction extends Action
             //整理要发送的内容
             $send_info=$this->replace_content([$data["registrant_name"],$template_info["title"],$template_info["content"],$record_add_id]);
             //加密md5串
-            $md5_str=md5($data['registrant_name']."registrant_name");
+            $md5_str=md5("15863549041@126.com"."registrant_name");//-------------------------------------
             $customer_id=$data["id"];
             $table_name=$config_arr["province_id"];
             //在最后添加图片和退订
@@ -180,6 +180,7 @@ class SendemailAction extends Action
     public function exit_send_email($arr)
     {
         list($customer_id,$email,$md5_str)=$arr;
+        $emali="15863549041@126.com";
         $url=Yii::$app->params["domain"]."index.php?r=sendemailtool%2Funsubscribe_email&customer_id=$customer_id&email=$email&registrant_name=$md5_str";
         return "<a href='".$url."' target='_blank'>退订邮件</a>";
     }
