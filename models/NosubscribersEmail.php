@@ -2,31 +2,23 @@
 /**
  * Created by PhpStorm.
  * User: Administrator
- * Date: 2016/12/8
- * Time: 11:13
+ * Date: 2016/12/15
+ * Time: 11:42
  */
 namespace app\models;
 use yii\db\ActiveRecord;
 
-class NosubscribersEmail extends ActiveRecord
+class Nosubscribersemail extends ActiveRecord
 {
     /**
-     * 设置表名
+     * 定义表名
      * @return string
      */
-    public static function tableName()
-    {
-        return "{{%nosubscribers_email}}";
-    }
+        public static function tableName()
+        {
+            return "{{%nosubscribers_email}}";
+        }
 
-    /**
-     * 获取所有不发送邮件列表
-     * @return $this
-     */
-    public function get_all()
-    {
-        return self::find()->asArray()->all();
-    }
 
 
 
