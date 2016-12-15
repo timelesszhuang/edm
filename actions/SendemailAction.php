@@ -136,6 +136,7 @@ class SendemailAction extends Action
                 Yii::error("模板对应数据无法获得", "edm");
                 break;
             }
+            var_dump($data);die;
             //插入发送记录
             $record=[
                 $config_arr["template_id"],$data["id"],$config_arr["province_id"],$config_arr["detail"],$config_arr["id"],$data["contact_email"]
@@ -144,7 +145,7 @@ class SendemailAction extends Action
             //整理要发送的内容
             $send_info=$this->replace_content([$data["registrant_name"],$template_info["title"],$template_info["content"],$record_add_id]);
             //加密md5串
-            $md5_str=md5("15863549041@126.com"."registrant_name");//-------------------------------------
+            $md5_str=md5($data["contact_email"]."registrant_name");
             $customer_id=$data["id"];
             $table_name=$config_arr["province_id"];
             //在最后添加图片和退订
@@ -157,7 +158,7 @@ class SendemailAction extends Action
                 $account_send_info["host"],
                 $send_info[0],                                             //标题
                 $send_info[1],                                           //内容
-                "强比科技",//随机获取一个用户接收回复邮件 邮件
+                "强比科技",//
             ];
             file_put_contents("email.log",print_r($email_send_arr,true),FILE_APPEND);
             //发邮件失败 记录错误信息
@@ -168,7 +169,6 @@ class SendemailAction extends Action
             $start_account++;
             $data_offset++;
             $this->save_for_send_num($config_arr["id"],$start_account,$data_offset,$account_send_info["account_name"]);
-            break;//---------------------------------------------
         }
     }
 
@@ -180,7 +180,6 @@ class SendemailAction extends Action
     public function exit_send_email($arr)
     {
         list($customer_id,$email,$md5_str)=$arr;
-        $emali="15863549041@126.com";
         $url=Yii::$app->params["domain"]."index.php?r=sendemailtool%2Funsubscribe_email&customer_id=$customer_id&email=$email&registrant_name=$md5_str";
         return "<a href='".$url."' target='_blank'>退订邮件</a>";
     }
@@ -350,8 +349,7 @@ class SendemailAction extends Action
      */
     public function nosend_email_action()
     {
-        $model_nosend=new NosubscribersEmail();
-        $nosend_arr=$model_nosend->get_all();
+        $nosend_arr=NosubscribersEmail::find()->asArray()->all();
         if(!empty($nosend_arr)){
             //格式化数组
             $nosend_arr=array_column($nosend_arr,"email");
