@@ -117,7 +117,6 @@ class SendemailAction extends Action
             $account_send_info = Account::find()->asArray()->offset($start_account)->limit(1)->one();
             //取出要发送的数据
             $data = (new Query())->from(self::WHOIS . $province . " as a")->select(["a.id","a.domain_name","a.contact_email","a.registrant_name","b.mx"])->leftJoin(self::MX . $province . " as b", "a.id=b.id")->offset($data_offset)->limit(1)->where($where)->one(Yii::$app->$db);
-            $data["contact_email"]="15863549041@126.com";
             //如果在不发送名单中 不发送
             if (in_array($data["contact_email"], $nosend_arr)) {
                 //记录下来
