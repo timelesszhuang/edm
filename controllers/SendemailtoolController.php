@@ -12,7 +12,7 @@ use yii;
 use app\models\EmailSendRecord;
 use app\models\Linkurl;
 use yii\helpers\Url;
-use app\models\Senderrorlog;
+use app\models\Nosubscribersemail;
 class SendemailtoolController extends Controller
 {
     public $enableCsrfValidation = false;
