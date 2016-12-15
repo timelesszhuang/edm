@@ -9,9 +9,11 @@ namespace app\controllers;
 
 use yii\web\Controller;
 use yii;
+use yii\filters\Cors;
 use app\models\EmailSendRecord;
 use app\models\Linkurl;
 use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 class SendemailtoolController extends Controller
 {
     /**
@@ -164,5 +166,17 @@ class SendemailtoolController extends Controller
     {
         header('Access-Control-Allow-Origin:*');
         var_dump($_POST);
+    }
+    public function behaviors()
+    {
+        return ArrayHelper::merge([
+            [
+                'class' => Cors::className(),
+                'cors' => [
+                    'Origin' => ['http://www.myserver.net'],
+                    'Access-Control-Request-Method' => ['GET', 'HEAD', 'OPTIONS'],
+                ],
+            ],
+        ], parent::behaviors());
     }
 }
