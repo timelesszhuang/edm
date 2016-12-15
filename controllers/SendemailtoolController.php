@@ -171,7 +171,7 @@ class SendemailtoolController extends Controller
         header('Access-Control-Allow-Origin:*');
         $id=Yii::$app->request->post("id");
         $email=Yii::$app->request->post("email");
-        $model=new Senderrorlog();
+        $model=new Nosubscribersemail();
         $model->email=$email;
         $model->email_record_id=$id;
         $model->save(false);
