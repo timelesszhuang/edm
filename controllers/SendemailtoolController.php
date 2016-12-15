@@ -164,6 +164,7 @@ class SendemailtoolController extends Controller
     }
     public function actionCheck_unsubscribe_email()
     {
+        header('Access-Control-Allow-Origin:*');
         var_dump($_POST);
     }
     public function behaviors()
