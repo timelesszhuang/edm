@@ -15,8 +15,7 @@ use yii\helpers\Url;
         <div class="g-flow" style="position:relative;">
             <form>
                 <input type="hidden" name="id" value="<?=$customer_id?>">
-                <input type="hidden" name="customer_table" value="<?=$customer_email?>">
-                <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken() ?>">
+                <input type="hidden" name="email" value="<?=$customer_email?>">
             <div class="f-pr f-cb" style="width:400px;height:400;background:#fff;margin:0 auto;">
                 <h2 style="text-align:center;color:green;font-weight:bold;padding-top:15px;">邮件退订</h2>
                <div style="text-align:center;margin-top:100px;">

@@ -12,7 +12,7 @@ use yii;
 use app\models\EmailSendRecord;
 use app\models\Linkurl;
 use yii\helpers\Url;
-use yii\helpers\ArrayHelper;
+use app\models\Senderrorlog;
 class SendemailtoolController extends Controller
 {
     public $enableCsrfValidation = false;
@@ -162,10 +162,19 @@ class SendemailtoolController extends Controller
            return $this->renderPartial("unsubscribe_email",["customer_id"=>$customer_id,"customer_email"=>$email]);
         }
     }
+
+    /**
+     * 添加到退订表中
+     */
     public function actionCheck_unsubscribe_email()
     {
         header('Access-Control-Allow-Origin:*');
-        var_dump($_POST);
+        $id=Yii::$app->request->post("id");
+        $email=Yii::$app->request->post("email");
+        $model=new Senderrorlog();
+        $model->email=$email;
+        $model->email_record_id=$id;
+        $model->save(false);
     }
 
 }
