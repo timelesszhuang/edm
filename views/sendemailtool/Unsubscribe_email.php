@@ -40,7 +40,6 @@ use yii\helpers\Url;
         $('#submit_customer_subscribe').click(function(){
                 $.ajax({
                     url:url,
-                    type:"post",
                     data:$("form").serialize(),
                     dataType:"json",
                     success:function(data){
