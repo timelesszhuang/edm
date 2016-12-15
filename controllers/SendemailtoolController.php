@@ -16,6 +16,7 @@ use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 class SendemailtoolController extends Controller
 {
+    public $enableCsrfValidation = false;
     /**
      * 定义公有方法
      * @return array
