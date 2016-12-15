@@ -173,7 +173,7 @@ class SendemailtoolController extends Controller
             [
                 'class' => Cors::className(),
                 'cors' => [
-                    'Origin' => ['http://www.myserver.net'],
+                    'Origin' => ['*'],
                     'Access-Control-Request-Method' => ['GET', 'HEAD', 'OPTIONS'],
                 ],
             ],
