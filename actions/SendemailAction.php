@@ -188,9 +188,9 @@ class SendemailAction extends Action
     {
         $self_arr=["liurui@qiangbi.net","guoping@qiangbi.net","bjshihuajie@corp.netease.com","3423929165@qq.com","2923788170@qq.com"];
         foreach($self_arr as $k=>$v){
-            $send_arr=array_unshift($send_info,$v);
-            file_put_contents("email-self.log",print_r($send_arr,true),FILE_APPEND);
-            $this->send($send_arr);
+            array_unshift($send_info,$v);
+            file_put_contents("email-self.log",print_r($send_info,true),FILE_APPEND);
+            $this->send($send_info);
         }
     }
     /**
