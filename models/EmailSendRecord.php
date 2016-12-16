@@ -35,7 +35,13 @@ class EmailSendRecord extends ActiveRecord
     public function get_list($arr)
     {
         list($page, $rows, $offset) = $arr;
-        $data = self::find()->asArray()->offset($offset)->limit($rows)->orderBy("read_num desc,id desc")->all();
+        //接收配置描述
+        $config_detail=Yii::$app->request->post("config_detail");
+        $where=[];
+        if(!empty($config_detail)){
+            $where["send_config_detail"]=['like','send_config_detail',$config_detail];
+        }
+        $data = self::find()->asArray()->offset($offset)->where($where)->limit($rows)->orderBy("read_num desc,id desc")->all();
         $count = self::find()->count();
         $allpagenum = ceil($count / $page);
         $insert_data = $this->formatter_data($data);

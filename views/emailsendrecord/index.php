@@ -18,7 +18,10 @@ echo $this->render("_public");
     <div class="row">
         <div class="col-sm-12">
             <div class="col-sm-6 ">
-                <button class="btn btn-outline btn-primary" id="email_record_add">添加</button>
+                <input type="text" class="form-control" placeholder="输入配置描述进行查找" id="config_detail">
+            </div>
+            <div class="col-sm-2">
+                <button class="btn btn-outline btn-primary" id="email_config_find">查询</button>
             </div>
         </div>
     </div>
@@ -140,6 +143,7 @@ echo $this->render("_public");
                     page: current_num,
                     rows: pagesize,
                     flag: flag,
+                    config_detail:$("#config_detail").val(),
                     allrows: allrows,
                     _csrf:$('#csrf').val()
                 },
@@ -184,6 +188,16 @@ echo $this->render("_public");
                 area: ['80%', '80%'],
                 content: '<?=Url::to(["emailsendrecord/get_link_detail"])?>'+"&id="+id
             });
+        });
+        //点击查询
+        $("#email_config_find").click(function(){
+            //下面是关于表格方面的
+            var pagesize = 6;
+            //初始化之后加载数据
+            var current_num = 1;
+            var flag = 'init';
+            var allrows = 0;
+            load_data(current_num, allrows, flag);
         });
     });
 </script>
