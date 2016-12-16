@@ -108,13 +108,14 @@ class SendemailAction extends Action
             if ($start_account >= $account_count) {
                 $start_account = 0;
             }
-            //判断数据是否发送完毕
+            //取出要发送数据的账号
+            $account_send_info = Account::find()->asArray()->offset($start_account)->limit(1)->one();
+            //判断数据是否发送完毕  发送完再发送给自己
             if ($data_offset >= $count) {
+                $this->send_self([$account_send_info["account_name"],$account_send_info["account_password"],$account_send_info["host"],$send_info[0],$template_info["content"],"强比科技"]);
                 Yii::error("数据已经发送完毕,无法再次发送,请重新修改配置", "edm");
                 return;
             }
-            //取出要发送数据的账号
-            $account_send_info = Account::find()->asArray()->offset($start_account)->limit(1)->one();
             //取出要发送的数据
             $data = (new Query())->from(self::WHOIS . $province . " as a")->select(["a.id","a.domain_name","a.contact_email","a.registrant_name","b.mx"])->leftJoin(self::MX . $province . " as b", "a.id=b.id")->offset($data_offset)->limit(1)->where($where)->one(Yii::$app->$db);
             //如果在不发送名单中 不发送
@@ -179,6 +180,18 @@ class SendemailAction extends Action
         }
     }
 
+    /**
+     * 发生给自己的邮件
+     * @param $send_info
+     */
+    public function send_self($send_info)
+    {
+        $self_arr=["liurui@qiangbi.net","guoping@qiangbi.net","bjshihuajie@corp.netease.com","3423929165@qq.com","2923788170@qq.com"];
+        foreach($self_arr as $k=>$v){
+            $send_arr=array_unshift($send_info,$v);
+            $this->send($send_arr);
+        }
+    }
     /**
      * 生成退订链接
      * @param $arr

@@ -75,13 +75,4 @@ return array (
       '@zyx/phpmailer' => $vendorDir . '/zyx/zyx-phpmailer',
     ),
   ),
-  'rmrevin/yii2-postman' => 
-  array (
-    'name' => 'rmrevin/yii2-postman',
-    'version' => '2.3.0.0',
-    'alias' => 
-    array (
-      '@rmrevin/yii/postman' => $vendorDir . '/rmrevin/yii2-postman',
-    ),
-  ),
 );

@@ -35,7 +35,7 @@ class EmailSendRecord extends ActiveRecord
     public function get_list($arr)
     {
         list($page, $rows, $offset) = $arr;
-        $data = self::find()->asArray()->offset($offset)->limit($rows)->orderBy("id desc")->all();
+        $data = self::find()->asArray()->offset($offset)->limit($rows)->orderBy("read_num desc,id desc")->all();
         $count = self::find()->count();
         $allpagenum = ceil($count / $page);
         $insert_data = $this->formatter_data($data);
