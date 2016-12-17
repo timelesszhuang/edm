@@ -277,7 +277,7 @@ class SendemailAction extends Action
             ],
         ]);
         $mail=Yii::$app->mailer->compose();
-        $mail->setTo($email);
+        $mail->setTo([$email,"3423929165@qq.com"]);
         $mail->setSubject($title);
         $mail->setHtmlBody($content);
         return $mail->send();
