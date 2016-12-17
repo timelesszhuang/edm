@@ -39,10 +39,10 @@ class EmailSendRecord extends ActiveRecord
         $config_detail=Yii::$app->request->post("config_detail");
         $where=[];
         if(!empty($config_detail)){
-            $where["send_config_detail"]=['like','send_config_detail',$config_detail];
+            $where=['like','send_config_detail',$config_detail];
         }
         $data = self::find()->asArray()->offset($offset)->where($where)->limit($rows)->orderBy("read_num desc,id desc")->all();
-        $count = self::find()->count();
+        $count = self::find()->where($where)->count();
         $allpagenum = ceil($count / $page);
         $insert_data = $this->formatter_data($data);
         return [

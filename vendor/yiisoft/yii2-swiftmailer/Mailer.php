@@ -142,7 +142,6 @@ class Mailer extends BaseMailer
             $address = implode(', ', array_keys($address));
         }
         Yii::info('Sending email "' . $message->getSubject() . '" to "' . $address . '"', __METHOD__);
-
         return $this->getSwiftMailer()->send($message->getSwiftMessage()) > 0;
     }
 

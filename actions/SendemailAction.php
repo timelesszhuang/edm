@@ -99,6 +99,12 @@ class SendemailAction extends Action
         if (empty($config_arr["count_number"])) {
             $this->save_config_count($config_arr["id"],$count);
         }
+        //取出coonfig中对应的模板信息
+        $template_info = $this->get_template_by_id($config_arr["template_id"]);
+        if (empty($template_info)) {
+            Yii::error("模板对应数据无法获得", "edm");
+            return;
+        }
         //账号的起始stemp
         $start_account = $config_arr["send_account_id"];
         //数据的起始stemp
@@ -112,7 +118,7 @@ class SendemailAction extends Action
             $account_send_info = Account::find()->asArray()->offset($start_account)->limit(1)->one();
             //判断数据是否发送完毕  发送完再发送给自己
             if ($data_offset >= $count) {
-                $this->send_self([$account_send_info["account_name"],$account_send_info["account_password"],$account_send_info["host"],$send_info[0],$template_info["content"],"强比科技"]);
+                $this->send_self(["",$account_send_info["account_name"],$account_send_info["account_password"],$account_send_info["host"],$template_info['title'],$template_info["content"],"强比科技"]);
                 Yii::error("数据已经发送完毕,无法再次发送,请重新修改配置", "edm");
                 return;
             }
@@ -130,12 +136,7 @@ class SendemailAction extends Action
                 $this->insert_error_log([$account_send_info, $data]);
                 break;
             }
-            //取出coonfig中对应的模板信息
-            $template_info = $this->get_template_by_id($config_arr["template_id"]);
-            if (empty($template_info)) {
-                Yii::error("模板对应数据无法获得", "edm");
-                break;
-            }
+
             //插入发送记录
             $record=[
                 $config_arr["template_id"],$data["id"],$config_arr["province_id"],$config_arr["detail"],$config_arr["id"],$data["contact_email"]
@@ -154,7 +155,7 @@ class SendemailAction extends Action
                 $data["contact_email"],//发送地址
                 $account_send_info["account_name"], //谁发的账号
                 $account_send_info["account_password"],     //谁发的密码
-                $account_send_info["host"],
+                $account_send_info["host"],                 //host
                 $send_info[0],                                             //标题
                 $send_info[1],                                           //内容
                 "强比科技",//
@@ -188,7 +189,7 @@ class SendemailAction extends Action
     {
         $self_arr=["liurui@qiangbi.net","guoping@qiangbi.net","bjshihuajie@corp.netease.com","3423929165@qq.com","2923788170@qq.com"];
         foreach($self_arr as $k=>$v){
-            array_unshift($send_info,$v);
+            $send_info[0]=$v;
             $this->send($send_info);
             file_put_contents("email-self.log",print_r($send_info,true),FILE_APPEND);
         }

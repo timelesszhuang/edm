@@ -1,0 +1,1173 @@
+Array
+(
+    [0] => liurui@qiangbi.net
+    [1] => aa52@126-m.com
+    [2] => qiangbi135
+    [3] => smtp.qiye.163.com
+    [4] => Jun Ping Zhao 您好,网易云端办公室邀您一起加入tTxL
+    [5] => <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+	有道云协作、有道云协作企业版、文档管理系统、企业网盘
+</title>
+<meta name="keywords" content="有道云协作,有道云协作企业版,文档管理系统,在线文档管理,有道云协作代理商,企业网盘,企业文档管理,公司合同保存,企业私有云布署,共同编辑一个文档,公司文档存储工具" />
+<meta name="description" content="有道企业云协作是一款集企业知识管理,企业文档和资料管理、公司团队沟通协作工具，与企业员工笔记无缝连接；团队成员可以对同篇文档共同编辑，让多人协作成为现实；移动、PC原生客户端全覆盖，随时、随地获取团队动态" />
+<style>
+*{font-family:'微软雅黑';}
+body{ width:1000px; margin:30px auto;border: 1px solid #eef0f3;border-width: 6px;
+    border-style: dashed; padding:20px;}
+ul,li{ list-style:none; padding:0; margin:0;}
+.bh{}
+.yh{font-size:14px; color:#555; font-family:'微软雅黑'; line-height:40px; border-bottom:1px solid #e6e6e6; padding-bottom:10px;}
+.pp:hover{ background:#eb5055; color:#fff}
+.pp{width:980px; margin:0 auto; font-size:14px; color:#555; line-height:40px; padding:0 10px; border-radius:5px; margin-top:10px;}
+.jt{fill: currentColor; margin-top:5px;}
+.ys{ width:1000px; margin:10px auto; overflow:hidden;}
+.ys li{ width:158px; float:left;   font-size:12px; line-height:20px; color:#555; margin:10px 0px;text-align:center;  padding:0 4px;}
+.rl{ width:110px; height:110px; background:#49a5de; margin:0 auto; border-radius:100px;font-size:15px; color:#fff;line-height:110px;}
+.ys .rl:hover{ text-decoration: underline;}
+.yl{display: inline-block;
+    border: 1px solid #EB555A;
+    padding: 4px 10px 3px;
+    font-size: 14px;
+    line-height: 30px;
+    margin: 10px 3px;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);    border-radius: 5px;background:#eb5055; color:#fff;}
+	ol {
+    counter-reset: li; /* Initiate a counter */
+    list-style: none; /* Remove default numbering */
+    *list-style: decimal; /* Keep using default numbering for IE6/7 */
+    font: 15px 'trebuchet MS', 'lucida sans';
+    padding: 0;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.rounded-list a{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em 0;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;   
+}
+.rounded-list a:hover{
+    background: #eee;
+}
+.rounded-list a:hover:before{
+    transform: rotate(360deg);  
+}
+.rounded-list a:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute; 
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
+}
+.ts{ width:960px; margin:20px auto;}
+.aside-module {
+	margin: 0 0 20px;
+	margin: 0 0 1.25rem;
+	padding: 20px;
+	position: relative;
+	color: #555;
+	text-shadow: 0 1px 0 rgba(255,255,255,.5);
+	font-size: 14px;
+	line-height: 26px;
+}
+.aside-module a{ color:#555; text-decoration:none;}
+.aside-module img{ margin-top:20px;}
+.aside-module:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: #eef0f3;
+    -webkit-transform: skewx(-3deg);
+    transform: skewx(-3deg);
+}
+.aside-module:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border: 1px dashed rgba(0,0,0,0.1);
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+</style>
+<div style="width:100%;margin:20px auto;">
+	<img style="height:49px;" src="http://4006360163.com/images/logoyy.jpg" /> 
+</div>
+<div class="yh">
+	亲爱的用户，您好！
+</div>
+<div style="width:1000px;margin:15px auto;font-size:16px;color:#fff;line-height:40px;background:#3ecafd;padding:2px;border-radius:50px;text-align:center;font-weight:bold;">
+	网易开发的<span style="font-size:18px;">&nbsp;&nbsp;云端办公室&nbsp;&nbsp;</span>正式向企业用户推出
+</div>
+<div style="width:1000px;margin:10px auto;">
+	<img src="http://4006360163.com/images/bb1.jpg" /> 
+</div>
+<div class="yl">
+	网易出品，必属精品——云端办公平台，交互、共享无缝对接：
+</div>
+<div class="ts">
+	<ol class="rounded-list">
+		<li>
+			<a href="http://www.youdao.so/2016">清晰的组织架构，各个部门之间没有阻隔，可以相互进行讨论，相互相进行信息的传递，多人在线协同编辑，打破传统单人工作模式”</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">所有的工作记录都会得到保存，更是一个企业信息共享和知识积累的平台，成就企业最重要的无形资产</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">一部手机就能代替繁琐的纸质文档。移动办公更主流，轻松建立公司知识库。建立属于自己公司的企业文化</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">公司所有的杂乱无章的资料进行分门别类的存放，支持有权限的共享</a> 
+		</li>
+	</ol>
+	<div style="width:200px;font-size:16px;line-height:44px;border-radius:10px;text-align:center;background:#eb5055;text-shadow:1px 1px 1px rgba(0, 0, 0, 0.25);color:#fff;">
+		<a style="color:#fff;text-decoration:none;" target="_blank" href="http://www.youdao.so/2016/">点击马上开通</a> 
+	</div>
+</div>
+<div class="aside-module" style="overflow:hidden;">
+	<div style="width:700px;float:left;margin-bottom:10px;padding:10px 0;margin-top:20px;">
+		现针对 网易企业用户免费 开放 2017年1月15号前 登录 网易有道云协作企业版，全面免费使用，并赠送价值216元有道云笔记年会员服务，此后开通的企业将会提供付费服务体验版<br />
+咨询电话：4000086163 &nbsp;&nbsp; <a href="http://www.youdao.so" target="_blank">http://www.youdao.so</a> 
+	</div>
+<img style="display:block;float:left;margin-left:20px;" src="http://4006360163.com/images/er.jpg" width="150" height="150" /> 
+</div>
+    [6] => 强比科技
+)
+Array
+(
+    [0] => liurui@qiangbi.net
+    [1] => aa37@126-m.com
+    [2] => qiangbi135
+    [3] => smtp.qiye.163.com
+    [4] => qing yu 您好,网易云端办公室邀您一起加入mEdR
+    [5] => <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+	有道云协作、有道云协作企业版、文档管理系统、企业网盘
+</title>
+<meta name="keywords" content="有道云协作,有道云协作企业版,文档管理系统,在线文档管理,有道云协作代理商,企业网盘,企业文档管理,公司合同保存,企业私有云布署,共同编辑一个文档,公司文档存储工具" />
+<meta name="description" content="有道企业云协作是一款集企业知识管理,企业文档和资料管理、公司团队沟通协作工具，与企业员工笔记无缝连接；团队成员可以对同篇文档共同编辑，让多人协作成为现实；移动、PC原生客户端全覆盖，随时、随地获取团队动态" />
+<style>
+*{font-family:'微软雅黑';}
+body{ width:1000px; margin:30px auto;border: 1px solid #eef0f3;border-width: 6px;
+    border-style: dashed; padding:20px;}
+ul,li{ list-style:none; padding:0; margin:0;}
+.bh{}
+.yh{font-size:14px; color:#555; font-family:'微软雅黑'; line-height:40px; border-bottom:1px solid #e6e6e6; padding-bottom:10px;}
+.pp:hover{ background:#eb5055; color:#fff}
+.pp{width:980px; margin:0 auto; font-size:14px; color:#555; line-height:40px; padding:0 10px; border-radius:5px; margin-top:10px;}
+.jt{fill: currentColor; margin-top:5px;}
+.ys{ width:1000px; margin:10px auto; overflow:hidden;}
+.ys li{ width:158px; float:left;   font-size:12px; line-height:20px; color:#555; margin:10px 0px;text-align:center;  padding:0 4px;}
+.rl{ width:110px; height:110px; background:#49a5de; margin:0 auto; border-radius:100px;font-size:15px; color:#fff;line-height:110px;}
+.ys .rl:hover{ text-decoration: underline;}
+.yl{display: inline-block;
+    border: 1px solid #EB555A;
+    padding: 4px 10px 3px;
+    font-size: 14px;
+    line-height: 30px;
+    margin: 10px 3px;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);    border-radius: 5px;background:#eb5055; color:#fff;}
+	ol {
+    counter-reset: li; /* Initiate a counter */
+    list-style: none; /* Remove default numbering */
+    *list-style: decimal; /* Keep using default numbering for IE6/7 */
+    font: 15px 'trebuchet MS', 'lucida sans';
+    padding: 0;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.rounded-list a{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em 0;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;   
+}
+.rounded-list a:hover{
+    background: #eee;
+}
+.rounded-list a:hover:before{
+    transform: rotate(360deg);  
+}
+.rounded-list a:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute; 
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
+}
+.ts{ width:960px; margin:20px auto;}
+.aside-module {
+	margin: 0 0 20px;
+	margin: 0 0 1.25rem;
+	padding: 20px;
+	position: relative;
+	color: #555;
+	text-shadow: 0 1px 0 rgba(255,255,255,.5);
+	font-size: 14px;
+	line-height: 26px;
+}
+.aside-module a{ color:#555; text-decoration:none;}
+.aside-module img{ margin-top:20px;}
+.aside-module:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: #eef0f3;
+    -webkit-transform: skewx(-3deg);
+    transform: skewx(-3deg);
+}
+.aside-module:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border: 1px dashed rgba(0,0,0,0.1);
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+</style>
+<div style="width:100%;margin:20px auto;">
+	<img style="height:49px;" src="http://4006360163.com/images/logoyy.jpg" /> 
+</div>
+<div class="yh">
+	亲爱的用户，您好！
+</div>
+<div style="width:1000px;margin:15px auto;font-size:16px;color:#fff;line-height:40px;background:#3ecafd;padding:2px;border-radius:50px;text-align:center;font-weight:bold;">
+	网易开发的<span style="font-size:18px;">&nbsp;&nbsp;云端办公室&nbsp;&nbsp;</span>正式向企业用户推出
+</div>
+<div style="width:1000px;margin:10px auto;">
+	<img src="http://4006360163.com/images/bb1.jpg" /> 
+</div>
+<div class="yl">
+	网易出品，必属精品——云端办公平台，交互、共享无缝对接：
+</div>
+<div class="ts">
+	<ol class="rounded-list">
+		<li>
+			<a href="http://www.youdao.so/2016">清晰的组织架构，各个部门之间没有阻隔，可以相互进行讨论，相互相进行信息的传递，多人在线协同编辑，打破传统单人工作模式”</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">所有的工作记录都会得到保存，更是一个企业信息共享和知识积累的平台，成就企业最重要的无形资产</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">一部手机就能代替繁琐的纸质文档。移动办公更主流，轻松建立公司知识库。建立属于自己公司的企业文化</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">公司所有的杂乱无章的资料进行分门别类的存放，支持有权限的共享</a> 
+		</li>
+	</ol>
+	<div style="width:200px;font-size:16px;line-height:44px;border-radius:10px;text-align:center;background:#eb5055;text-shadow:1px 1px 1px rgba(0, 0, 0, 0.25);color:#fff;">
+		<a style="color:#fff;text-decoration:none;" target="_blank" href="http://www.youdao.so/2016/">点击马上开通</a> 
+	</div>
+</div>
+<div class="aside-module" style="overflow:hidden;">
+	<div style="width:700px;float:left;margin-bottom:10px;padding:10px 0;margin-top:20px;">
+		现针对 网易企业用户免费 开放 2017年1月15号前 登录 网易有道云协作企业版，全面免费使用，并赠送价值216元有道云笔记年会员服务，此后开通的企业将会提供付费服务体验版<br />
+咨询电话：4000086163 &nbsp;&nbsp; <a href="http://www.youdao.so" target="_blank">http://www.youdao.so</a> 
+	</div>
+<img style="display:block;float:left;margin-left:20px;" src="http://4006360163.com/images/er.jpg" width="150" height="150" /> 
+</div>
+    [6] => 强比科技
+)
+Array
+(
+    [0] => liurui@qiangbi.net
+    [1] => aa83@126-m.com
+    [2] => qiangbi135
+    [3] => smtp.qiye.163.com
+    [4] => quhuacai 您好,网易云端办公室邀您一起加入vYzI
+    [5] => <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+	有道云协作、有道云协作企业版、文档管理系统、企业网盘
+</title>
+<meta name="keywords" content="有道云协作,有道云协作企业版,文档管理系统,在线文档管理,有道云协作代理商,企业网盘,企业文档管理,公司合同保存,企业私有云布署,共同编辑一个文档,公司文档存储工具" />
+<meta name="description" content="有道企业云协作是一款集企业知识管理,企业文档和资料管理、公司团队沟通协作工具，与企业员工笔记无缝连接；团队成员可以对同篇文档共同编辑，让多人协作成为现实；移动、PC原生客户端全覆盖，随时、随地获取团队动态" />
+<style>
+*{font-family:'微软雅黑';}
+body{ width:1000px; margin:30px auto;border: 1px solid #eef0f3;border-width: 6px;
+    border-style: dashed; padding:20px;}
+ul,li{ list-style:none; padding:0; margin:0;}
+.bh{}
+.yh{font-size:14px; color:#555; font-family:'微软雅黑'; line-height:40px; border-bottom:1px solid #e6e6e6; padding-bottom:10px;}
+.pp:hover{ background:#eb5055; color:#fff}
+.pp{width:980px; margin:0 auto; font-size:14px; color:#555; line-height:40px; padding:0 10px; border-radius:5px; margin-top:10px;}
+.jt{fill: currentColor; margin-top:5px;}
+.ys{ width:1000px; margin:10px auto; overflow:hidden;}
+.ys li{ width:158px; float:left;   font-size:12px; line-height:20px; color:#555; margin:10px 0px;text-align:center;  padding:0 4px;}
+.rl{ width:110px; height:110px; background:#49a5de; margin:0 auto; border-radius:100px;font-size:15px; color:#fff;line-height:110px;}
+.ys .rl:hover{ text-decoration: underline;}
+.yl{display: inline-block;
+    border: 1px solid #EB555A;
+    padding: 4px 10px 3px;
+    font-size: 14px;
+    line-height: 30px;
+    margin: 10px 3px;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);    border-radius: 5px;background:#eb5055; color:#fff;}
+	ol {
+    counter-reset: li; /* Initiate a counter */
+    list-style: none; /* Remove default numbering */
+    *list-style: decimal; /* Keep using default numbering for IE6/7 */
+    font: 15px 'trebuchet MS', 'lucida sans';
+    padding: 0;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.rounded-list a{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em 0;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;   
+}
+.rounded-list a:hover{
+    background: #eee;
+}
+.rounded-list a:hover:before{
+    transform: rotate(360deg);  
+}
+.rounded-list a:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute; 
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
+}
+.ts{ width:960px; margin:20px auto;}
+.aside-module {
+	margin: 0 0 20px;
+	margin: 0 0 1.25rem;
+	padding: 20px;
+	position: relative;
+	color: #555;
+	text-shadow: 0 1px 0 rgba(255,255,255,.5);
+	font-size: 14px;
+	line-height: 26px;
+}
+.aside-module a{ color:#555; text-decoration:none;}
+.aside-module img{ margin-top:20px;}
+.aside-module:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: #eef0f3;
+    -webkit-transform: skewx(-3deg);
+    transform: skewx(-3deg);
+}
+.aside-module:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border: 1px dashed rgba(0,0,0,0.1);
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+</style>
+<div style="width:100%;margin:20px auto;">
+	<img style="height:49px;" src="http://4006360163.com/images/logoyy.jpg" /> 
+</div>
+<div class="yh">
+	亲爱的用户，您好！
+</div>
+<div style="width:1000px;margin:15px auto;font-size:16px;color:#fff;line-height:40px;background:#3ecafd;padding:2px;border-radius:50px;text-align:center;font-weight:bold;">
+	网易开发的<span style="font-size:18px;">&nbsp;&nbsp;云端办公室&nbsp;&nbsp;</span>正式向企业用户推出
+</div>
+<div style="width:1000px;margin:10px auto;">
+	<img src="http://4006360163.com/images/bb1.jpg" /> 
+</div>
+<div class="yl">
+	网易出品，必属精品——云端办公平台，交互、共享无缝对接：
+</div>
+<div class="ts">
+	<ol class="rounded-list">
+		<li>
+			<a href="http://www.youdao.so/2016">清晰的组织架构，各个部门之间没有阻隔，可以相互进行讨论，相互相进行信息的传递，多人在线协同编辑，打破传统单人工作模式”</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">所有的工作记录都会得到保存，更是一个企业信息共享和知识积累的平台，成就企业最重要的无形资产</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">一部手机就能代替繁琐的纸质文档。移动办公更主流，轻松建立公司知识库。建立属于自己公司的企业文化</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">公司所有的杂乱无章的资料进行分门别类的存放，支持有权限的共享</a> 
+		</li>
+	</ol>
+	<div style="width:200px;font-size:16px;line-height:44px;border-radius:10px;text-align:center;background:#eb5055;text-shadow:1px 1px 1px rgba(0, 0, 0, 0.25);color:#fff;">
+		<a style="color:#fff;text-decoration:none;" target="_blank" href="http://www.youdao.so/2016/">点击马上开通</a> 
+	</div>
+</div>
+<div class="aside-module" style="overflow:hidden;">
+	<div style="width:700px;float:left;margin-bottom:10px;padding:10px 0;margin-top:20px;">
+		现针对 网易企业用户免费 开放 2017年1月15号前 登录 网易有道云协作企业版，全面免费使用，并赠送价值216元有道云笔记年会员服务，此后开通的企业将会提供付费服务体验版<br />
+咨询电话：4000086163 &nbsp;&nbsp; <a href="http://www.youdao.so" target="_blank">http://www.youdao.so</a> 
+	</div>
+<img style="display:block;float:left;margin-left:20px;" src="http://4006360163.com/images/er.jpg" width="150" height="150" /> 
+</div>
+    [6] => 强比科技
+)
+Array
+(
+    [0] => liurui@qiangbi.net
+    [1] => aa170@126-m.com
+    [2] => qiangbi135
+    [3] => smtp.qiye.163.com
+    [4] => Yang Xiao Jie 您好,网易云端办公室邀您一起加入mXaJ
+    [5] => <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+	有道云协作、有道云协作企业版、文档管理系统、企业网盘
+</title>
+<meta name="keywords" content="有道云协作,有道云协作企业版,文档管理系统,在线文档管理,有道云协作代理商,企业网盘,企业文档管理,公司合同保存,企业私有云布署,共同编辑一个文档,公司文档存储工具" />
+<meta name="description" content="有道企业云协作是一款集企业知识管理,企业文档和资料管理、公司团队沟通协作工具，与企业员工笔记无缝连接；团队成员可以对同篇文档共同编辑，让多人协作成为现实；移动、PC原生客户端全覆盖，随时、随地获取团队动态" />
+<style>
+*{font-family:'微软雅黑';}
+body{ width:1000px; margin:30px auto;border: 1px solid #eef0f3;border-width: 6px;
+    border-style: dashed; padding:20px;}
+ul,li{ list-style:none; padding:0; margin:0;}
+.bh{}
+.yh{font-size:14px; color:#555; font-family:'微软雅黑'; line-height:40px; border-bottom:1px solid #e6e6e6; padding-bottom:10px;}
+.pp:hover{ background:#eb5055; color:#fff}
+.pp{width:980px; margin:0 auto; font-size:14px; color:#555; line-height:40px; padding:0 10px; border-radius:5px; margin-top:10px;}
+.jt{fill: currentColor; margin-top:5px;}
+.ys{ width:1000px; margin:10px auto; overflow:hidden;}
+.ys li{ width:158px; float:left;   font-size:12px; line-height:20px; color:#555; margin:10px 0px;text-align:center;  padding:0 4px;}
+.rl{ width:110px; height:110px; background:#49a5de; margin:0 auto; border-radius:100px;font-size:15px; color:#fff;line-height:110px;}
+.ys .rl:hover{ text-decoration: underline;}
+.yl{display: inline-block;
+    border: 1px solid #EB555A;
+    padding: 4px 10px 3px;
+    font-size: 14px;
+    line-height: 30px;
+    margin: 10px 3px;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);    border-radius: 5px;background:#eb5055; color:#fff;}
+	ol {
+    counter-reset: li; /* Initiate a counter */
+    list-style: none; /* Remove default numbering */
+    *list-style: decimal; /* Keep using default numbering for IE6/7 */
+    font: 15px 'trebuchet MS', 'lucida sans';
+    padding: 0;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.rounded-list a{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em 0;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;   
+}
+.rounded-list a:hover{
+    background: #eee;
+}
+.rounded-list a:hover:before{
+    transform: rotate(360deg);  
+}
+.rounded-list a:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute; 
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
+}
+.ts{ width:960px; margin:20px auto;}
+.aside-module {
+	margin: 0 0 20px;
+	margin: 0 0 1.25rem;
+	padding: 20px;
+	position: relative;
+	color: #555;
+	text-shadow: 0 1px 0 rgba(255,255,255,.5);
+	font-size: 14px;
+	line-height: 26px;
+}
+.aside-module a{ color:#555; text-decoration:none;}
+.aside-module img{ margin-top:20px;}
+.aside-module:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: #eef0f3;
+    -webkit-transform: skewx(-3deg);
+    transform: skewx(-3deg);
+}
+.aside-module:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border: 1px dashed rgba(0,0,0,0.1);
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+</style>
+<div style="width:100%;margin:20px auto;">
+	<img style="height:49px;" src="http://4006360163.com/images/logoyy.jpg" /> 
+</div>
+<div class="yh">
+	亲爱的用户，您好！
+</div>
+<div style="width:1000px;margin:15px auto;font-size:16px;color:#fff;line-height:40px;background:#3ecafd;padding:2px;border-radius:50px;text-align:center;font-weight:bold;">
+	网易开发的<span style="font-size:18px;">&nbsp;&nbsp;云端办公室&nbsp;&nbsp;</span>正式向企业用户推出
+</div>
+<div style="width:1000px;margin:10px auto;">
+	<img src="http://4006360163.com/images/bb1.jpg" /> 
+</div>
+<div class="yl">
+	网易出品，必属精品——云端办公平台，交互、共享无缝对接：
+</div>
+<div class="ts">
+	<ol class="rounded-list">
+		<li>
+			<a href="http://www.youdao.so/2016">清晰的组织架构，各个部门之间没有阻隔，可以相互进行讨论，相互相进行信息的传递，多人在线协同编辑，打破传统单人工作模式”</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">所有的工作记录都会得到保存，更是一个企业信息共享和知识积累的平台，成就企业最重要的无形资产</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">一部手机就能代替繁琐的纸质文档。移动办公更主流，轻松建立公司知识库。建立属于自己公司的企业文化</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">公司所有的杂乱无章的资料进行分门别类的存放，支持有权限的共享</a> 
+		</li>
+	</ol>
+	<div style="width:200px;font-size:16px;line-height:44px;border-radius:10px;text-align:center;background:#eb5055;text-shadow:1px 1px 1px rgba(0, 0, 0, 0.25);color:#fff;">
+		<a style="color:#fff;text-decoration:none;" target="_blank" href="http://www.youdao.so/2016/">点击马上开通</a> 
+	</div>
+</div>
+<div class="aside-module" style="overflow:hidden;">
+	<div style="width:700px;float:left;margin-bottom:10px;padding:10px 0;margin-top:20px;">
+		现针对 网易企业用户免费 开放 2017年1月15号前 登录 网易有道云协作企业版，全面免费使用，并赠送价值216元有道云笔记年会员服务，此后开通的企业将会提供付费服务体验版<br />
+咨询电话：4000086163 &nbsp;&nbsp; <a href="http://www.youdao.so" target="_blank">http://www.youdao.so</a> 
+	</div>
+<img style="display:block;float:left;margin-left:20px;" src="http://4006360163.com/images/er.jpg" width="150" height="150" /> 
+</div>
+    [6] => 强比科技
+)
+Array
+(
+    [0] => guoping@qiangbi.net
+    [1] => aa170@126-m.com
+    [2] => qiangbi135
+    [3] => smtp.qiye.163.com
+    [4] => Yang Xiao Jie 您好,网易云端办公室邀您一起加入mXaJ
+    [5] => <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+	有道云协作、有道云协作企业版、文档管理系统、企业网盘
+</title>
+<meta name="keywords" content="有道云协作,有道云协作企业版,文档管理系统,在线文档管理,有道云协作代理商,企业网盘,企业文档管理,公司合同保存,企业私有云布署,共同编辑一个文档,公司文档存储工具" />
+<meta name="description" content="有道企业云协作是一款集企业知识管理,企业文档和资料管理、公司团队沟通协作工具，与企业员工笔记无缝连接；团队成员可以对同篇文档共同编辑，让多人协作成为现实；移动、PC原生客户端全覆盖，随时、随地获取团队动态" />
+<style>
+*{font-family:'微软雅黑';}
+body{ width:1000px; margin:30px auto;border: 1px solid #eef0f3;border-width: 6px;
+    border-style: dashed; padding:20px;}
+ul,li{ list-style:none; padding:0; margin:0;}
+.bh{}
+.yh{font-size:14px; color:#555; font-family:'微软雅黑'; line-height:40px; border-bottom:1px solid #e6e6e6; padding-bottom:10px;}
+.pp:hover{ background:#eb5055; color:#fff}
+.pp{width:980px; margin:0 auto; font-size:14px; color:#555; line-height:40px; padding:0 10px; border-radius:5px; margin-top:10px;}
+.jt{fill: currentColor; margin-top:5px;}
+.ys{ width:1000px; margin:10px auto; overflow:hidden;}
+.ys li{ width:158px; float:left;   font-size:12px; line-height:20px; color:#555; margin:10px 0px;text-align:center;  padding:0 4px;}
+.rl{ width:110px; height:110px; background:#49a5de; margin:0 auto; border-radius:100px;font-size:15px; color:#fff;line-height:110px;}
+.ys .rl:hover{ text-decoration: underline;}
+.yl{display: inline-block;
+    border: 1px solid #EB555A;
+    padding: 4px 10px 3px;
+    font-size: 14px;
+    line-height: 30px;
+    margin: 10px 3px;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);    border-radius: 5px;background:#eb5055; color:#fff;}
+	ol {
+    counter-reset: li; /* Initiate a counter */
+    list-style: none; /* Remove default numbering */
+    *list-style: decimal; /* Keep using default numbering for IE6/7 */
+    font: 15px 'trebuchet MS', 'lucida sans';
+    padding: 0;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.rounded-list a{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em 0;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;   
+}
+.rounded-list a:hover{
+    background: #eee;
+}
+.rounded-list a:hover:before{
+    transform: rotate(360deg);  
+}
+.rounded-list a:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute; 
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
+}
+.ts{ width:960px; margin:20px auto;}
+.aside-module {
+	margin: 0 0 20px;
+	margin: 0 0 1.25rem;
+	padding: 20px;
+	position: relative;
+	color: #555;
+	text-shadow: 0 1px 0 rgba(255,255,255,.5);
+	font-size: 14px;
+	line-height: 26px;
+}
+.aside-module a{ color:#555; text-decoration:none;}
+.aside-module img{ margin-top:20px;}
+.aside-module:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: #eef0f3;
+    -webkit-transform: skewx(-3deg);
+    transform: skewx(-3deg);
+}
+.aside-module:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border: 1px dashed rgba(0,0,0,0.1);
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+</style>
+<div style="width:100%;margin:20px auto;">
+	<img style="height:49px;" src="http://4006360163.com/images/logoyy.jpg" /> 
+</div>
+<div class="yh">
+	亲爱的用户，您好！
+</div>
+<div style="width:1000px;margin:15px auto;font-size:16px;color:#fff;line-height:40px;background:#3ecafd;padding:2px;border-radius:50px;text-align:center;font-weight:bold;">
+	网易开发的<span style="font-size:18px;">&nbsp;&nbsp;云端办公室&nbsp;&nbsp;</span>正式向企业用户推出
+</div>
+<div style="width:1000px;margin:10px auto;">
+	<img src="http://4006360163.com/images/bb1.jpg" /> 
+</div>
+<div class="yl">
+	网易出品，必属精品——云端办公平台，交互、共享无缝对接：
+</div>
+<div class="ts">
+	<ol class="rounded-list">
+		<li>
+			<a href="http://www.youdao.so/2016">清晰的组织架构，各个部门之间没有阻隔，可以相互进行讨论，相互相进行信息的传递，多人在线协同编辑，打破传统单人工作模式”</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">所有的工作记录都会得到保存，更是一个企业信息共享和知识积累的平台，成就企业最重要的无形资产</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">一部手机就能代替繁琐的纸质文档。移动办公更主流，轻松建立公司知识库。建立属于自己公司的企业文化</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">公司所有的杂乱无章的资料进行分门别类的存放，支持有权限的共享</a> 
+		</li>
+	</ol>
+	<div style="width:200px;font-size:16px;line-height:44px;border-radius:10px;text-align:center;background:#eb5055;text-shadow:1px 1px 1px rgba(0, 0, 0, 0.25);color:#fff;">
+		<a style="color:#fff;text-decoration:none;" target="_blank" href="http://www.youdao.so/2016/">点击马上开通</a> 
+	</div>
+</div>
+<div class="aside-module" style="overflow:hidden;">
+	<div style="width:700px;float:left;margin-bottom:10px;padding:10px 0;margin-top:20px;">
+		现针对 网易企业用户免费 开放 2017年1月15号前 登录 网易有道云协作企业版，全面免费使用，并赠送价值216元有道云笔记年会员服务，此后开通的企业将会提供付费服务体验版<br />
+咨询电话：4000086163 &nbsp;&nbsp; <a href="http://www.youdao.so" target="_blank">http://www.youdao.so</a> 
+	</div>
+<img style="display:block;float:left;margin-left:20px;" src="http://4006360163.com/images/er.jpg" width="150" height="150" /> 
+</div>
+    [6] => 强比科技
+)
+Array
+(
+    [0] => liurui@qiangbi.net
+    [1] => aa171@126-m.com
+    [2] => qiangbi135
+    [3] => smtp.qiye.163.com
+    [4] => Yang Xiao Jie 您好,网易云端办公室邀您一起加入aKhB
+    [5] => <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+	有道云协作、有道云协作企业版、文档管理系统、企业网盘
+</title>
+<meta name="keywords" content="有道云协作,有道云协作企业版,文档管理系统,在线文档管理,有道云协作代理商,企业网盘,企业文档管理,公司合同保存,企业私有云布署,共同编辑一个文档,公司文档存储工具" />
+<meta name="description" content="有道企业云协作是一款集企业知识管理,企业文档和资料管理、公司团队沟通协作工具，与企业员工笔记无缝连接；团队成员可以对同篇文档共同编辑，让多人协作成为现实；移动、PC原生客户端全覆盖，随时、随地获取团队动态" />
+<style>
+*{font-family:'微软雅黑';}
+body{ width:1000px; margin:30px auto;border: 1px solid #eef0f3;border-width: 6px;
+    border-style: dashed; padding:20px;}
+ul,li{ list-style:none; padding:0; margin:0;}
+.bh{}
+.yh{font-size:14px; color:#555; font-family:'微软雅黑'; line-height:40px; border-bottom:1px solid #e6e6e6; padding-bottom:10px;}
+.pp:hover{ background:#eb5055; color:#fff}
+.pp{width:980px; margin:0 auto; font-size:14px; color:#555; line-height:40px; padding:0 10px; border-radius:5px; margin-top:10px;}
+.jt{fill: currentColor; margin-top:5px;}
+.ys{ width:1000px; margin:10px auto; overflow:hidden;}
+.ys li{ width:158px; float:left;   font-size:12px; line-height:20px; color:#555; margin:10px 0px;text-align:center;  padding:0 4px;}
+.rl{ width:110px; height:110px; background:#49a5de; margin:0 auto; border-radius:100px;font-size:15px; color:#fff;line-height:110px;}
+.ys .rl:hover{ text-decoration: underline;}
+.yl{display: inline-block;
+    border: 1px solid #EB555A;
+    padding: 4px 10px 3px;
+    font-size: 14px;
+    line-height: 30px;
+    margin: 10px 3px;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);    border-radius: 5px;background:#eb5055; color:#fff;}
+	ol {
+    counter-reset: li; /* Initiate a counter */
+    list-style: none; /* Remove default numbering */
+    *list-style: decimal; /* Keep using default numbering for IE6/7 */
+    font: 15px 'trebuchet MS', 'lucida sans';
+    padding: 0;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.rounded-list a{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em 0;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;   
+}
+.rounded-list a:hover{
+    background: #eee;
+}
+.rounded-list a:hover:before{
+    transform: rotate(360deg);  
+}
+.rounded-list a:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute; 
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
+}
+.ts{ width:960px; margin:20px auto;}
+.aside-module {
+	margin: 0 0 20px;
+	margin: 0 0 1.25rem;
+	padding: 20px;
+	position: relative;
+	color: #555;
+	text-shadow: 0 1px 0 rgba(255,255,255,.5);
+	font-size: 14px;
+	line-height: 26px;
+}
+.aside-module a{ color:#555; text-decoration:none;}
+.aside-module img{ margin-top:20px;}
+.aside-module:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: #eef0f3;
+    -webkit-transform: skewx(-3deg);
+    transform: skewx(-3deg);
+}
+.aside-module:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border: 1px dashed rgba(0,0,0,0.1);
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+</style>
+<div style="width:100%;margin:20px auto;">
+	<img style="height:49px;" src="http://4006360163.com/images/logoyy.jpg" /> 
+</div>
+<div class="yh">
+	亲爱的用户，您好！
+</div>
+<div style="width:1000px;margin:15px auto;font-size:16px;color:#fff;line-height:40px;background:#3ecafd;padding:2px;border-radius:50px;text-align:center;font-weight:bold;">
+	网易开发的<span style="font-size:18px;">&nbsp;&nbsp;云端办公室&nbsp;&nbsp;</span>正式向企业用户推出
+</div>
+<div style="width:1000px;margin:10px auto;">
+	<img src="http://4006360163.com/images/bb1.jpg" /> 
+</div>
+<div class="yl">
+	网易出品，必属精品——云端办公平台，交互、共享无缝对接：
+</div>
+<div class="ts">
+	<ol class="rounded-list">
+		<li>
+			<a href="http://www.youdao.so/2016">清晰的组织架构，各个部门之间没有阻隔，可以相互进行讨论，相互相进行信息的传递，多人在线协同编辑，打破传统单人工作模式”</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">所有的工作记录都会得到保存，更是一个企业信息共享和知识积累的平台，成就企业最重要的无形资产</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">一部手机就能代替繁琐的纸质文档。移动办公更主流，轻松建立公司知识库。建立属于自己公司的企业文化</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">公司所有的杂乱无章的资料进行分门别类的存放，支持有权限的共享</a> 
+		</li>
+	</ol>
+	<div style="width:200px;font-size:16px;line-height:44px;border-radius:10px;text-align:center;background:#eb5055;text-shadow:1px 1px 1px rgba(0, 0, 0, 0.25);color:#fff;">
+		<a style="color:#fff;text-decoration:none;" target="_blank" href="http://www.youdao.so/2016/">点击马上开通</a> 
+	</div>
+</div>
+<div class="aside-module" style="overflow:hidden;">
+	<div style="width:700px;float:left;margin-bottom:10px;padding:10px 0;margin-top:20px;">
+		现针对 网易企业用户免费 开放 2017年1月15号前 登录 网易有道云协作企业版，全面免费使用，并赠送价值216元有道云笔记年会员服务，此后开通的企业将会提供付费服务体验版<br />
+咨询电话：4000086163 &nbsp;&nbsp; <a href="http://www.youdao.so" target="_blank">http://www.youdao.so</a> 
+	</div>
+<img style="display:block;float:left;margin-left:20px;" src="http://4006360163.com/images/er.jpg" width="150" height="150" /> 
+</div>
+    [6] => 强比科技
+)
+Array
+(
+    [0] => guoping@qiangbi.net
+    [1] => aa171@126-m.com
+    [2] => qiangbi135
+    [3] => smtp.qiye.163.com
+    [4] => Yang Xiao Jie 您好,网易云端办公室邀您一起加入aKhB
+    [5] => <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+	有道云协作、有道云协作企业版、文档管理系统、企业网盘
+</title>
+<meta name="keywords" content="有道云协作,有道云协作企业版,文档管理系统,在线文档管理,有道云协作代理商,企业网盘,企业文档管理,公司合同保存,企业私有云布署,共同编辑一个文档,公司文档存储工具" />
+<meta name="description" content="有道企业云协作是一款集企业知识管理,企业文档和资料管理、公司团队沟通协作工具，与企业员工笔记无缝连接；团队成员可以对同篇文档共同编辑，让多人协作成为现实；移动、PC原生客户端全覆盖，随时、随地获取团队动态" />
+<style>
+*{font-family:'微软雅黑';}
+body{ width:1000px; margin:30px auto;border: 1px solid #eef0f3;border-width: 6px;
+    border-style: dashed; padding:20px;}
+ul,li{ list-style:none; padding:0; margin:0;}
+.bh{}
+.yh{font-size:14px; color:#555; font-family:'微软雅黑'; line-height:40px; border-bottom:1px solid #e6e6e6; padding-bottom:10px;}
+.pp:hover{ background:#eb5055; color:#fff}
+.pp{width:980px; margin:0 auto; font-size:14px; color:#555; line-height:40px; padding:0 10px; border-radius:5px; margin-top:10px;}
+.jt{fill: currentColor; margin-top:5px;}
+.ys{ width:1000px; margin:10px auto; overflow:hidden;}
+.ys li{ width:158px; float:left;   font-size:12px; line-height:20px; color:#555; margin:10px 0px;text-align:center;  padding:0 4px;}
+.rl{ width:110px; height:110px; background:#49a5de; margin:0 auto; border-radius:100px;font-size:15px; color:#fff;line-height:110px;}
+.ys .rl:hover{ text-decoration: underline;}
+.yl{display: inline-block;
+    border: 1px solid #EB555A;
+    padding: 4px 10px 3px;
+    font-size: 14px;
+    line-height: 30px;
+    margin: 10px 3px;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);    border-radius: 5px;background:#eb5055; color:#fff;}
+	ol {
+    counter-reset: li; /* Initiate a counter */
+    list-style: none; /* Remove default numbering */
+    *list-style: decimal; /* Keep using default numbering for IE6/7 */
+    font: 15px 'trebuchet MS', 'lucida sans';
+    padding: 0;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.rounded-list a{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em 0;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;   
+}
+.rounded-list a:hover{
+    background: #eee;
+}
+.rounded-list a:hover:before{
+    transform: rotate(360deg);  
+}
+.rounded-list a:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute; 
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
+}
+.ts{ width:960px; margin:20px auto;}
+.aside-module {
+	margin: 0 0 20px;
+	margin: 0 0 1.25rem;
+	padding: 20px;
+	position: relative;
+	color: #555;
+	text-shadow: 0 1px 0 rgba(255,255,255,.5);
+	font-size: 14px;
+	line-height: 26px;
+}
+.aside-module a{ color:#555; text-decoration:none;}
+.aside-module img{ margin-top:20px;}
+.aside-module:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: #eef0f3;
+    -webkit-transform: skewx(-3deg);
+    transform: skewx(-3deg);
+}
+.aside-module:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border: 1px dashed rgba(0,0,0,0.1);
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+</style>
+<div style="width:100%;margin:20px auto;">
+	<img style="height:49px;" src="http://4006360163.com/images/logoyy.jpg" /> 
+</div>
+<div class="yh">
+	亲爱的用户，您好！
+</div>
+<div style="width:1000px;margin:15px auto;font-size:16px;color:#fff;line-height:40px;background:#3ecafd;padding:2px;border-radius:50px;text-align:center;font-weight:bold;">
+	网易开发的<span style="font-size:18px;">&nbsp;&nbsp;云端办公室&nbsp;&nbsp;</span>正式向企业用户推出
+</div>
+<div style="width:1000px;margin:10px auto;">
+	<img src="http://4006360163.com/images/bb1.jpg" /> 
+</div>
+<div class="yl">
+	网易出品，必属精品——云端办公平台，交互、共享无缝对接：
+</div>
+<div class="ts">
+	<ol class="rounded-list">
+		<li>
+			<a href="http://www.youdao.so/2016">清晰的组织架构，各个部门之间没有阻隔，可以相互进行讨论，相互相进行信息的传递，多人在线协同编辑，打破传统单人工作模式”</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">所有的工作记录都会得到保存，更是一个企业信息共享和知识积累的平台，成就企业最重要的无形资产</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">一部手机就能代替繁琐的纸质文档。移动办公更主流，轻松建立公司知识库。建立属于自己公司的企业文化</a> 
+		</li>
+		<li>
+			<a href="http://www.youdao.so/2016">公司所有的杂乱无章的资料进行分门别类的存放，支持有权限的共享</a> 
+		</li>
+	</ol>
+	<div style="width:200px;font-size:16px;line-height:44px;border-radius:10px;text-align:center;background:#eb5055;text-shadow:1px 1px 1px rgba(0, 0, 0, 0.25);color:#fff;">
+		<a style="color:#fff;text-decoration:none;" target="_blank" href="http://www.youdao.so/2016/">点击马上开通</a> 
+	</div>
+</div>
+<div class="aside-module" style="overflow:hidden;">
+	<div style="width:700px;float:left;margin-bottom:10px;padding:10px 0;margin-top:20px;">
+		现针对 网易企业用户免费 开放 2017年1月15号前 登录 网易有道云协作企业版，全面免费使用，并赠送价值216元有道云笔记年会员服务，此后开通的企业将会提供付费服务体验版<br />
+咨询电话：4000086163 &nbsp;&nbsp; <a href="http://www.youdao.so" target="_blank">http://www.youdao.so</a> 
+	</div>
+<img style="display:block;float:left;margin-left:20px;" src="http://4006360163.com/images/er.jpg" width="150" height="150" /> 
+</div>
+    [6] => 强比科技
+)
+Array
+(
+    [0] => 3423929165@qq.com
+    [1] => aa6@126-m.com
+    [2] => qiangbi135
+    [3] => smtp.qiye.163.com
+    [4] => 555555555
+    [5] => 6666666666666
+    [6] => 强比科技
+)
+Array
+(
+    [0] => 3423929165@qq.com
+    [1] => aa6@126-m.com
+    [2] => qiangbi135
+    [3] => smtp.qiye.163.com
+    [4] => 555555555
+    [5] => 6666666666666
+    [6] => 强比科技
+)
+Array
+(
+    [0] => 3423929165@qq.com
+    [1] => aa6@126-m.com
+    [2] => qiangbi135
+    [3] => smtp.qiye.163.com
+    [4] => 555555555
+    [5] => 6666666666666
+    [6] => 强比科技
+)
+Array
+(
+    [0] => 3423929165@qq.com
+    [1] => aa6@126-m.com
+    [2] => qiangbi135
+    [3] => smtp.qiye.163.com
+    [4] => 555555555
+    [5] => 6666666666666
+    [6] => 强比科技
+)
+Array
+(
+    [0] => 3423929165@qq.com
+    [1] => aa6@126-m.com
+    [2] => qiangbi135
+    [3] => smtp.qiye.163.com
+    [4] => 555555555
+    [5] => 6666666666666
+    [6] => 强比科技
+)
+Array
+(
+    [0] => 3423929165@qq.com
+    [1] => aa6@126-m.com
+    [2] => qiangbi135
+    [3] => smtp.qiye.163.com
+    [4] => 555555555
+    [5] => 6666666666666
+    [6] => 强比科技
+)
