@@ -294,6 +294,9 @@ class SendemailAction extends Action
         list($registrant_name,$title,$content,$record_add_id)=$arr;
         //随机字符串
         $rand_abc=chr(rand(97,122)).chr(rand(65,90)).chr(rand(97,122)).chr(rand(65,90));
+        if(empty($registrant_name)){
+            $registrant_name="您好";
+        }
         //标题
         $title = str_replace("{{name}}", $registrant_name,$title).$rand_abc;
         //内容
