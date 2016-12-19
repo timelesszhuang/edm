@@ -117,6 +117,6 @@ FLAG;
      */
     public function get_count()
     {
-        return $this->find()->count();
+        return $this->find()->where(["is_on"=>1])->count();
     }
 }
