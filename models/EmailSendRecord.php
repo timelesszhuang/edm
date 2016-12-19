@@ -166,4 +166,61 @@ FLAG;
         }
 
     }
+
+    /**
+     * 统计今天发送了多少邮件
+     */
+    public function total_by_today()
+    {
+        $starttime=strtotime(date("Y-m-d",time()));
+        $endtime=strtotime(date("Y-m-d 23:59:59",time()));
+        $where=[
+            "and","addtime>=$starttime","addtime<=$endtime"
+        ];
+        return $this->find()->where($where)->count();
+    }
+
+    /**
+     * 获取昨天发送多少邮件
+     * @return int|string
+     */
+    public function yesterday_by_today()
+    {
+        $yesterday=date("Y-m-d",strtotime("-1 day"));
+        $starttime=strtotime($yesterday);
+        $endtime=strtotime($yesterday." 23:59:59");
+        $where=[
+            "and","addtime>=$starttime","addtime<=$endtime"
+                ];
+        return $this->find()->where($where)->count();
+    }
+
+    /**
+     * 获取今天阅读量
+     * @return int|string
+     */
+    public function today_read_num()
+    {
+        $starttime=strtotime(date("Y-m-d",time()));
+        $endtime=strtotime(date("Y-m-d 23:59:59",time()));
+        $where=[
+            ">","read_num",0
+        ];
+        return $this->find()->where($where)->count();
+    }
+
+    /**
+     * 获取昨天阅读量
+     * @return int|string
+     */
+    public function yesterday_read_num()
+    {
+        $yesterday=date("Y-m-d",strtotime("-1 day"));
+        $starttime=strtotime($yesterday);
+        $endtime=strtotime($yesterday." 23:59:59");
+        $where=[
+            ">","read_num",0
+        ];
+        return $this->find()->where($where)->count();
+    }
 }

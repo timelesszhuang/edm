@@ -298,7 +298,7 @@ class SendemailAction extends Action
             $registrant_name="您好";
         }
         //标题
-        $title = str_replace("{{name}}", $registrant_name,$title).$rand_abc;
+        $title = str_replace("{{name}}", $registrant_name,$title)."(".$rand_abc.")";
         //内容
         $content = str_replace("{{name}}",$registrant_name,$content);
         //替换链接id
