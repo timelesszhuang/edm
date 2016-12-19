@@ -27,6 +27,6 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 #调试信息不需要提交
-/web/email.log
-/web/email-self.log
-/web/email-send.log
+web/email.log
+web/email-self.log
+web/email-send.log
