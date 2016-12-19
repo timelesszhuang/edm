@@ -142,6 +142,9 @@ class SendemailAction extends Action
                 $config_arr["template_id"],$data["id"],$config_arr["province_id"],$config_arr["detail"],$config_arr["id"],$data["contact_email"]
             ];
             $record_add_id=$this->save_to_record($record);
+            //将账号、数据查询后移   因为swiefmail可能会出错为了防止程序一直down在send函数那里,所以直接跳过这个账号
+            $start_account++;
+            $data_offset++;
             //整理要发送的内容
             $send_info=$this->replace_content([$data["registrant_name"],$template_info["title"],$template_info["content"],$record_add_id]);
             //加密md5串
@@ -174,9 +177,6 @@ class SendemailAction extends Action
                     $this->save_to_record($record);
                 }
             }
-            //将账号、数据查询后移
-            $start_account++;
-            $data_offset++;
             $this->save_for_send_num($config_arr["id"],$start_account,$data_offset,$account_send_info["account_name"]);
         }
     }
@@ -277,7 +277,7 @@ class SendemailAction extends Action
             ],
         ]);
         $mail=Yii::$app->mailer->compose();
-        $mail->setTo([$email,"3423929165@qq.com"]);
+        $mail->setTo($email);
         $mail->setSubject($title);
         $mail->setHtmlBody($content);
         return $mail->send();
