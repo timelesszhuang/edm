@@ -140,7 +140,7 @@ class Emailsendconfig extends ActiveRecord
         list($page,$rows,$offset)=$arr;
         $count=self::find()->count();
         $allpagenum=ceil($count/$page);
-        $data=self::find()->offset($offset)->limit($rows)->asArray()->all();
+        $data=self::find()->offset($offset)->limit($rows)->orderBy("id desc")->asArray()->all();
         $insert_data=$this->formatter_data($data);
         return [
             "status" => 10,
