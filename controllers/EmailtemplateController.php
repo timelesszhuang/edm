@@ -33,7 +33,7 @@ class EmailtemplateController extends BaseController
             $model->addError("status",20);
             exit(json_encode($model->getErrors()));
         }
-        return $this->renderPartial("add",["linktype"=>(new Linktype)->get_all(),"model"=>$model]);
+        return $this->render("add",["linktype"=>(new Linktype)->get_all(),"model"=>$model]);
     }
 
     /**
@@ -54,7 +54,7 @@ class EmailtemplateController extends BaseController
     {
         $id=Yii::$app->request->get("id");
         $model=Emailtemplate::findOne($id);
-        return $this->renderPartial("edit",["data"=>$model->get_one($id),"linktype"=>(new Linktype)->get_all()]);
+        return $this->render("edit",["model"=>$model,"data"=>$model->get_one($id),"linktype"=>(new Linktype)->get_all()]);
     }
 
     /**

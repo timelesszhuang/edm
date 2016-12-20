@@ -10,7 +10,6 @@ use app\models\User;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 ?>
-<?=$this->render("_public");?>
 <style>
     #template_add_html{
         padding-top:10px;
@@ -69,7 +68,16 @@ use yii\helpers\ArrayHelper;
             <div class="form-group">
                 <label for="" class="col-xs-2 control-label">内容:</label>
                 <div class="col-xs-10">
-                    <textarea name="Emailtemplate[content]"  id="template_content"></textarea>
+                    <?= \cliff363825\kindeditor\KindEditorWidget::widget([
+                        'name' => 'Emailtemplate[content]',
+                        'options' => [], // html attributes
+                        'clientOptions' => [
+                            'width' => '555px',
+                            'height' => '350px',
+                            'themeType' => 'simple', // optional: default, simple, qq
+                            'langType' => \cliff363825\kindeditor\KindEditorWidget::LANG_TYPE_ZH_CN, // optional: ar, en, ko, ru, zh-CN, zh-TW
+    ],
+]); ?>
                     <span class="help-block m-b-none error" name="content"></span>
                 </div>
             </div>
@@ -100,19 +108,6 @@ use yii\helpers\ArrayHelper;
                 }
             };
         })();
-        //表单的初始化
-        KindEditor.create('#template_content', {
-            allowFileManager: true,
-            uploadJson: '',
-            fileManagerJson: '',
-            minWidth:552,
-            minHeight:200,
-            afterBlur: function () {
-                this.sync();
-                //这一句的作用：当失去焦点时执行 this.sync()
-                //这个函数作用是同步KindEditor的值到textarea文本框。
-            }
-        });
 
         //切换链接
         $("#link_select").change(function(){

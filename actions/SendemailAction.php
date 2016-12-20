@@ -122,21 +122,35 @@ class SendemailAction extends Action
                 Yii::error("数据已经发送完毕,无法再次发送,请重新修改配置", "edm");
                 return;
             }
+            //加锁
+            $fp=fopen("/index-test.php","w+");
+            flock($fp,LOCK_EX);
             //取出要发送的数据
             $data = (new Query())->from(self::WHOIS . $province . " as a")->select(["a.id","a.domain_name","a.contact_email","a.registrant_name","b.mx"])->leftJoin(self::MX . $province . " as b", "a.id=b.id")->offset($data_offset)->limit(1)->where($where)->one(Yii::$app->$db);
             //如果在不发送名单中 不发送
             if (in_array($data["contact_email"], $nosend_arr)) {
                 //记录下来
                 $this->insert_error_log([$account_send_info, $data]);
-                break;
+                $this->save_for_send_num($config_arr["id"],++$start_account,++$data_offset,$account_send_info["account_name"]);
+                //插入发送记录
+                $record=[
+                    $config_arr["template_id"],$data["id"],$config_arr["province_id"],"黑名单用户",$config_arr["id"],$data["contact_email"]
+                ];
+                $this->save_to_record($record);
+                continue;
             }
             //黑名单用户也过滤掉
             if (in_array($data["contact_email"], $unsend_arr)) {
                 //记录下来
                 $this->insert_error_log([$account_send_info, $data]);
-                break;
+                $this->save_for_send_num($config_arr["id"],++$start_account,++$data_offset,$account_send_info["account_name"]);
+                //插入发送记录
+                $record=[
+                    $config_arr["template_id"],$data["id"],$config_arr["province_id"],"黑名单用户",$config_arr["id"],$data["contact_email"]
+                ];
+                $this->save_to_record($record);
+                continue;
             }
-
             //插入发送记录
             $record=[
                 $config_arr["template_id"],$data["id"],$config_arr["province_id"],$config_arr["detail"],$config_arr["id"],$data["contact_email"]
@@ -145,6 +159,7 @@ class SendemailAction extends Action
             //将账号、数据查询后移   因为swiefmail可能会出错为了防止程序一直down在send函数那里,所以直接跳过这个账号
             $start_account++;
             $data_offset++;
+            flock($fp, LOCK_UN);
             //整理要发送的内容
             $send_info=$this->replace_content([$data["registrant_name"],$template_info["title"],$template_info["content"],$record_add_id]);
             //加密md5串
