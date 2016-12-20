@@ -204,7 +204,7 @@ FLAG;
         $starttime=strtotime(date("Y-m-d",time()));
         $endtime=strtotime(date("Y-m-d 23:59:59",time()));
         $where=[
-            ">","read_num",0
+            "and",[">=","addtime",$starttime],["<=","addtime",$endtime],[">","read_num",0]
         ];
         return $this->find()->where($where)->count();
     }
@@ -219,7 +219,7 @@ FLAG;
         $starttime=strtotime($yesterday);
         $endtime=strtotime($yesterday." 23:59:59");
         $where=[
-            ">","read_num",0
+            "and",[">=","addtime",$starttime],["<=","addtime",$endtime],[">","read_num",0]
         ];
         return $this->find()->where($where)->count();
     }

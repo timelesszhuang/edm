@@ -138,13 +138,13 @@
             "version": "v1.3.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/bestiejs/punycode.js.git",
-                "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
+                "url": "https://github.com/bower-asset/punycode.git",
+                "reference": "bc39b1333f2747030d69d89b76af49e571366205"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bestiejs/punycode.js/zipball/38c8d3131a82567bfef18da09f7f4db68c84f8a3",
-                "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3",
+                "url": "https://api.github.com/repos/bestiejs/punycode.js/zipball/bc39b1333f2747030d69d89b76af49e571366205",
+                "reference": "bc39b1333f2747030d69d89b76af49e571366205",
                 "shasum": ""
             },
             "type": "bower-asset-library",

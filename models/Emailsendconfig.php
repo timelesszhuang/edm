@@ -11,6 +11,7 @@ use yii\db\ActiveRecord;
 use yii;
 use yii\db\Query;
 use app\models\Emailtemplate;
+use app\models\EmailSendRecord;
 
 class Emailsendconfig extends ActiveRecord
 {
@@ -179,5 +180,39 @@ class Emailsendconfig extends ActiveRecord
 FLAG;
         }
         return $table;
+    }
+
+    /**
+     * 获取所有数据 展示在信息页面
+     * @return array|yii\db\ActiveRecord[]
+     */
+    public function get_record()
+    {
+        $data=$this->find()->asArray()->orderBy("id desc")->limit(10)->all();
+        array_walk($data,[$this,"formatter_record"],new EmailSendRecord());
+        return $data;
+    }
+
+    /**
+     * 格式化数据
+     * @param $value
+     * @param $key
+     */
+    public function formatter_record(&$value,$key,$model_record)
+    {
+        if(!empty($value["addtime"])){
+            $value["addtime"]=date("Y-m-d H:i:s",$value["addtime"]);
+        }
+        if(!empty($value["count_number"]) && !empty($value["send_record_page"])){
+            $value["schedule"]=round(($value["send_record_page"]/$value["count_number"])*100,2);
+        }
+        if(intval($value["count_number"])==intval($value["send_record_page"])){
+            $value["online"]="已完成";
+        }else{
+            $value["online"]="进行中";
+        }
+        $value["read_number"]=$model_record->find()->where([
+            "and",["send_config_id"=>$value["id"]],[">","read_num",0]
+        ])->count();
     }
 }
