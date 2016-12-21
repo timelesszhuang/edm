@@ -173,12 +173,16 @@ class SendemailtoolController extends Controller
         $email=Yii::$app->request->post("email");
         $customer_subscribe=Yii::$app->request->post("customer_subscribe");
         if(empty($customer_subscribe)){
-            $model=new Nosubscribersemail();
-            $model->email=$email;
-            $model->email_record_id=$id;
-            $model->addtime=time();
-            $model->updatetime=time();
-            $model->save(false);
+            if(!is_null(Nosubscribersemail::findOne(["email"=>$email]))){
+                $model=new Nosubscribersemail();
+                $data=[
+                    "email"=>$email,
+                    "email_record_id"=>$id,
+                    "addtime"=>time(),
+                    "updatetime"=>time()
+                ];
+                $model->save(false,$data);
+            }
         }else{
             Nosubscribersemail::deleteAll(["email"=>$email]);
         }

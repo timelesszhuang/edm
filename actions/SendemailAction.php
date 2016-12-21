@@ -129,8 +129,6 @@ class SendemailAction extends Action
             $data = (new Query())->from(self::WHOIS . $province . " as a")->select(["a.id","a.domain_name","a.contact_email","a.registrant_name","b.mx"])->leftJoin(self::MX . $province . " as b", "a.id=b.id")->offset($data_offset)->limit(1)->where($where)->one(Yii::$app->$db);
             //如果在不发送名单中 不发送
             if (in_array($data["contact_email"], $nosend_arr)) {
-                //记录下来   因为向记录表中插入了记录 所以就不用再向错误表中插入
-//                $this->insert_error_log([$account_send_info, $data]);
                 $this->save_for_send_num($config_arr["id"],++$start_account,++$data_offset,$account_send_info["account_name"]);
                 //插入发送记录
                 $record=[
@@ -141,8 +139,6 @@ class SendemailAction extends Action
             }
             //黑名单用户也过滤掉
             if (in_array($data["contact_email"], $unsend_arr)) {
-                //记录下来  因为向记录表中插入了记录 所以就不用再向错误表中插入
-//                $this->insert_error_log([$account_send_info, $data]);
                 $this->save_for_send_num($config_arr["id"],++$start_account,++$data_offset,$account_send_info["account_name"]);
                 //插入发送记录
                 $record=[
@@ -178,7 +174,6 @@ class SendemailAction extends Action
                 $send_info[1],                                           //内容
                 "强比科技",//
             ];
-            file_put_contents("email.log",print_r($email_send_arr,true),FILE_APPEND);
             //发邮件失败 记录错误信息
             if(!$this->send($email_send_arr)){
                 $this->error_log([$account_send_info["account_name"],$account_send_info["account_password"],$account_send_info["email_type"],$data["contact_email"]]);

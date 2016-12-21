@@ -138,8 +138,9 @@ class SiteController extends Controller
 //        $model->setAttribute("link_name","aaa");
 //        $model->setAttribute("link_url","127.0.0");
 //        $model->setAttributes();
-        $model=Linkurl::findOne(5);
-        $model->setAttribute("type_id",5);
+        $model=Linkurl::findOne(["type_id"=>7]);
+        var_dump($model);die;
+//        $model->setAttribute("type_id",6);
 //        $model->save(false,["type_id"=>1]);
         $model->save(false);
     }
