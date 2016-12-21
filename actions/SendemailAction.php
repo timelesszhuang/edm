@@ -129,8 +129,8 @@ class SendemailAction extends Action
             $data = (new Query())->from(self::WHOIS . $province . " as a")->select(["a.id","a.domain_name","a.contact_email","a.registrant_name","b.mx"])->leftJoin(self::MX . $province . " as b", "a.id=b.id")->offset($data_offset)->limit(1)->where($where)->one(Yii::$app->$db);
             //如果在不发送名单中 不发送
             if (in_array($data["contact_email"], $nosend_arr)) {
-                //记录下来
-                $this->insert_error_log([$account_send_info, $data]);
+                //记录下来   因为向记录表中插入了记录 所以就不用再向错误表中插入
+//                $this->insert_error_log([$account_send_info, $data]);
                 $this->save_for_send_num($config_arr["id"],++$start_account,++$data_offset,$account_send_info["account_name"]);
                 //插入发送记录
                 $record=[
@@ -141,8 +141,8 @@ class SendemailAction extends Action
             }
             //黑名单用户也过滤掉
             if (in_array($data["contact_email"], $unsend_arr)) {
-                //记录下来
-                $this->insert_error_log([$account_send_info, $data]);
+                //记录下来  因为向记录表中插入了记录 所以就不用再向错误表中插入
+//                $this->insert_error_log([$account_send_info, $data]);
                 $this->save_for_send_num($config_arr["id"],++$start_account,++$data_offset,$account_send_info["account_name"]);
                 //插入发送记录
                 $record=[
@@ -255,10 +255,12 @@ class SendemailAction extends Action
     public function save_for_send_num($id,$start_account,$data_offset,$account_pwd)
     {
         $model=Emailsendconfig::findOne($id);
-        $model->send_account_id=$start_account;
-        $model->send_record_page=$data_offset;
-        $model->send_account_name=$account_pwd;
-        $model->save();
+        $data=[
+            "send_account_id"=>$start_account,
+            "send_record_page"=>$data_offset,
+            "send_account_name"=>$account_pwd
+        ];
+        $model->save(false,$data);
     }
     /**
      * 发送邮件 兼容多个邮箱类型
