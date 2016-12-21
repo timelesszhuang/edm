@@ -122,11 +122,9 @@ class SendemailAction extends Action
                 Yii::error("数据已经发送完毕,无法再次发送,请重新修改配置", "edm");
                 return;
             }
-            //加锁
-            $fp=fopen("/index-test.php","w+");
-            flock($fp,LOCK_EX);
             //取出要发送的数据
             $data = (new Query())->from(self::WHOIS . $province . " as a")->select(["a.id","a.domain_name","a.contact_email","a.registrant_name","b.mx"])->leftJoin(self::MX . $province . " as b", "a.id=b.id")->offset($data_offset)->limit(1)->where($where)->one(Yii::$app->$db);
+            file_put_contents("email.log",print_r(["data_offset"=>$data_offset,"id"=>$data["id"]],true),FILE_APPEND);
             //如果在不发送名单中 不发送
             if (in_array($data["contact_email"], $nosend_arr)) {
                 $this->save_for_send_num($config_arr["id"],++$start_account,++$data_offset,$account_send_info["account_name"]);
@@ -155,7 +153,6 @@ class SendemailAction extends Action
             //将账号、数据查询后移   因为swiefmail可能会出错为了防止程序一直down在send函数那里,所以直接跳过这个账号
             $start_account++;
             $data_offset++;
-            flock($fp, LOCK_UN);
             //整理要发送的内容
             $send_info=$this->replace_content([$data["registrant_name"],$template_info["title"],$template_info["content"],$record_add_id]);
             //加密md5串
@@ -174,6 +171,7 @@ class SendemailAction extends Action
                 $send_info[1],                                           //内容
                 "强比科技",//
             ];
+
             //发邮件失败 记录错误信息
             if(!$this->send($email_send_arr)){
                 $this->error_log([$account_send_info["account_name"],$account_send_info["account_password"],$account_send_info["email_type"],$data["contact_email"]]);
