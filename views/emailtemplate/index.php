@@ -160,7 +160,7 @@ echo $this->render("_public");
             callback:load_data,
             current_num:current_num,
             allrows:allrows,
-            width:"740px",
+            width:"820px",
             height:"640px",
             flag:flag
         };
@@ -179,7 +179,7 @@ echo $this->render("_public");
             var add = {
                 title: '<span class="glyphicon glyphicon-user"></span>&nbsp;添加模板',
                 content: "<?=Url::to(["emailtemplate/add"]);?>",
-                width:"740px",
+                width:"820px",
                 height:"640px",
                 callback:load_data,
                 current_num:current_num,
