@@ -76,7 +76,7 @@ use yii\helpers\ArrayHelper;
                             'height' => '350px',
                             'themeType' => 'default', // optional: default, simple, qq
                             'langType' => \cliff363825\kindeditor\KindEditorWidget::LANG_TYPE_ZH_CN,
-                            'uploadJson'=> "<?=Url::to(['emailtemplate/upload'])?>"
+                            'uploadJson'=> Url::to(["emailtemplate/upload"])
                             ],
                     ]); ?>
                     <span class="help-block m-b-none error" name="content"></span>

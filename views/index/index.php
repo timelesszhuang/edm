@@ -28,10 +28,11 @@ $this->beginPage();
                         <div class="dropdown profile-element">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
+                                    <a class="J_menuItem" href="<?=Url::to(["statisticsinfo/index"])?>">
                                     <span class="block m-t-xs" style="font-size:20px;">
                                         <i class="fa fa-area-chart"></i>
                                         <strong class="font-bold">EDM</strong>
-                                    </span>
+                                    </span></a>
                                 </span>
                             </a>
                         </div>

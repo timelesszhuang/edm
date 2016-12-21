@@ -134,7 +134,7 @@ class SendemailAction extends Action
                 $this->save_for_send_num($config_arr["id"],++$start_account,++$data_offset,$account_send_info["account_name"]);
                 //插入发送记录
                 $record=[
-                    $config_arr["template_id"],$data["id"],$config_arr["province_id"],"黑名单用户",$config_arr["id"],$data["contact_email"]
+                    $config_arr["template_id"],$data["id"],$config_arr["province_id"],"退订用户",$config_arr["id"],$data["contact_email"]
                 ];
                 $this->save_to_record($record);
                 continue;

@@ -104,8 +104,6 @@ class EmailtemplateController extends BaseController
         return [
             'upload' => [
                 'class' => 'cliff363825\kindeditor\KindEditorUploadAction',
-                'savePath' => '@web/uploads',
-                'saveUrl' => '@web/uploads',
                 'maxSize' => 2097152,
             ],
         ];

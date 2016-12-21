@@ -8,8 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-use app\models\Account;
-
+use app\models\Linkurl;
 class SiteController extends Controller
 {
     /**
@@ -131,5 +130,17 @@ class SiteController extends Controller
     public function actionError()
     {
         echo 1111111111;
+    }
+    public function actionShow()
+    {
+//        $model=new Linkurl();
+//        $model->setAttribute("type_id",1);
+//        $model->setAttribute("link_name","aaa");
+//        $model->setAttribute("link_url","127.0.0");
+//        $model->setAttributes();
+        $model=Linkurl::findOne(5);
+        $model->setAttribute("type_id",5);
+//        $model->save(false,["type_id"=>1]);
+        $model->save(false);
     }
 }
