@@ -72,12 +72,13 @@ use yii\helpers\ArrayHelper;
                         'name' => 'Emailtemplate[content]',
                         'options' => [], // html attributes
                         'clientOptions' => [
-                            'width' => '555px',
+                            'width' => '587px',
                             'height' => '350px',
-                            'themeType' => 'simple', // optional: default, simple, qq
-                            'langType' => \cliff363825\kindeditor\KindEditorWidget::LANG_TYPE_ZH_CN, // optional: ar, en, ko, ru, zh-CN, zh-TW
-    ],
-]); ?>
+                            'themeType' => 'default', // optional: default, simple, qq
+                            'langType' => \cliff363825\kindeditor\KindEditorWidget::LANG_TYPE_ZH_CN,
+                            'uploadJson'=> "<?=Url::to(['emailtemplate/upload'])?>"
+                            ],
+                    ]); ?>
                     <span class="help-block m-b-none error" name="content"></span>
                 </div>
             </div>

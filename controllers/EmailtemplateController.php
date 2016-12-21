@@ -12,6 +12,7 @@ use app\models\Linktype;
 use app\models\Linkurl;
 class EmailtemplateController extends BaseController
 {
+    public $enableCsrfValidation=false;
     /**
      * 模板主页面展示
      */
@@ -92,5 +93,21 @@ class EmailtemplateController extends BaseController
     public function actionGet_link_bytypeid($id)
     {
         exit(json_encode((new Linkurl())->get_by_typeid($id)));
+    }
+
+    /**
+     * 执行全局action方法
+     * @return array
+     */
+    public function actions()
+    {
+        return [
+            'upload' => [
+                'class' => 'cliff363825\kindeditor\KindEditorUploadAction',
+                'savePath' => '@web/uploads',
+                'saveUrl' => '@web/uploads',
+                'maxSize' => 2097152,
+            ],
+        ];
     }
 }

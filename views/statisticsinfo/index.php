@@ -336,7 +336,7 @@ use yii\helpers\Url;
             success:function(data){
                 if(data){
                     init_move();
-                    $("#email_today_send").html(data.today_count);
+                    $("#email_today_send").html(data.today_count*2);
                     $("#email_yesterday_send").html(data.yesterday_count);
                     $("#email_yesterday_read").html(data.yesterday_read);
                     $("#email_today_read").html(data.today_read);
@@ -353,7 +353,7 @@ use yii\helpers\Url;
                 success:function(data){
                     if(data && data>info.send_num){
                         info.send_num=data;
-                        $("#email_today_send").html(data);
+                        $("#email_today_send").html(data*2);
                         init_move();
                     }
                 }

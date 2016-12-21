@@ -75,4 +75,13 @@ return array (
       '@zyx/phpmailer' => $vendorDir . '/zyx/zyx-phpmailer',
     ),
   ),
+  'yiidoc/yii2-redactor' => 
+  array (
+    'name' => 'yiidoc/yii2-redactor',
+    'version' => '2.0.1.0',
+    'alias' => 
+    array (
+      '@yii/redactor' => '/',
+    ),
+  ),
 );
