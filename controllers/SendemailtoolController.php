@@ -173,7 +173,10 @@ class SendemailtoolController extends Controller
         $email=Yii::$app->request->post("email");
         $customer_subscribe=Yii::$app->request->post("customer_subscribe");
         if(empty($customer_subscribe)){
-            if(!is_null(Nosubscribersemail::findOne(["email"=>$email]))){
+            //查询是否存在email
+            $model_meybe=Nosubscribersemail::findOne(["email"=>$email]);
+            //不存在添加
+            if(empty($model_meybe)){
                 $model=new Nosubscribersemail();
                 $data=[
                     "email"=>$email,
@@ -181,7 +184,8 @@ class SendemailtoolController extends Controller
                     "addtime"=>time(),
                     "updatetime"=>time()
                 ];
-                $model->save(false,$data);
+                $model->setAttributes($data,false);
+                $model->save(false);
             }
         }else{
             Nosubscribersemail::deleteAll(["email"=>$email]);

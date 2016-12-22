@@ -748,6 +748,7 @@ abstract class BaseActiveRecord extends Model implements ActiveRecordInterface
             return false;
         }
         $values = $this->getDirtyAttributes($attributes);
+
         if (empty($values)) {
             $this->afterSave(false, $values);
             return 0;

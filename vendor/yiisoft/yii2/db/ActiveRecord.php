@@ -528,7 +528,6 @@ class ActiveRecord extends BaseActiveRecord
             Yii::info('Model not updated due to validation error.', __METHOD__);
             return false;
         }
-
         if (!$this->isTransactional(self::OP_UPDATE)) {
             return $this->updateInternal($attributeNames);
         }

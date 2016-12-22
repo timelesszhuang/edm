@@ -88,7 +88,8 @@ $this->beginPage();
                         <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">邮件配置</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="<?=Url::to(["emailsendconfig/index"])?>">发送邮件配置</a>
-                            <li><a class="J_menuItem" href="<?=Url::to(["nosendemailconfig/index"])?>">不发送邮件配置</a>
+                            <li><a class="J_menuItem" href="<?=Url::to(["emailblacklist/index"])?>">邮箱退订</a>
+                            <li><a class="J_menuItem" href="<?=Url::to(["emailignore/index"])?>">域名黑名单</a>
                             </li>
                         </ul>
                     </li>

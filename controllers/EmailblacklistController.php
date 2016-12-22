@@ -7,8 +7,8 @@
  */
 namespace app\controllers;
 use yii;
-use app\models\UnsendEmail;
-class NosendemailconfigController extends BaseController
+use app\models\Nosubscribersemail;
+class EmailblacklistController extends BaseController
 {
     /**
      * 不发送邮件配置页面展示
@@ -16,7 +16,7 @@ class NosendemailconfigController extends BaseController
      */
     public function actionIndex()
     {
-        return $this->renderPartial("index");
+        return $this->render("index");
     }
 
     /**
@@ -26,14 +26,14 @@ class NosendemailconfigController extends BaseController
     public function actionAdd()
     {
         if(Yii::$app->request->isPost){
-            $model=new UnsendEmail();
+            $model=new Nosubscribersemail();
             if($model->load(Yii::$app->request->post()) && $model->save()){
                 exit(json_encode(["status"=>10]));
             }
             $model->addError("status",20);
             exit(json_encode($model->getErrors()));
         }
-        return $this->renderPartial("add");
+        return $this->render("add");
     }
 
     /**
@@ -41,7 +41,7 @@ class NosendemailconfigController extends BaseController
      */
     public function actionList()
     {
-        $model = new UnsendEmail();
+        $model = new Nosubscribersemail();
         exit(json_encode($model->get_list($this->get_page_info())));
     }
 
@@ -52,8 +52,8 @@ class NosendemailconfigController extends BaseController
     public function actionEdit()
     {
         $id=Yii::$app->request->get("id");
-        $data=UnsendEmail::findOne($id);
-        return $this->renderPartial("edit",["data"=>$data]);
+        $data=Nosubscribersemail::findOne($id);
+        return $this->render("edit",["data"=>$data]);
     }
 
     /**
@@ -62,7 +62,7 @@ class NosendemailconfigController extends BaseController
     public function actionEditdata()
     {
         $id=Yii::$app->request->post("id");
-        $model=UnsendEmail::findOne($id);
+        $model=Nosubscribersemail::findOne($id);
         if(Yii::$app->request->isPost && $model->load(Yii::$app->request->post()) && $model->save()){
             exit(json_encode(["status"=>10]));
         }
@@ -76,7 +76,7 @@ class NosendemailconfigController extends BaseController
     public function actionDel()
     {
         $id=Yii::$app->request->get("id");
-        $model=new UnsendEmail();
+        $model=new Nosubscribersemail();
         if($model->del_all([$id])){
             exit(json_encode(["status"=>10]));
         }
