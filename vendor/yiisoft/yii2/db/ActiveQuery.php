@@ -314,7 +314,6 @@ class ActiveQuery extends Query implements ActiveQueryInterface
         if ($db === null) {
             $db = $modelClass::getDb();
         }
-
         if ($this->sql === null) {
             list ($sql, $params) = $db->getQueryBuilder()->build($this);
         } else {

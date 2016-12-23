@@ -748,7 +748,6 @@ abstract class BaseActiveRecord extends Model implements ActiveRecordInterface
             return false;
         }
         $values = $this->getDirtyAttributes($attributes);
-
         if (empty($values)) {
             $this->afterSave(false, $values);
             return 0;
@@ -762,7 +761,6 @@ abstract class BaseActiveRecord extends Model implements ActiveRecordInterface
         // We do not check the return value of updateAll() because it's possible
         // that the UPDATE statement doesn't change anything and thus returns 0.
         $rows = static::updateAll($values, $condition);
-
         if ($lock !== null && !$rows) {
             throw new StaleObjectException('The object being updated is outdated.');
         }

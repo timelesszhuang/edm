@@ -15,7 +15,7 @@ echo $this->render("_public");
             <tr>
                 <td class="t-left ">域名：</td>
                 <th class='view_content'>
-                    <span id="mx_whois_domain"><a href="http://{$whois.domain_name}" target="_blank"><?=$whois['domain_name']?></a></span>&nbsp;
+                    <span id="mx_whois_domain"><a href='http://<?=$whois["domain_name"]?>' target="_blank"><?=$whois['domain_name']?></a></span>&nbsp;
                 </th>
                 <td class="t-left">网站标题</td>
                 <th colspan="7">

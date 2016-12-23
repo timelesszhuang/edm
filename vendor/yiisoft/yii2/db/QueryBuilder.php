@@ -88,7 +88,6 @@ class QueryBuilder extends \yii\base\Object
     public function build($query, $params = [])
     {
         $query = $query->prepare($this);
-
         $params = empty($params) ? $query->params : array_merge($params, $query->params);
 
         $clauses = [
@@ -99,10 +98,8 @@ class QueryBuilder extends \yii\base\Object
             $this->buildGroupBy($query->groupBy),
             $this->buildHaving($query->having, $params),
         ];
-
         $sql = implode($this->separator, array_filter($clauses));
         $sql = $this->buildOrderByAndLimit($sql, $query->orderBy, $query->limit, $query->offset);
-
         if (!empty($query->orderBy)) {
             foreach ($query->orderBy as $expression) {
                 if ($expression instanceof Expression) {
@@ -122,7 +119,6 @@ class QueryBuilder extends \yii\base\Object
         if ($union !== '') {
             $sql = "($sql){$this->separator}$union";
         }
-
         return [$sql, $params];
     }
 

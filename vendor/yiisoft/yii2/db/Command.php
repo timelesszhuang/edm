@@ -334,7 +334,6 @@ class Command extends Component
                 $this->params[$name] = $value;
             }
         }
-
         return $this;
     }
 
@@ -867,9 +866,7 @@ class Command extends Component
     protected function queryInternal($method, $fetchMode = null)
     {
         $rawSql = $this->getRawSql();
-
         Yii::info($rawSql, 'yii\db\Command::query');
-
         if ($method !== '') {
             $info = $this->db->getQueryCacheInfo($this->queryCacheDuration, $this->queryCacheDependency);
             if (is_array($info)) {
@@ -919,7 +916,6 @@ class Command extends Component
             $cache->set($cacheKey, [$result], $info[1], $info[2]);
             Yii::trace('Saved query result in cache', 'yii\db\Command::query');
         }
-
         return $result;
     }
 

@@ -138,10 +138,16 @@ class SiteController extends Controller
 //        $model->setAttribute("link_name","aaa");
 //        $model->setAttribute("link_url","127.0.0");
 //        $model->setAttributes();
-        $model=Linkurl::findOne(["id"=>7]);
-        var_dump($model->dirtyAttributes);die;
-//        $model->setAttribute("type_id",6);
-//        $model->save(false,["type_id"=>1]);
-        $model->save(false);
+//        $model=Linkurl::findOne(["id=>5"]);
+        $model=new Linkurl();
+        $model->setAttributes([
+            "id"=>6,
+            "type_id"=>42,
+            "type_name"=>"5454"
+        ],false);
+//        var_dump($model->getAttributes());die;
+        $model->isNewRecord=false;
+        $result=$model->save(false);
+        var_dump($result);die;
     }
 }

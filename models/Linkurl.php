@@ -52,12 +52,12 @@ class Linkurl extends ActiveRecord
                 //用于后置操作时 判断是否是insert操作
                 $this->change_click_url=true;
             }
-            $arr = ArrayHelper::map(Linktype::get_all(), "id", "type_name");
-            if(empty($arr)){
-                $this->addError("link_url","链接类型为空");
-                return false;
-            }
-            $this->type_name = $arr[$this->type_id];
+//            $arr = ArrayHelper::map(Linktype::get_all(), "id", "type_name");
+//            if(empty($arr)){
+//                $this->addError("link_url","链接类型为空");
+//                return false;
+//            }
+//            $this->type_name = $arr[$this->type_id];
             $this->updatetime = time();
             return true;
         }
