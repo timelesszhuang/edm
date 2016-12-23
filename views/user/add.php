@@ -45,7 +45,7 @@ use yii\helpers\Html;
     $(function(){
         var user_add_info=(function(){
             return {
-                add_url:"<?=Url::to(["user/add"])?>",
+                add_url:"<?=Url::to(["add"])?>",
                 varible:{}
             };
         })();
