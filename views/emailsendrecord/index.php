@@ -6,7 +6,7 @@
  * Time: 14:37
  */
 use yii\helpers\Url;
-echo $this->render("_public");
+use kartik\date\DatePicker;
 ?>
 
 <style>
@@ -17,8 +17,36 @@ echo $this->render("_public");
 <div id="header">
     <div class="row">
         <div class="col-sm-12">
-            <div class="col-sm-6 ">
+            <div class="col-sm-2">
                 <input type="text" class="form-control" placeholder="输入配置描述进行查找" id="config_detail">
+            </div>
+            <div class="col-sm-4">
+                <label for="" class="control-label col-sm-3">起始时间:</label>
+                <div class="col-sm-9">
+                    <?= DatePicker::widget([
+                        'name' => 'start_time',
+                        'options' => ['placeholder' => '请输入起始日期'],
+                        'pluginOptions' => [
+                            'autoclose' => true,
+                            'format' => 'yyyy-mm-dd',
+                            'todayHighlight' => true
+                        ]
+                    ]);?>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <label for="" class="control-label col-sm-3">结束时间:</label>
+                <div class="col-sm-9">
+                    <?= DatePicker::widget([
+                        'name' => 'end_time',
+                        'options' => ['placeholder' => '请输入结束日期'],
+                        'pluginOptions' => [
+                            'autoclose' => true,
+                            'format' => 'yyyy-mm-dd',
+                            'todayHighlight' => true
+                        ]
+                    ]);?>
+                </div>
             </div>
             <div class="col-sm-2">
                 <button class="btn btn-outline btn-primary" id="email_config_find">查询</button>
@@ -145,6 +173,8 @@ echo $this->render("_public");
                     flag: flag,
                     config_detail:$("#config_detail").val(),
                     allrows: allrows,
+                    start_time:$('input[name="start_time"]').val(),
+                    end_time:$('input[name="end_time"]').val(),
                     _csrf:$('#csrf').val()
                 },
                 success: function (data) {
@@ -172,7 +202,7 @@ echo $this->render("_public");
                 shade: true,
                 maxmin: true, //开启最大化最小化按钮
                 area: ['80%', '80%'],
-                content: '<?=Url::to(["emailsendrecord/mx_show"])?>'+"&id="+id
+                content: '<?=Url::to(["mx_show"])?>'+"&id="+id
             });
         });
         $("body").undelegate(".click_more","click");
@@ -186,7 +216,7 @@ echo $this->render("_public");
                 shade: true,
                 maxmin: true, //开启最大化最小化按钮
                 area: ['80%', '80%'],
-                content: '<?=Url::to(["emailsendrecord/get_link_detail"])?>'+"&id="+id
+                content: '<?=Url::to(["get_link_detail"])?>'+"&id="+id
             });
         });
         //点击查询

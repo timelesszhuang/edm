@@ -35,11 +35,22 @@ class EmailSendRecord extends ActiveRecord
     public function get_list($arr)
     {
         list($page, $rows, $offset) = $arr;
-        //接收配置描述
-        $config_detail = Yii::$app->request->post("config_detail");
-        $where = [];
-        if (!empty($config_detail)) {
-            $where = ['like', 'send_config_detail', $config_detail];
+        $data_post=Yii::$app->request->post();
+        $where = ['and'];
+        //配置描述
+        if (!empty($data_post["config_detail"])) {
+            array_push($where,['like', 'send_config_detail', $data_post["config_detail"]]);
+        }
+        //起始时间 和结束时间
+        if(!empty($data_post["start_time"]) && !empty($data_post["end_time"])){
+            array_push($where,['>=', 'addtime', strtotime($data_post["start_time"])]);
+            array_push($where,['<=', 'addtime', strtotime($data_post["end_time"]." 23:59:59")]);
+            //起始时间
+        }else if(!empty($data_post["start_time"])){
+            array_push($where,['>=', 'addtime', strtotime($data_post["start_time"])]);
+            //结束时间
+        }else if(!empty($data_post["end_time"])){
+            array_push($where,['<=', 'addtime', strtotime($data_post["end_time"]." 23:59:59")]);
         }
         $data = self::find()->asArray()->offset($offset)->where($where)->limit($rows)->orderBy("read_num desc,id desc")->all();
         $count = self::find()->where($where)->count();
