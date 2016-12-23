@@ -106,6 +106,11 @@ class SendemailAction extends Action
             Yii::error("模板对应数据无法获得", "edm");
             return;
         }
+        $fp=fopen("/index-test.php","w+");
+        if(!flock($fp,LOCK_EX)){
+            Yii::error("文件锁定失败", "edm");
+            return;
+        }
         //账号的起始stemp
         $start_account = $config_arr["send_account_id"];
         //数据的起始stemp
