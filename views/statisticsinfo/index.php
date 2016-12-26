@@ -159,13 +159,11 @@ use yii\helpers\Url;
                     $("#email_yesterday_read").html(data.yesterday_read);
                     $("#email_today_read").html(data.today_read);
                     info.send_num=data.today_count;
-                    setInterval(function(){
-                        heart_jump();
-                        sending_email_info();
-                    },1000);
+                    setInterval(heart_jump,1000);
                 }
             }
         });
+        setInterval(sending_email_info,3000);
         //获取正在发送的邮件的名称
         function sending_email_info(){
             $.ajax({
