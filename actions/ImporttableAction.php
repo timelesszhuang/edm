@@ -20,12 +20,12 @@ class ImporttableAction extends Action
     {
         $data=(new Query())->select(["id","account_name"])->from("sm_account")->all(Yii::$app->db);
         foreach($data as $k=>$v){
-            if(strstr($v["account_name"],"126-m.com")!==false){
+            if(strstr($v["account_name"],"99crm.cn")!==false){
                 $model=Account::findOne(['id'=>$v["id"]]);
-                $account_name=str_replace("126-m.com","99crm.cn",$v["account_name"]);
                 $data=[
-                    "account_name"=>$account_name,
-                    "account_password"=>"Qiangbi12"
+                    "email_type"=>1,
+                    "host"=>"smtp.qiye.163.com",
+                    "email_type_name"=>"试用"
                 ];
                 $model->setAttributes($data,false);
                 $model->save(false);

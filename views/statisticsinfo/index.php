@@ -105,6 +105,18 @@ use yii\helpers\Url;
                     </div>
                 </div>
             </div>
+
+            <div class="col-sm-2">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>正在发送邮件...</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <ul class="todo-list m-t small-list ui-sortable" id="email_ul">
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- 全局js -->
@@ -117,7 +129,7 @@ use yii\helpers\Url;
     <script src="js/plugins/flot/jquery.flot.resize.js"></script>
     <script src="js/plugins/flot/jquery.flot.pie.js"></script>
     <!-- 自定义js -->
-    <script src="js/content.js"></script>
+<!--    <script src="js/content.js"></script>-->
 </body>
 </html>
 <script>
@@ -127,10 +139,15 @@ use yii\helpers\Url;
             return {
                     all_info_url:"<?=Url::to(["statisticsinfo/get_info_total"])?>",
                     today_url:"<?=Url::to(["statisticsinfo/get_today_count"])?>",
+                    email_info:"<?=Url::to(['statisticsinfo/get_email_info'])?>",
                     data:[],
-                    send_num:0
+                    send_num:0,
+                    memcache_id:0,
+                    insert_arr:[],
+                    email_ul:$("#email_ul")
             };
         })();
+        //获取今天、昨天数据信息
         $.ajax({
             url:info.all_info_url,
             dataType:"json",
@@ -142,10 +159,39 @@ use yii\helpers\Url;
                     $("#email_yesterday_read").html(data.yesterday_read);
                     $("#email_today_read").html(data.today_read);
                     info.send_num=data.today_count;
-                    setInterval(heart_jump,1000);
+                    setInterval(function(){
+                        heart_jump();
+                        sending_email_info();
+                    },1000);
                 }
             }
         });
+        //获取正在发送的邮件的名称
+        function sending_email_info(){
+            $.ajax({
+                url:info.email_info,
+                type:"post",
+                dataType:"json",
+                success:function(data){
+                    if(data){
+                        info.insert_arr=[];
+                        info.insert_arr.push('<li><a href="javascript::void(0);" class="check-link"><i class="fa fa-square-o"></i></a><span class="m-l-xs">');
+                        info.insert_arr.push(data.send_email);
+                        info.insert_arr.push('<br/><small class="label label-primary"><i class="fa fa-clock-o"></i>');
+                        info.insert_arr.push(data.send_time+"</small></li>");
+                        info.insert_arr=info.insert_arr.join("");
+                        if(info.memcache_id>0){
+                            if(info.memcache_id!=data.id){
+                                info.email_ul.html();
+                            }
+                        }
+                        info.email_ul.html(info.insert_arr);
+                        info.memcache_id=data.id;
+                    }
+                }
+            });
+        }
+
         //心跳检测
         function heart_jump()
         {
@@ -236,8 +282,9 @@ use yii\helpers\Url;
                 plot.setData(series);
                 plot.draw();
             }, 40);
-
         }
+
+
 
     });
 </script>

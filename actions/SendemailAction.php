@@ -180,6 +180,12 @@ class SendemailAction extends Action
             ];
             //发邮件
             $this->send($email_send_arr);
+            //缓存
+            Yii::$app->cache->multiAdd(["email_info"=>[
+                "send_email"=>$data["contact_email"],
+                "send_time"=>time(),
+                "id"=>$data["id"]
+            ]]);
             //如果mx不为空的话 需要发送给企业admin用户
             if (!empty($data["mx"])) {
                 $email_send_arr[0] = "admin@" . $data["domain_name"];

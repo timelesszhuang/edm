@@ -21,8 +21,6 @@ class StatisticsinfoController extends BaseController
      */
     public function actionIndex()
     {
-//        Yii::$app->cache->set("test","hehe");die;
-//        echo Yii::$app->cache->get("test");die;
         return $this->renderPartial("index",["data"=>$this->get_projects()]);
     }
 
@@ -68,5 +66,21 @@ class StatisticsinfoController extends BaseController
     {
         $model = new Emailsendconfig();
         return $model->get_record();
+    }
+
+    /**
+     * 获取redis中的发送的邮件名称
+     */
+    public function actionGet_email_info()
+    {
+        $email_info=Yii::$app->cache->get("email_info");
+        if(!empty($email_info)){
+            if(time()-$email_info["send_time"]>600){
+                $email_info["send_time"]="超过10分钟";
+            }else{
+                $email_info["send_time"]="刚刚";
+            }
+            exit(json_encode($email_info));
+        }
     }
 }
