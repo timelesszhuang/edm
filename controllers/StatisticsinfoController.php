@@ -9,7 +9,8 @@ namespace app\controllers;
 
 use app\models\EmailSendRecord;
 use app\models\Emailsendconfig;
-
+use yii\helpers\Url;
+use yii;
 class StatisticsinfoController extends BaseController
 {
     public $enableCsrfValidation = false;
@@ -20,6 +21,8 @@ class StatisticsinfoController extends BaseController
      */
     public function actionIndex()
     {
+//        Yii::$app->cache->set("test","hehe");die;
+//        echo Yii::$app->cache->get("test");die;
         return $this->renderPartial("index",["data"=>$this->get_projects()]);
     }
 

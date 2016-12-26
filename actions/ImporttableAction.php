@@ -18,12 +18,21 @@ class ImporttableAction extends Action
      */
     public function import_table1()
     {
-        $data=(new Query())->select(["account_name","password"])->from("sm_mail_user")->all(Yii::$app->db);
-        $model=new Account();
+        $data=(new Query())->select(["id","account_name"])->from("sm_account")->all(Yii::$app->db);
         foreach($data as $k=>$v){
-            $_model = clone $model;
-            $_model->setAttributes(["account_name"=>$v["account_name"]."@126-m.com","account_password"=>$v["password"],"email_type"=>1]);
-            $_model->save();
+            if(strstr($v["account_name"],"126-m.com")!==false){
+                $model=Account::findOne(['id'=>$v["id"]]);
+                $account_name=str_replace("126-m.com","99crm.cn",$v["account_name"]);
+                $data=[
+                    "account_name"=>$account_name,
+                    "account_password"=>"Qiangbi12"
+                ];
+                $model->setAttributes($data,false);
+                $model->save(false);
+            }
+//            $_model = clone $model;
+//            $_model->setAttributes(["account_name"=>$v["account_name"]."@126-m.com","account_password"=>$v["password"],"email_type"=>1]);
+//            $_model->save();
         }
     }
 

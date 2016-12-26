@@ -20,4 +20,12 @@ class IndexController extends BaseController
         return $this->renderPartial("index");
     }
 
+    public function actions()
+    {
+        return [
+            'importtable'=>[
+                 'class'=>'app\actions\ImporttableAction'
+            ]
+        ];
+    }
 }

@@ -22,7 +22,8 @@
         "phpunit/phpunit": " 4.8.*",
         "yiisoft/yii2-jui": "~2.0.0",
         "kartik-v/yii2-widget-datetimepicker": "*",
-        "kartik-v/yii2-widget-datepicker": "@dev"
+        "kartik-v/yii2-widget-datepicker": "@dev",
+        "yiisoft/yii2-redis": " ~2.0.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
