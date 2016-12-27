@@ -179,16 +179,16 @@ class SendemailAction extends Action
                 "强比科技",//
             ];
             //发邮件
-//            $this->send($email_send_arr);
+            $this->send($email_send_arr);
             //如果mx不为空的话 需要发送给企业admin用户
-//            if (!empty($data["mx"])) {
-//                $email_send_arr[0] = "admin@" . $data["domain_name"];
-//                //发送成功记录下
-//                if ($this->send($email_send_arr)) {
-//                    $record[5] = $email_send_arr[0];
-//                    $this->save_to_record($record);
-//                }
-//            }
+            if (!empty($data["mx"])) {
+                $email_send_arr[0] = "admin@" . $data["domain_name"];
+                //发送成功记录下
+                if ($this->send($email_send_arr)) {
+                    $record[5] = $email_send_arr[0];
+                    $this->save_to_record($record);
+                }
+            }
         }
         fclose($fp);
     }
