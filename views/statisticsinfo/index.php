@@ -163,7 +163,6 @@ use yii\helpers\Url;
                 }
             }
         });
-        setInterval(sending_email_info,3000);
         //获取正在发送的邮件的名称
         function sending_email_info(){
             $.ajax({

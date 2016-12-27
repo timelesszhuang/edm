@@ -129,7 +129,7 @@ class SendemailAction extends Action
                 return;
             }
             //取出要发送的数据
-            $data = (new Query())->from(self::WHOIS . $province . " as a")->select(["a.id", "a.domain_name", "a.contact_email", "a.registrant_name", "b.mx"])->leftJoin(self::MX . $province . " as b", "a.id=b.id")->offset(1)->limit(1)->where($where)->one(Yii::$app->$db);
+            $data = (new Query())->from(self::WHOIS . $province . " as a")->select(["a.id", "a.domain_name", "a.contact_email", "a.registrant_name", "b.mx"])->leftJoin(self::MX . $province . " as b", "a.id=b.id")->offset($data_offset)->limit(1)->where($where)->one(Yii::$app->$db);
             file_put_contents("email.log", print_r(["data_offset" => $data, "id" => $data["id"]], true), FILE_APPEND);
             //准备要插入的数据
             $record = [
@@ -179,24 +179,18 @@ class SendemailAction extends Action
                 "强比科技",//
             ];
             //发邮件
-            $this->send($email_send_arr);
-            //缓存
-            Yii::$app->cache->flush();
-            Yii::$app->cache->multiAdd(["email_info"=>[
-                "send_email"=>$data["contact_email"],
-                "send_time"=>time(),
-                "id"=>$data["id"]
-            ]]);
+//            $this->send($email_send_arr);
             //如果mx不为空的话 需要发送给企业admin用户
-            if (!empty($data["mx"])) {
-                $email_send_arr[0] = "admin@" . $data["domain_name"];
-                //发送成功记录下
-                if ($this->send($email_send_arr)) {
-                    $record[5] = $email_send_arr[0];
-                    $this->save_to_record($record);
-                }
-            }
+//            if (!empty($data["mx"])) {
+//                $email_send_arr[0] = "admin@" . $data["domain_name"];
+//                //发送成功记录下
+//                if ($this->send($email_send_arr)) {
+//                    $record[5] = $email_send_arr[0];
+//                    $this->save_to_record($record);
+//                }
+//            }
         }
+        fclose($fp);
     }
 
     /**
