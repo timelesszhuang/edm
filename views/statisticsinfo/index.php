@@ -203,6 +203,7 @@ use yii\helpers\Url;
                 }
             });
         }
+
         //移动图表
         function init_move(){
             var container = $("#flot-line-chart-moving");

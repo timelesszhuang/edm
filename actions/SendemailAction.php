@@ -76,6 +76,14 @@ class SendemailAction extends Action
             Yii::error("无法获取模板", "edm");
             return;
         }
+        //文件枷锁
+        if(file_exists("number.lock")){
+            $modify_time=filemtime("number.lock");
+            $change_time=time()-$modify_time;
+            if($change_time<200){
+                return;
+            }
+        }
         $this->send_email([$config_arr, $province, $db]);
     }
 
@@ -106,16 +114,13 @@ class SendemailAction extends Action
             Yii::error("模板对应数据无法获得", "edm");
             return;
         }
-        $fp=fopen("/index-test.php","w+");
-        if(!flock($fp,LOCK_EX)){
-            Yii::error("文件锁定失败", "edm");
-            return;
-        }
+
         //账号的起始stemp
         $start_account = $config_arr["send_account_id"];
         //数据的起始stemp
         $data_offset = $config_arr["send_record_page"];
         while (1) {
+            file_put_contents("number.lock",$data_offset);
             //如果账号发送到最后一个 开始轮回
             if ($start_account >= $account_count) {
                 $start_account = 0;
@@ -190,7 +195,6 @@ class SendemailAction extends Action
                 }
             }
         }
-        fclose($fp);
     }
 
     /**
