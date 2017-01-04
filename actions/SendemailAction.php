@@ -120,7 +120,6 @@ class SendemailAction extends Action
         //数据的起始stemp
         $data_offset = $config_arr["send_record_page"];
         while (1) {
-            file_put_contents("number.lock",$data_offset);
             //如果账号发送到最后一个 开始轮回
             if ($start_account >= $account_count) {
                 $start_account = 0;

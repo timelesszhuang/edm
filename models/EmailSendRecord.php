@@ -52,7 +52,7 @@ class EmailSendRecord extends ActiveRecord
         }else if(!empty($data_post["end_time"])){
             array_push($where,['<=', 'addtime', strtotime($data_post["end_time"]." 23:59:59")]);
         }
-        $data = self::find()->asArray()->offset($offset)->where($where)->limit($rows)->orderBy("read_num desc,id desc")->all();
+        $data = self::find()->asArray()->offset($offset)->where($where)->limit($rows)->groupBy("send_email")->orderBy("read_num desc,id desc")->all();
         $count = self::find()->where($where)->count();
         $allpagenum = ceil($count / $page);
         $insert_data = $this->formatter_data($data);

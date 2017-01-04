@@ -60,15 +60,19 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
         'db2'=> require(__DIR__ . '/db2.php'),
-        'db3'=> require(__DIR__ . '/db3.php')
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        */
+        'db3'=> require(__DIR__ . '/db3.php'),
+//        'urlManager' => [
+//            'enablePrettyUrl' => true,//是否美化url
+//            'showScriptName' => true,//是否显示index
+//            "suffix"=>".html",//显示的后缀
+//            'rules' => [        //规则
+//                //'home' => 'site/index',
+//                'article/category/<cid:\d+>' => 'site/index',  // site/index?cid=3   --> article/category/3.html
+//                //'<controller:[\w-]+>/<id:\d+>' => '<controller>/article',  //site/article?id=3   --> site/3.html
+//                'article/<id:\d+>' => 'site/article',
+//            ],
+//        ],
+
     ],
     'params' => $params,
 ];

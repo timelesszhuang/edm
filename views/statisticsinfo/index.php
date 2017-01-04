@@ -154,8 +154,8 @@ use yii\helpers\Url;
             success:function(data){
                 if(data){
                     init_move();
-                    $("#email_today_send").html(data.today_count*2);
-                    $("#email_yesterday_send").html(data.yesterday_count*2);
+                    $("#email_today_send").html(data.today_count);
+                    $("#email_yesterday_send").html(data.yesterday_count);
                     $("#email_yesterday_read").html(data.yesterday_read);
                     $("#email_today_read").html(data.today_read);
                     info.send_num=data.today_count;
