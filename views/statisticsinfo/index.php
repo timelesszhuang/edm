@@ -197,7 +197,7 @@ use yii\helpers\Url;
                 success:function(data){
                     if(data && data>info.send_num){
                         info.send_num=data;
-                        $("#email_today_send").html(data*2);
+                        $("#email_today_send").html(data);
                         init_move();
                     }
                 }
