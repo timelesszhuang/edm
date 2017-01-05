@@ -77,7 +77,13 @@ class EmailSendRecord extends ActiveRecord
         foreach ($data as $k => $v) {
             $i++;
             $v["addtime"] = date("Y-m-d H:i:s", $v["addtime"]);
-            $v["updatetime"] = date("Y-m-d H:i:s", $v["updatetime"]);
+            //是否已经联系
+            $is_check='<span style="color:red;">未联系</span>';
+            $is_check_show='<a href="javascript:void(0)" _id="'.$v["id"].'" class="contract_customer">设置已联系</a>';
+            if($v["is_check"]>0){
+                $is_check='<span style="font-weight:bold;">已联系</span>';
+                $is_check_show='';
+            }
             $table .= <<<FLAG
             <tr>
                 <td class="select_check">$i</td>
@@ -87,10 +93,11 @@ class EmailSendRecord extends ActiveRecord
                 <td>{$v["send_email"]}</td>
                 <td>{$v["sender_ip"]}</td>
                 <td>{$v["addtime"]}</td>
-                <td>{$v["updatetime"]}</td>
+                <td>{$is_check}</td>
                 <td><a href="javascript:void(0)" _id={$v["id"]} class="mx_check">查看mx</a>&nbsp;&nbsp;
-                &nbsp;<a href="javascript:void(0)" _id={$v["id"]} class="click_more">点击详情</a>&nbsp;&nbsp;</td>
-
+                &nbsp;<a href="javascript:void(0)" _id={$v["id"]} class="click_more">点击详情</a>&nbsp;&nbsp;
+                {$is_check_show}
+                </td>
             </tr>
 FLAG;
         }

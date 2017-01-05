@@ -66,7 +66,7 @@ use kartik\date\DatePicker;
                 <th>邮件地址</th>
                 <th>发送ip</th>
                 <th>发送时间</th>
-                <th>最后查看时间</th>
+                <th>是否已联系</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -102,17 +102,18 @@ use kartik\date\DatePicker;
         //下面是关于表格方面的
         var pagesize = 6;
         //初始化之后加载数据
-        var current_num = 1;
+        var current_nums = 1;
         var flag = 'init';
         var allrows = 0;
-        load_data(current_num, allrows, flag);
+        load_data(current_nums, allrows, flag);
         /**
          * 点击前一页
          */
         $('#previous').click(function () {
             var allpage_num = parseInt($('.page_allnum').html());
             var allrows = parseInt($('.allrows').html());
-            var current_num = parseInt($('input[name="cuerrent_page"]').val());
+            var current_num =current_nums= parseInt($('input[name="cuerrent_page"]').val());
+            current_nums++;
             if (current_num === 1) {
                 //当前就是第一页 提示
                 layer.msg('当前为第一页');
@@ -133,7 +134,8 @@ use kartik\date\DatePicker;
         $('#next').click(function () {
             var allpage_num = parseInt($('.page_allnum').html());
             var allrows = parseInt($('.allrows').html());
-            var current_num = parseInt($('input[name="cuerrent_page"]').val());
+            var current_num = current_nums=parseInt($('input[name="cuerrent_page"]').val());
+            current_nums++;
             if (current_num === allpage_num || allpage_num === 0) {
                 layer.msg('当前为最后一页');
                 return;
@@ -149,7 +151,7 @@ use kartik\date\DatePicker;
         $('input[name="cuerrent_page"]').blur(function () {
             var allpage_num = parseInt($('.page_allnum').html());
             var allrows = parseInt($('.allrows').html());
-            var jump_num = parseInt($(this).val());
+            var jump_num =current_nums= parseInt($(this).val());
             if (jump_num > allpage_num || jump_num <= 0) {
                 layer.msg('请输入有效的数字');
                 return;
@@ -229,5 +231,26 @@ use kartik\date\DatePicker;
             var allrows = 0;
             load_data(current_num, allrows, flag);
         });
+        //点击设置已经联系
+        $("body").undelegate(".contract_customer","click");
+        $("body").delegate(".contract_customer","click",function(){
+            var id=$(this).attr("_id");
+            $.ajax({
+                url:"<?=Url::to(["set_contract"])?>",
+                type:"post",
+                data:{
+                    record_id:id
+                },
+                dataType:"json",
+                success:function(data)
+                {
+                    if(data.status==true){
+                        load_data(current_nums, allrows, flag);
+                    }else{
+                        layer.msg("修改失败");
+                    }
+                }
+            });
+        })
     });
 </script>

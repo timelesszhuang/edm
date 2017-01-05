@@ -67,4 +67,14 @@ class EmailsendrecordController extends BaseController
         return $this->renderPartial("get_link_detail",["data"=>$db_arr]);
     }
 
+    /**
+     * 修改为已经联系状态
+     */
+    public function actionSet_contract()
+    {
+        $record_id=Yii::$app->request->post("record_id");
+        $model=EmailSendRecord::findOne($record_id);
+        $model->setAttribute("is_check",10);
+        exit(json_encode(["status"=>$model->save(false)]));
+    }
 }
