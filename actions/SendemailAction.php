@@ -129,7 +129,7 @@ class SendemailAction extends Action
             $account_send_info = Account::find()->asArray()->offset($start_account)->limit(1)->one();
             //判断数据是否发送完毕  发送完再发送给自己
             if ($data_offset >= $count) {
-                $this->send_self(["", $account_send_info["account_name"], $account_send_info["account_password"], $account_send_info["host"], $template_info['title'] . "数据已经发送完毕,无法再次发送,请重新修改配置", $template_info["content"], "强比科技"]);
+//                $this->send_self(["", $account_send_info["account_name"], $account_send_info["account_password"], $account_send_info["host"], $template_info['title'] . "数据已经发送完毕,无法再次发送,请重新修改配置", $template_info["content"], "强比科技"]);
                 Yii::error("数据已经发送完毕,无法再次发送,请重新修改配置", "edm");
                 return;
             }
