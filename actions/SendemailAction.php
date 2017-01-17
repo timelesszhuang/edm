@@ -93,7 +93,6 @@ class SendemailAction extends Action
      */
     public function send_email($arr)
     {
-        var_dump($arr);die;
         list($config_arr, $province, $db) = $arr;
         //定义条件
         $where = [];
@@ -105,6 +104,7 @@ class SendemailAction extends Action
         $account_count = (new Account())->get_count();
         //获取所有的数据总数
         $count = (new Query())->from(self::WHOIS . $province . " as a")->join("left join", self::MX . $province . " as b", "a.id=b.id")->where($where)->count("*", Yii::$app->$db);
+        var_dump($count);die;
         //如果当前配置信息总的邮件数量没有的话 更新
         if (empty($config_arr["count_number"])) {
             $this->save_config_count($config_arr["id"], $count);
