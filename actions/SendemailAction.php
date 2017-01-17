@@ -93,6 +93,7 @@ class SendemailAction extends Action
      */
     public function send_email($arr)
     {
+        var_dump($arr);die;
         list($config_arr, $province, $db) = $arr;
         //定义条件
         $where = [];

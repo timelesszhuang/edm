@@ -205,6 +205,8 @@ FLAG;
         }
         if(!empty($value["count_number"]) && !empty($value["send_record_page"])){
             $value["schedule"]=round(($value["send_record_page"]/$value["count_number"])*100,2);
+        }else{
+            $value["schedule"]=0;
         }
         if(intval($value["count_number"])==intval($value["send_record_page"])){
             $value["online"]="已完成";
