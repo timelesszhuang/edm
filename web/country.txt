@@ -1,0 +1,215 @@
+Array
+(
+    [code] => 0
+    [data] => Array
+        (
+            [country] => 中国
+            [country_id] => CN
+            [area] => 华东
+            [area_id] => 300000
+            [region] => 山东省
+            [region_id] => 370000
+            [city] => 青岛市
+            [city_id] => 370200
+            [county] => 
+            [county_id] => -1
+            [isp] => 联通
+            [isp_id] => 100026
+            [ip] => 27.223.103.230
+        )
+
+)
+Array
+(
+    [code] => 0
+    [data] => Array
+        (
+            [country] => 中国
+            [country_id] => CN
+            [area] => 华东
+            [area_id] => 300000
+            [region] => 山东省
+            [region_id] => 370000
+            [city] => 青岛市
+            [city_id] => 370200
+            [county] => 
+            [county_id] => -1
+            [isp] => 联通
+            [isp_id] => 100026
+            [ip] => 27.223.103.230
+        )
+
+)
+Array
+(
+    [code] => 0
+    [data] => Array
+        (
+            [country] => 中国
+            [country_id] => CN
+            [area] => 华东
+            [area_id] => 300000
+            [region] => 山东省
+            [region_id] => 370000
+            [city] => 青岛市
+            [city_id] => 370200
+            [county] => 
+            [county_id] => -1
+            [isp] => 联通
+            [isp_id] => 100026
+            [ip] => 27.223.103.230
+        )
+
+)
+Array
+(
+    [code] => 0
+    [data] => Array
+        (
+            [country] => 中国
+            [country_id] => CN
+            [area] => 华东
+            [area_id] => 300000
+            [region] => 山东省
+            [region_id] => 370000
+            [city] => 青岛市
+            [city_id] => 370200
+            [county] => 
+            [county_id] => -1
+            [isp] => 联通
+            [isp_id] => 100026
+            [ip] => 27.223.103.230
+        )
+
+)
+Array
+(
+    [code] => 0
+    [data] => Array
+        (
+            [country] => 中国
+            [country_id] => CN
+            [area] => 华东
+            [area_id] => 300000
+            [region] => 山东省
+            [region_id] => 370000
+            [city] => 青岛市
+            [city_id] => 370200
+            [county] => 
+            [county_id] => -1
+            [isp] => 联通
+            [isp_id] => 100026
+            [ip] => 27.223.103.230
+        )
+
+)
+Array
+(
+    [code] => 0
+    [data] => Array
+        (
+            [country] => 中国
+            [country_id] => CN
+            [area] => 华东
+            [area_id] => 300000
+            [region] => 山东省
+            [region_id] => 370000
+            [city] => 青岛市
+            [city_id] => 370200
+            [county] => 
+            [county_id] => -1
+            [isp] => 联通
+            [isp_id] => 100026
+            [ip] => 27.223.103.230
+        )
+
+)
+Array
+(
+    [code] => 0
+    [data] => Array
+        (
+            [country] => 中国
+            [country_id] => CN
+            [area] => 华东
+            [area_id] => 300000
+            [region] => 山东省
+            [region_id] => 370000
+            [city] => 青岛市
+            [city_id] => 370200
+            [county] => 
+            [county_id] => -1
+            [isp] => 联通
+            [isp_id] => 100026
+            [ip] => 27.223.103.230
+        )
+
+)
+Array
+(
+    [code] => 0
+    [data] => Array
+        (
+            [country] => 中国
+            [country_id] => CN
+            [area] => 华东
+            [area_id] => 300000
+            [region] => 山东省
+            [region_id] => 370000
+            [city] => 青岛市
+            [city_id] => 370200
+            [county] => 
+            [county_id] => -1
+            [isp] => 联通
+            [isp_id] => 100026
+            [ip] => 27.223.103.230
+        )
+
+)
+Array
+(
+    [code] => 0
+    [data] => Array
+        (
+            [country] => 中国
+            [country_id] => CN
+            [area] => 华东
+            [area_id] => 300000
+            [region] => 山东省
+            [region_id] => 370000
+            [city] => 青岛市
+            [city_id] => 370200
+            [county] => 
+            [county_id] => -1
+            [isp] => 联通
+            [isp_id] => 100026
+            [ip] => 27.223.103.230
+        )
+
+)
+Array
+(
+    [code] => 0
+    [data] => Array
+        (
+            [country] => 中国
+            [country_id] => CN
+            [area] => 华东
+            [area_id] => 300000
+            [region] => 山东省
+            [region_id] => 370000
+            [city] => 青岛市
+            [city_id] => 370200
+            [county] => 
+            [county_id] => -1
+            [isp] => 联通
+            [isp_id] => 100026
+            [ip] => 27.223.103.230
+        )
+
+)
+Array
+(
+    [code] => 1
+    [data] => ip info not found.
+)

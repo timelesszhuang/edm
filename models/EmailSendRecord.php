@@ -187,6 +187,10 @@ FLAG;
         if (empty($value["ip_info"]) || ($value["ip_info"]=="---")){
             $value["ip_info"] = $value["ip"];
         } else if (is_array($value["ip_info"])) {
+            if(!is_array($value["ip_info"]["data"])){
+                $value["ip_info"]="空";
+                return ;
+            }
             $value["ip_info"] = $value["ip_info"]["data"]["country"] . "-" . $value["ip_info"]["data"]["area"] . "-" . $value["ip_info"]["data"]["region"] . "-" . $value["ip_info"]["data"]["city"];
         }
 
